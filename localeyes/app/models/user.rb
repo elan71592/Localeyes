@@ -27,5 +27,8 @@ class User < ActiveRecord::Base
         user.email = data["email"] if user.email.blank?
       end
     end
+
+  def formatted_name
+    self.first_name + " " + self.last_name[0] + "."
   end
 end
