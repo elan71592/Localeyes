@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def formatted_name
+    self.first_name + " " + self.last_name[0] + "."
+  end
 end
