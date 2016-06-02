@@ -1,0 +1,23 @@
+<h2>Profile:</h2>
+<h3>Name: <%= @user.formatted_name %></h3>
+<h3>Location: <%= @user.location %></h3>
+<h3>Trips Curated: <%= @user.trips.count %></h3>
+
+<h2>My Trips:</h2>
+<% @user.trips.each do |trip| %>
+  <ul>
+    <li><%= trip.name %> created <%= time_ago_in_words(trip.created_at) %> ago</li>
+
+      <% trip.locations.each do |location| %>
+      <ul>
+        <li><%= location.name %></li>
+      </ul>
+  </ul>
+    <% end %>
+<% end %>
+
+<h2>Favorites:</h2>
+<% @user.favorites.each do |favorite| %>
+  <%= favorite.trip.name %> made by <%=favorite.trip.creator.formatted_name %>
+
+<% end %>
