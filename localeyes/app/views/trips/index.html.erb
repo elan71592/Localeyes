@@ -1,0 +1,23 @@
+<h1>Pick A Day Trip</h1>
+
+<section id="search-bar">
+  <p>Search for a trip by tag name(ex. "foodie", "SoHo", "beer")
+  <form>
+    <input type="text" placeholder="search" />
+    <input type="submit">
+  </form>
+</section>
+
+<h1>Most Popular Trips</h1>
+<section id="trip-list-holder">
+  <% @trips.each do |trip| %>
+    <h2><%= trip.name %></h2>
+    <p>made by <%=trip.creator.first_name%><%=trip.creator.last_name%></p>
+  This trip includes:
+    <% trip.locations.each do |location|%>
+      <ul>
+        <li><%=location.name%></li>
+      </ul>
+    <%end%>
+  <% end %>
+</section>
