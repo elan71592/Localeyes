@@ -12,7 +12,7 @@
 <section id="trip-list-holder">
   <% @trips.each do |trip| %>
     <h2><%= trip.name %></h2>
-    <p>made by <%=trip.creator.first_name%><%=trip.creator.last_name%></p>
+    <p>made by <%=trip.creator.first_name%> <%=trip.creator.last_name[0]%>.</p>
   This trip includes:
     <% trip.locations.each do |location|%>
       <ul>

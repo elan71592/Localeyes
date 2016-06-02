@@ -8,4 +8,6 @@ class Trip < ActiveRecord::Base
   has_many :tags, through: :trip_tags
   has_many :favorites
   has_many :user_favorites, through: :favorites, source: :user
+
+
 end
