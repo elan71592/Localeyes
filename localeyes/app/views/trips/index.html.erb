@@ -10,7 +10,7 @@
 
 <h1>Most Popular Trips</h1>
 <section id="trip-list-holder">
-  <% @trips.each do |trip| %>
+  <% @sorted_trips.each do |trip| %>
     <h2><%= trip.name %></h2>
     <p>made by <%=trip.creator.first_name%> <%=trip.creator.last_name[0]%>.</p>
   This trip includes:
