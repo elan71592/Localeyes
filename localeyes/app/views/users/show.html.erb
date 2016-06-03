@@ -1,4 +1,5 @@
-<h2>Profile:</h2>
+<div class="container">
+  <h2>Profile:</h2>
 <h3>Name: <%= @user.formatted_name %></h3>
 <h3>Location: <%= @user.location %></h3>
 <h3>Trips Curated: <%= @user.trips.count %></h3>
@@ -21,3 +22,5 @@
   <%= favorite.trip.name %> made by <%=favorite.trip.creator.formatted_name %>
 
 <% end %>
+
+</div>
