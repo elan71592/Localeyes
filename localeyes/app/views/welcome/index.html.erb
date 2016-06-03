@@ -8,4 +8,4 @@
   <p><%= "#{featured.name}, created by #{featured.creator.formatted_name} #{time_ago_in_words(featured.created_at)} ago" %></p>
 <% end %>
 
-<%= link_to "Create a new trip", new_trip_path %>
+<%= link_to "Create a new trip", new_trip_path, class: "waves-effect waves-light btn-large" %>
