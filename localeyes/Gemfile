@@ -45,7 +45,8 @@ gem 'materialize-sass'
 # Google Places API
 gem 'google_places'
 
-
+# Use lodash for JavaScript
+gem 'lodash-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
