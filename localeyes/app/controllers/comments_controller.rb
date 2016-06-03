@@ -2,10 +2,14 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @trip = Trip.find_by(id: params[:trip_id])
-    if @item.save
-      redirect_to trip_path(@trip)
-    else
-      redirect_to trip_path(@trip)
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.json { render :show, status: :created, location: @comment }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -24,12 +28,12 @@ class CommentsController < ApplicationController
     @trip = Trip.find_by(id: params[:trip_id])
     @comment = Comment.find_by(id: params[:id])
 
-    if current_user != @comment.user
-      @comment.destroy
-      redirect_to trip_path(@trip)
-    else
-      redirect_to trip_path(@trip)
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.json { head :no_content }
     end
+
   end
 
   private
