@@ -66,7 +66,7 @@ function initMap() {
         "name": place.name,
         "address":place.formatted_address,
         "phone_number":place.formatted_phone_number,
-        "website": place.website
+        "website_url": place.website
         }
       }
     }).done(function(response){
