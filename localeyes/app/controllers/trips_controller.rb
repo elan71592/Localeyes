@@ -2,6 +2,7 @@ class TripsController < ApplicationController
 
 def index
   @trips = Trip.all
+  @sorted_trips = sort_by_favorites(@trips)
 end
 
 def new
