@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
 
   def new
+    @key = ENV["GOOGLE_MAPS_KEY"]
   end
 
   def create
@@ -8,11 +9,11 @@ class LocationsController < ApplicationController
     @trip = Trip.find_by(id: params[:trip_id])
     @trip.locations.push(@location)
     if request.xhr?
+      render partial: 'temp', layout: false
       # Respond with a partial of the location card that a user can add a note and duration
     else
 
     end
-    binding.pry
   end
 
   def destroy
