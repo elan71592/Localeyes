@@ -101,7 +101,7 @@ featured_trips = 5.times.map do
 end
 
 locations = 100.times.map do
-  Location.create!( name: "Ulysses",
+  Location.create!( name: Faker::Lorem.word,
                     place_id: "googleplaceid",
                     street_num: rand(1..500).to_s,
                     street: Faker::Address.street_name,
@@ -109,7 +109,7 @@ locations = 100.times.map do
                     state: "NY",
                     country: "USA",
                     website_url: Faker::Internet.url('example.com'),
-                    trip_id: Trip.all.sample)
+                    trip_id: Trip.all.sample.id)
 end
 
 favorites = [Favorite.create!( user_id: 1, trip_id: 1

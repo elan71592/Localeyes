@@ -11,10 +11,15 @@ end
 
 def create
   @trip = Trip.new(trip_params)
-    if @trip.save
-      redirect_to trip_path( @trip )
-    else
-      render 'new'
+
+  respond_to do |format|
+      if @trip.save
+        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
+        format.json { render :show, status: :created, location: @trip }
+      else
+        format.html { render :new }
+        format.json { render json: @trip.errors, status: :unprocessable_entity }
+      end
     end
 end
 
