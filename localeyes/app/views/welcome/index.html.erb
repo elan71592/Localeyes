@@ -1,2 +1,11 @@
-<h1>Meow</h1>
-<%= current_user.email %>
+<!-- Home page if signed in -->
+<h1>Local Eyes</h1>
+
+<p> This will be the home page if a user is logged in </p>
+
+<h2>Trending Trips</h2>
+<% @featured.each do |featured| %>
+  <p><%= "#{featured.name}, created by #{featured.creator.formatted_name} #{time_ago_in_words(featured.created_at)} ago" %></p>
+<% end %>
+
+<%= link_to "Create a new trip", new_trip_path %>
