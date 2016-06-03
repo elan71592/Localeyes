@@ -1,7 +1,6 @@
 var LocationForm = React.createClass({
 
   render: function() {
-    // debugger;
     var index = this.props.data
     return(
       <div>
