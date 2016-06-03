@@ -39,8 +39,12 @@ gem 'faker'
 # Use react for Rails
 gem 'react-rails'
 
+# Materialize gem to use Material Design
+gem 'materialize-sass'
+
 # Google Places API
 gem 'google_places'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
