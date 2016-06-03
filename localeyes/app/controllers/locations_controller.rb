@@ -4,7 +4,6 @@ class LocationsController < ApplicationController
   end
 
   def create
-
   end
 
   def destroy
