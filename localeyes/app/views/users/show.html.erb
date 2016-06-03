@@ -8,12 +8,12 @@
   <ul>
     <li><%= trip.name %> created <%= time_ago_in_words(trip.created_at) %> ago</li>
 
-      <% trip.locations.each do |location| %>
       <ul>
+      <% trip.locations.each do |location| %>
         <li><%= location.name %></li>
+    <% end %>
       </ul>
   </ul>
-    <% end %>
 <% end %>
 
 <h2>Favorites:</h2>
