@@ -32,8 +32,13 @@ gem 'omniauth-facebook'
 # Use omniauth to make facebook gem work
 gem 'omniauth'
 
+
 # Use Faker for seed data
 gem 'faker'
+
+# Use react for Rails
+gem 'react-rails'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

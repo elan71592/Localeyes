@@ -2,6 +2,7 @@ class TripsController < ApplicationController
 
 def index
   @trips = Trip.all
+  @sorted_trips = sort_by_favorites(@trips)
 end
 
 def new
@@ -16,5 +17,9 @@ def create
       render 'new'
     end
 end
+
+  def show
+    @trip = Trip.find_by(id: params[:id])
+  end
 
 end
