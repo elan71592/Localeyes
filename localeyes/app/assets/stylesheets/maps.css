@@ -1,9 +1,4 @@
-@import "materialize/components/color";
-$primary-color: color("blue", "lighten-2") !default;
-@import 'materialize';
-@import "materialize/extras/nouislider";
-
-html, body {
+/*html, body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -52,4 +47,4 @@ html, body {
   font-family: Roboto;
   font-size: 13px;
   font-weight: 300;
-}
+}*/
