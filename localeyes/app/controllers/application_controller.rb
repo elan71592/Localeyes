@@ -8,7 +8,7 @@ end
 
  def sort_by_favorites(trip_list)
     trip_list.sort_by{|trip| trip.favorites.count}.reverse
-  end
+ end
 
   protect_from_forgery with: :exception
   include ApplicationHelper
