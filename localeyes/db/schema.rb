@@ -38,19 +38,16 @@ ActiveRecord::Schema.define(version: 20160602235306) do
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
-    t.string   "name",         null: false
-    t.string   "place_id"
-    t.string   "street_num",   null: false
-    t.string   "street",       null: false
-    t.string   "city",         null: false
-    t.string   "state",        null: false
-    t.string   "country",      null: false
-    t.string   "picture_url"
+    t.string   "name"
+    t.string   "address"
     t.string   "phone_number"
     t.string   "website_url"
+    t.string   "picture_url"
+    t.string   "personal_note"
+    t.integer  "duration"
     t.integer  "trip_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "locations", ["trip_id"], name: "index_locations_on_trip_id", using: :btree

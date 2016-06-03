@@ -18,57 +18,52 @@ Trip.create!( name: "DBC Tour",
 )
 
 Location.create!( name: "Dev Bootcamp",
-                  place_id: "ChIJMeHOVhZawokRVf8JTzCVV2M",
-                  street_num: "48",
-                  street: "Wall St",
-                  city: "New York",
-                  state: "NY",
-                  country: "USA",
+                  address: "48 Wall St, New York, NY, USA",
+                  phone_number: "123-456-789",
                   website_url: "http://devbootcamp.com",
+                  picture_url: Faker::Avatar.image,
+                  personal_note: Faker::Lorem.sentence,
+                  duration: Faker::Number.between(1, 10),
                   trip_id: 1
 )
 
 Location.create!( name: "Dos Toros",
-                  place_id: "ChIJV7y41hdawokRCJBkt8qIKI4",
-                  street_num: "101",
-                  street: "Maiden Lane",
-                  city: "New York",
-                  state: "NY",
-                  country: "USA",
+                  address: "101 Maiden Lane, New York, NY, USA",
+                  phone_number: "123-456-789",
                   website_url: "www.dostoros.com",
+                  picture_url: Faker::Avatar.image,
+                  personal_note: Faker::Lorem.sentence,
+                  duration: Faker::Number.between(1, 10),
                   trip_id: 1
 )
 
 Location.create!( name: "South Street Seaport",
-                  place_id: "ChIJyQScHT1awokRxd_fSCD5aWM",
-                  street_num: "One",
-                  street: "Seaport Plaza",
-                  city: "New York",
-                  state: "NY",
-                  country: "USA",
+                  address: "One Seaport Plaza, New York, NY, USA",
+                  phone_number: "123-456-789",
                   website_url: "www.southstreetseaport.com/",
+                  picture_url: Faker::Avatar.image,
+                  personal_note: Faker::Lorem.sentence,
+                  duration: Faker::Number.between(1, 10),
                   trip_id: 1
 )
 
 Location.create!( name: "Trinity Church",
-                  place_id: "ChIJbVfZzhBawokRnmCT-muojBA",
-                  street_num: "75",
-                  street: "Broadway",
-                  city: "New York",
-                  state: "NY",
-                  country: "USA",
+                  address: "75 Broadway, New York, NY, USA",
+                  phone_number: "123-456-789",
                   website_url: "https://www.trinitywallstreet.org/",
+                  picture_url: Faker::Avatar.image,
+                  personal_note: Faker::Lorem.sentence,
+                  duration: Faker::Number.between(1, 10),
                   trip_id: 1
 )
 
 Location.create!( name: "Ulysses",
-                  place_id: "ChIJV_vNLhRawokRt36u5nIPaVw",
-                  street_num: "95",
-                  street: "Pearl St",
-                  city: "New York",
-                  state: "NY",
-                  country: "USA",
+                  address: "95 Pearl St, New York, NY, USA",
+                  phone_number: "123-456-789",
                   website_url: "www.ulyssesnyc.com/",
+                  picture_url: Faker::Avatar.image,
+                  personal_note: Faker::Lorem.sentence,
+                  duration: Faker::Number.between(1, 10),
                   trip_id: 1
 )
 
@@ -102,13 +97,12 @@ end
 
 locations = 100.times.map do
   Location.create!( name: Faker::Lorem.word,
-                    place_id: "googleplaceid",
-                    street_num: rand(1..500).to_s,
-                    street: Faker::Address.street_name,
-                    city: "New York",
-                    state: "NY",
-                    country: "USA",
+                    address: Faker::Address.street_address,
+                    phone_number: "123-456-789",
                     website_url: Faker::Internet.url('example.com'),
+                    picture_url: Faker::Avatar.image,
+                    personal_note: Faker::Lorem.sentence,
+                    duration: Faker::Number.between(1, 10),
                     trip_id: Trip.all.sample.id)
 end
 
