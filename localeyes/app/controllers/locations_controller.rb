@@ -28,10 +28,11 @@ class LocationsController < ApplicationController
 
   def destroy
     @location = Location.find_by(id: params[:id])
-
     @location.destroy
 
-
+    if request.xhr?
+      render '_destroy', layout: false
+    end
   end
 
   private
