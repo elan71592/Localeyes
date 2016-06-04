@@ -1,14 +1,18 @@
+<h2><%= @trip.name %></h2>
+<p>Add the next location to <%=@trip.name%> by typing in the search bar</p>
+
 <input id="pac-input" class="controls" type="text"
      placeholder="Enter a location">
  </div>
  <div id="map"></div>
 
-<div id="card">
-
+ <div class="row">
+    <div class="col s6"><div id="card"></div></div>
+    <div class="col s6"><div id="saved-location-holder"></div></div>
 </div>
 
-<div id="saved-location-holder">
-</div>
+<a href="/trips/<%=@trip.id%>" class="waves-effect waves-light btn">create your trip</a>
+
 
 <script>
   function initMap() {
