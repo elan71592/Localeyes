@@ -57,7 +57,7 @@ function initMap() {
 
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
     infowindow.open(map, marker);
-    debugger;
+    // debugger;
     $.ajax({
       url: "/trips/" + window.location.href.split("/")[4] + "/locations",
       method: 'POST',
@@ -70,7 +70,7 @@ function initMap() {
         }
       }
     }).done(function(response){
-      debugger;
+      $('#card').append(response);
     })
   });
 
