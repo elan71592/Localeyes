@@ -1,7 +1,10 @@
 <div class="container">
   <h1><%= @trip.name %></h1>
-
   <div id="trip-map"></div>
+
+  <% if user_signed_in? %>
+    <div><%= render 'attend_form' %></div>
+  <% end %>
 
   <script>
     function initMap() {
