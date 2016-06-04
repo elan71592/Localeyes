@@ -1,3 +1,6 @@
 <div class="container">
-  <%= react_component( 'TripShow', { trip: @trip, locations: @trip.locations, comments: @trip.comments } ) %>
+  <h1><%= @trip.name %></h1>
+
+  <div id="trip-map"></div>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= @key %>&callback=initMap"></script>
 </div>
