@@ -19075,3 +19075,82 @@ ActionView::Template::Error (undefined method `latitude' for #<Location:0x007ff8
   Rendered /Users/John/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.1ms)
   Rendered /Users/John/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.3ms)
   Rendered /Users/John/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (80.6ms)
+
+
+Started GET "/" for ::1 at 2016-06-04 17:57:52 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  [1m[35mTrip Load (0.4ms)[0m  SELECT "trips".* FROM "trips" WHERE "trips"."featured" = $1  [["featured", "t"]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 20]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  Rendered welcome/index.html.erb within layouts/application (330.8ms)
+  Rendered layouts/_header.html.erb (3.9ms)
+Completed 200 OK in 10990ms (Views: 10964.5ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/assets/application.self-ad1b6450f3787469f45dcd5937bac145a5be0f1b81907ad475ca5f1b069930a3.css?body=1" for ::1 at 2016-06-04 17:58:03 -0400
+
+
+Started GET "/users/sign_in" for ::1 at 2016-06-04 17:58:06 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (22.3ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 215ms (Views: 212.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-06-04 17:58:07 -0400
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-06-04 17:58:07 -0400
+
+
+Started GET "/users/auth/facebook/callback?code=AQA9zjxImdLVBquqp5eVAN42C172db46UiPXIad9zL5NgXwdq85i8Ye4fp1QOWKoe75BbrKJOrdGfTQ4--upirlmMKX3e0mFRUOhGZF__QfCU7IYzWDk4H4WSyyW4623vqhPVm8NdUEmlY3qx75A67_0bjt8PX_jCiOHptmUorILPV7071eCgusT7btk1SEVV24doHUxRBkroqtZuQs7-TLBayA2Og9rJkNlnfxfkfLyCJFepFkv51gC88Y9oxQOrdHPv1EHMtUorK0KfUYoffTc15HKpDL_6x2r_MDtPOODlXx7Y1qxu-lzhVTZK9No7hM&state=a38f9fcc734e52bc42483e7602d7b2eb36a1a563a7e91990" for ::1 at 2016-06-04 17:58:07 -0400
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQA9zjxImdLVBquqp5eVAN42C172db46UiPXIad9zL5NgXwdq85i8Ye4fp1QOWKoe75BbrKJOrdGfTQ4--upirlmMKX3e0mFRUOhGZF__QfCU7IYzWDk4H4WSyyW4623vqhPVm8NdUEmlY3qx75A67_0bjt8PX_jCiOHptmUorILPV7071eCgusT7btk1SEVV24doHUxRBkroqtZuQs7-TLBayA2Og9rJkNlnfxfkfLyCJFepFkv51gC88Y9oxQOrdHPv1EHMtUorK0KfUYoffTc15HKpDL_6x2r_MDtPOODlXx7Y1qxu-lzhVTZK9No7hM", "state"=>"a38f9fcc734e52bc42483e7602d7b2eb36a1a563a7e91990"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1  [["provider", "facebook"], ["uid", "10209553980866955"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5  [["last_sign_in_at", "2016-06-04 21:36:42.019956"], ["current_sign_in_at", "2016-06-04 21:58:08.165395"], ["sign_in_count", 8], ["updated_at", "2016-06-04 21:58:08.167545"], ["id", 22]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/" for ::1 at 2016-06-04 17:58:08 -0400
+Processing by WelcomeController#index as HTML
+  [1m[35mTrip Load (0.3ms)[0m  SELECT "trips".* FROM "trips" WHERE "trips"."featured" = $1  [["featured", "t"]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 20]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  Rendered welcome/index.html.erb within layouts/application (7.3ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 22]]
+  Rendered layouts/_header.html.erb (3.2ms)
+Completed 200 OK in 178ms (Views: 175.8ms | ActiveRecord: 1.7ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-06-04 17:58:10 -0400
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"tqALADn7zSMxL+5BogQSyQFmdsbrYyahsC8p1OHAWbGdrDs7EnXAHzwxMOfZUJrPoF9Cy4gw7Kzm01qki2Yliw=="}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 22]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2016-06-04 17:58:10 -0400
+Processing by WelcomeController#index as HTML
+  [1m[35mTrip Load (0.2ms)[0m  SELECT "trips".* FROM "trips" WHERE "trips"."featured" = $1  [["featured", "t"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 20]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  Rendered welcome/index.html.erb within layouts/application (8.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 161ms (Views: 158.5ms | ActiveRecord: 1.3ms)
