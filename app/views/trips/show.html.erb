@@ -22,6 +22,7 @@
         <li><%=link_to location.website_url, "#{location.website_url}", target: "_blank"%></li>
         <li>Note from your tour guide: <%= location.personal_note %></li>
         <li>Approximate Duration: <%= location.duration %> hour(s)</li>
+        <a href="https://www.google.com/maps/dir/Current+Location/<%= location.address.split().join('+') %>" target='_blank'>Get Directions</a>
       </ul>
     </div>
     </div>
