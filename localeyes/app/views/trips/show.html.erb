@@ -3,7 +3,9 @@
   <div id="trip-map"></div>
 
   <% if user_signed_in? %>
-    <div><%= render 'attend_form' %></div>
+    <div class="attend-form-container">
+      <%= render 'attend_form' %>
+    </div>
   <% end %>
 <br>
 

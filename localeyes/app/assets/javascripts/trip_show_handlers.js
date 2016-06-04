@@ -31,4 +31,36 @@ $(document).ready(function() {
     }.bind(this));
   });
 
+  $(".attend-form-container").on("submit", ".attend-submit", function(e){
+    e.preventDefault();
+    var url = e.target.action;
+    var type = e.target.method;
+    var data = $(e.target).serialize();
+
+    $.ajax({
+      url: url,
+      type: type,
+      data: data
+    }).done(function(response){
+      $(this).closest(".attend-form-container").html("");
+      $(".attend-form-container").append(response);
+    }.bind(this));
+  });
+
+   $(".attend-form-container").on("submit", ".cancel-submit", function(e){
+    e.preventDefault();
+    var url = e.target.action;
+    var type = "DELETE";
+    var data = $(e.target).serialize();
+
+    $.ajax({
+      url: url,
+      type: type,
+      data: data
+    }).done(function(response){
+      $(this).closest(".attend-form-container").html("");
+      $(".attend-form-container").append(response);
+    }.bind(this));
+  });
+
 });

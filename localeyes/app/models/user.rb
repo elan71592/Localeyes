@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
 
   def favorite?(trip)
     self.favorited_trips.include?(trip)
+  end
 
   def total_trip_attendees
     self.trips.map { |trip| trip.attendees.count }.reduce(:+)
