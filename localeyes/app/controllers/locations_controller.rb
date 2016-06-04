@@ -1,5 +1,10 @@
 class LocationsController < ApplicationController
 
+  def index
+    @trip = Trip.find_by(id: params[:trip_id])
+    @locations = @trip.locations
+  end
+
   def new
     @key = ENV["GOOGLE_MAPS_KEY"]
   end
@@ -38,7 +43,7 @@ class LocationsController < ApplicationController
   private
 
     def location_params
-      params.require( :place ).permit( :name, :address, :phone_number, :website_url )
+      params.require( :place ).permit( :name, :address, :phone_number, :website_url, :latitude, :longitude )
     end
 
     def update_params
