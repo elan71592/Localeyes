@@ -10,12 +10,8 @@
           <li><%= location.address %></li>
           <li><%= location.phone_number %></li>
           <li><%= location.website_url %></li>
-          <%= form_for :location, url: "/trips/#{ trip.id }/locations/#{ location.id }", method: :put do |f| %>
-            <label for="Note">Add a Personalized Note</label>
-            <%=f.text_field :personal_note, hide_label: true %>
-            <label for="Time Needed">Time Needed</label>
-            <%=f.text_field :duration, hide_label: true %>
-            <%=f.submit "Save" %>
+          <li><%= location.personal_note %></li>
+          <li><%= location.duration %></li>
         </ul>
 
         <div class="input-field col s6">
@@ -24,7 +20,6 @@
       </div>
       <div class="card-action">
         <%= link_to "Delete", trip_location_path(trip, location), method: "delete" %>
-        <% end %>
       </div>
     </div>
   </div>
