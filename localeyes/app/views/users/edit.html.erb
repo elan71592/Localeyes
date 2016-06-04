@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h1>Edit Your Profile</h1>
+
+  <div>
+
+  <%= form_for @user do |f| %>
+
+  <h4><%= f.label :first_name %> </h4>
+    <%= f.text_field :first_name %>
+
+  <h4><%= f.label :last_name %> </h4>
+    <%= f.text_field :last_name %>
+
+  <h4><%= f.label :password %></h4>
+    <%= f.password_field :password %>
+
+  <h4><%= f.label :location %></h4>
+    <%= f.text_field :location %>
+
+  <h4><%= f.label :email %></h4>
+    <%= f.text_field :email %>
+
+  <% if @user.errors.any? %>
+      <% @user.errors.full_messages.each do |msg| %>
+        <h5><%= msg %></h5>
+      <% end %>
+  <% end %>
+
+  </div>
+
+    <%= f.submit "Edit", :class => "waves-effect waves-light btn-large" %>
+<% end %>
+
+
+</div>
