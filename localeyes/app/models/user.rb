@@ -45,4 +45,8 @@ class User < ActiveRecord::Base
   def cancel!(trip)
     self.user_trips.find_by(attended_trip_id: trip.id).destroy
   end
+
+  def total_trip_attendees
+    self.trips.map { |trip| trip.attendees.count }.reduce(:+)
+  end
 end
