@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="card-action">
-        <%= link_to "Delete", trip_location_path(trip, location), method: "delete" %>
+        <%= link_to "Delete", url: "/trips/#{ trip.id }/locations/#{ location.id }" %>
       </div>
     </div>
   </div>

@@ -74,10 +74,6 @@ TripTag.create!( trip_id: Trip.first.id,
                  tag_id: Tag.first.id
 )
 
-UserTrip.create!( trip_id: Trip.first.id,
-                  user_id: User.last.id
-)
-
 
 Comment.create!( body: "Great trip!",
                  trip_id: Trip.first.id,
