@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20160604161446) do
     t.string   "picture_url"
     t.string   "personal_note"
     t.integer  "duration"
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "trip_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
