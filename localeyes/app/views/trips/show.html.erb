@@ -9,38 +9,20 @@
     function initMap() {
       var map = new google.maps.Map(document.getElementById('trip-map'), {
         center: {lat: 40.712784, lng: -74.005941},
-        zoom: 15,
+        zoom: 11,
       });
 
-      var marker = new google.maps.Marker({
-        position: {lat: 40.712784, lng: -74.005941},
-        map: map,
-        title: 'Hello World!'
+      $.ajax({
+        url: window.location.href + '/locations.json'
+      }).done( function( response ) {
+        response.locations.map( function( location ) {
+          new google.maps.Marker({
+            position: { lat: location.latitude, lng: location.longitude },
+            map: map,
+            title: 'Hello World'
+          });
+        });
       });
-
-      var marker2 = new google.maps.Marker({
-        position: {lat: 40.712784, lng: -74.005941},
-        map: map,
-        title: 'Hello World!'
-      });
-
-      var marker3 = new google.maps.Marker({
-        position: {lat: 40.7127, lng: -74.005941},
-        map: map,
-        title: 'Hello World!'
-      });
-
-      var marker4 = new google.maps.Marker({
-        position: {lat: 40.712784, lng: -74.005941},
-        map: map,
-        title: 'Hello World!'
-      });
-
-      var marker5 = new google.maps.Marker({
-        position: {lat: 40.712784, lng: -74.005941},
-        map: map,
-        title: 'Hello World!'
-      });
-    }
+    };
   </script>
 </div>
