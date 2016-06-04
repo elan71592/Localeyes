@@ -10,6 +10,13 @@ end
     trip_list.sort_by{|trip| trip.favorites.count}.reverse
  end
 
+ def find_trips_by_tags(tag_array)
+  tag_results = []
+  tag_array.each {|name| tag_results << Tag.find_by(name: name)}
+  trip_results = tag_results.map{|tag| tag.trips}
+  trip_results
+end
+
   protect_from_forgery with: :exception
   include ApplicationHelper
 end

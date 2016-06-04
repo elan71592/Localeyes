@@ -2,7 +2,12 @@ class TripsController < ApplicationController
 
 def index
   @trips = Trip.all
-  @sorted_trips = sort_by_favorites(@trips)
+  @trips_to_display = sort_by_favorites(@trips)
+
+  if params[:search]
+   tag_array = params[:search].split(" ")
+   @trips_to_display = find_trips_by_tags(tag_array)[0]
+  end
 end
 
 def new
