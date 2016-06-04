@@ -2,5 +2,13 @@
   <h1><%= @trip.name %></h1>
 
   <div id="trip-map"></div>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= @key %>&callback=initMap"></script>
+
+  <script>
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('trip-map'), {
+        center: {lat: 40.712784, lng: -74.005941},
+        zoom: 13,
+      });
+    }
+  </script>
 </div>
