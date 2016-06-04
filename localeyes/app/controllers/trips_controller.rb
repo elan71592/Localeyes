@@ -3,10 +3,17 @@ class TripsController < ApplicationController
 def index
   @trips = Trip.all
   @trips_to_display = sort_by_favorites(@trips)
+  @header = "Most Popular Trips"
 
   if params[:search]
    tag_array = params[:search].split(" ")
    @trips_to_display = find_trips_by_tags(tag_array)[0]
+   @header = "Your Search Results"
+    if @trips_to_display == nil
+      @message = "Sorry, there are no results for that search."
+      @header = "Most Popular Trips"
+      @trips_to_display = sort_by_favorites(@trips)
+    end
   end
 end
 

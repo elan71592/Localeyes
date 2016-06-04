@@ -10,8 +10,11 @@
 <% end %>
 
 </section>
+  <%if @message %>
+    <p> <%=@message %></p>
+  <% end %>
 
-  <h1>Most Popular Trips</h1>
+  <h1><%=@header%></h1>
   <section id="trip-list-holder">
     <% @trips_to_display.first(5).each do |trip| %>
     <div class="row">
