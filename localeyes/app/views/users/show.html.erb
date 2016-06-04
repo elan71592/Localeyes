@@ -1,6 +1,27 @@
 <div class="container">
+
+      <div class="row">
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <% if @user.picture_url == nil %>
+              <i class="material-icons">account_circle</i>
+              <% else %>
+              <img src=<%= @user.picture_url %>>
+              <% end %>
+              <span class="card-title"><%= @user.formatted_name %></span>
+            </div>
+            <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
   <h2>Profile:</h2>
-<h3>Name: <%= @user.formatted_name %></h3>
 <h3>Location: <%= @user.location %></h3>
 <h3>Trips Curated: <%= @user.trips.count %></h3>
 
