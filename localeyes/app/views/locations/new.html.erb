@@ -70,7 +70,6 @@
 
       infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
       infowindow.open(map, marker);
-      // debugger;
       $.ajax({
         url: "/trips/" + window.location.href.split("/")[4] + "/locations",
         method: 'POST',
@@ -79,7 +78,9 @@
           "name": place.name,
           "address":place.formatted_address,
           "phone_number":place.formatted_phone_number,
-          "website_url": place.website
+          "website_url": place.website,
+          "latitude": place.geometry.location.lat(),
+          "longitude": place.geometry.location.lng()
           }
         }
       }).done(function(response){
