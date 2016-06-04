@@ -1,7 +1,17 @@
 <div class="container">
+  <h1><%= @trip.name %></h1>
+  <div id="trip-map"></div>
+
   <% if user_signed_in? %>
-  <div><%= render 'attend_form' %></div>
+    <div><%= render 'attend_form' %></div>
   <% end %>
-<br>
-  <%= react_component( 'TripShow', { trip: @trip, locations: @trip.locations, comments: @trip.comments } ) %>
+
+  <script>
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('trip-map'), {
+        center: {lat: 40.712784, lng: -74.005941},
+        zoom: 13,
+      });
+    }
+  </script>
 </div>
