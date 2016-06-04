@@ -15,6 +15,10 @@ class FavoritesController < ApplicationController
     @trip = Trip.find_by(id: params[:trip_id])
     @favorite.destroy
 
-    redirect_to trip_path(@trip)
+    if request.xhr?
+      render 'trips/_favorite', layout: false, locals: {trip: @trip}
+    else
+      redirect_to trip_path(@trip)
+    end
   end
 end
