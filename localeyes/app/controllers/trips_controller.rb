@@ -30,6 +30,7 @@ def create
       @trip.tags << new_tag
     end
     if @trip.tags.length < 1
+      @trip.destroy
       @errors = ["Trip must have at least one tag.", "Please add one tag to continue."]
       render 'new'
     else
