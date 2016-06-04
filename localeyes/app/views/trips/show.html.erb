@@ -1,3 +1,7 @@
 <div class="container">
+  <% if user_signed_in? %>
+  <div><%= render 'attend_form' %></div>
+  <% end %>
+<br>
   <%= react_component( 'TripShow', { trip: @trip, locations: @trip.locations, comments: @trip.comments } ) %>
 </div>
