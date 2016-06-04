@@ -6,6 +6,7 @@ class LocationsController < ApplicationController
   end
 
   def new
+    @trip = Trip.find_by(id: params[:trip_id])
     @key = ENV["GOOGLE_MAPS_KEY"]
   end
 
