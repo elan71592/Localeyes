@@ -23,6 +23,7 @@ end
 
 def create
   @trip = Trip.new(trip_params)
+  @trip.creator = current_user
   tags = params[:trip][:tags].split(", ")
   if @trip.save
     tags.each do |tag|
@@ -30,6 +31,7 @@ def create
       @trip.tags << new_tag
     end
     if @trip.tags.length < 1
+      @trip.destroy
       @errors = ["Trip must have at least one tag.", "Please add one tag to continue."]
       render 'new'
     else

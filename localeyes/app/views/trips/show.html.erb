@@ -3,7 +3,9 @@
   <div id="trip-map"></div>
 
   <% if user_signed_in? %>
-    <div><%= render 'attend_form' %></div>
+    <div class="attend-form-container">
+      <%= render 'attend_form' %>
+    </div>
   <% end %>
 
   <% @locations.each_with_index do |location, idx| %>
@@ -25,6 +27,17 @@
     </div>
   <%end %>
 
+<br>
+
+<% if user_signed_in? %>
+  <div class="favorite-form-container">
+    <%= render 'favorite_form' %>
+  </div>
+<% end %>
+
+  <%= react_component( 'TripShow', { trip: @trip, locations: @trip.locations, comments: @trip.comments } ) %>
+
+
   <script>
     function initMap() {
       var map = new google.maps.Map(document.getElementById('trip-map'), {
@@ -36,13 +49,38 @@
         url: window.location.href + '/locations.json'
       }).done( function( response ) {
         response.locations.map( function( location ) {
-          new google.maps.Marker({
+          var locationComponents = location.address.split( ' ' ).join( '+' )
+          var contentString =
+            '<div id="content">'+
+              '<div id="siteNotice"></div>'+
+              '<h5 id="firstHeading" class="firstHeading">'+
+                location.name +
+              '</h5>'+
+
+              '<div id="bodyContent">'+
+                '<p>'+ location.address +'</p>' +
+                '<a href='+ 'https://www.google.com/maps/dir/Current+Location/' + locationComponents + ' target='+ '_blank' +'>Get Directions</a>'
+              '</div>'+
+            '</div>';
+
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
+          var marker = new google.maps.Marker({
             position: { lat: location.latitude, lng: location.longitude },
             map: map,
             title: 'Hello World'
           });
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+          map.addListener( 'click', function() {
+            infowindow.close();
+          });
         });
-      });
+      }.bind( map ));
     };
   </script>
+
 </div>

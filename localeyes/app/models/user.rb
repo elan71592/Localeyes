@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.first_name = auth.info.name.split()[0]   # assuming the user model has a name
       user.last_name = auth.info.name.split()[-1]
-      user.picture_url = auth.info.image # assuming the user model has an image
+      user.picture_url = "#{ auth.info.image }?type=large" # assuming the user model has an image
     end
   end
 
@@ -46,7 +46,13 @@ class User < ActiveRecord::Base
     self.user_trips.find_by(attended_trip_id: trip.id).destroy
   end
 
+
+  def favorite?(trip)
+    self.favorited_trips.include?(trip)
+  end
+
   def total_trip_attendees
     self.trips.map { |trip| trip.attendees.count }.reduce(:+)
+
   end
 end
