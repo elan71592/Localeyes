@@ -5,6 +5,26 @@
   <% if user_signed_in? %>
     <div><%= render 'attend_form' %></div>
   <% end %>
+
+  <% @locations.each_with_index do |location, idx| %>
+  <h2>Location <%=idx + 1%></h2>
+  <div class="card">
+    <div class="card-image">
+      <img src=<%= location.picture_url %> >
+        <span class="card-title"><%= location.name %></span>
+    </div>
+    <div class="card-content">
+      <ul>
+        <li><%= location.address %></li>
+        <li><%= location.phone_number %></li>
+        <li><%=link_to location.website_url, "#{location.website_url}", target: "_blank"%></li>
+        <li>Note from your tour guide: <%= location.personal_note %></li>
+        <li>Approximate Duration: <%= location.duration %> hour(s)</li>
+      </ul>
+    </div>
+    </div>
+  <%end %>
+
   <script>
     function initMap() {
       var map = new google.maps.Map(document.getElementById('trip-map'), {

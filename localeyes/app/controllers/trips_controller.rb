@@ -53,6 +53,7 @@ end
 def show
   @trip = Trip.find_by(id: params[:id])
   @key = ENV["GOOGLE_MAPS_KEY"]
+  @locations = @trip.locations
 end
 
 private
