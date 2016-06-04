@@ -5,6 +5,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :last_name, null: false
       t.string :location
       t.string :picture_url
+      t.boolean :admin_status, default: false
+      t.text :bio
       ## Omniauth
       t.string :provider
       t.string :uid
