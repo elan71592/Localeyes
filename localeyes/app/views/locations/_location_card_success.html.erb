@@ -9,11 +9,11 @@
         <ul>
           <li><%= location.address %></li>
           <li><%= location.phone_number %></li>
-          <li><%= location.website_url %></li>
+          <li><%=link_to location.website_url, "#{location.website_url}", target: "_blank"%></li>
           <li><%= location.personal_note %></li>
           <li><%= location.duration %></li>
         </ul>
-
+        <p> This location has been added!</p>
         <div class="input-field col s6">
 
         </div>
