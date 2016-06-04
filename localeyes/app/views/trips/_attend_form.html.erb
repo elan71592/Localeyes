@@ -1,8 +1,7 @@
 <div id="attend_form">
 <% if current_user.attending?(@trip) %>
-  <h4>You are attending <%= @trip.name %></h4>
-  <%= render 'cancel' %>
+  <%= render partial: 'cancel', locals: {trip: @trip} %>
 <% else %>
-  <%= render 'attend' %>
+  <%= render partial: 'attend', locals: {trip: @trip} %>
 <% end %>
 </div>

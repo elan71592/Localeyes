@@ -3,8 +3,20 @@
   <div id="trip-map"></div>
 
   <% if user_signed_in? %>
-    <div><%= render 'attend_form' %></div>
+    <div class="attend-form-container">
+      <%= render 'attend_form' %>
+    </div>
   <% end %>
+<br>
+
+<% if user_signed_in? %>
+  <div class="favorite-form-container">
+    <%= render 'favorite_form' %>
+  </div>
+<% end %>
+
+  <%= react_component( 'TripShow', { trip: @trip, locations: @trip.locations, comments: @trip.comments } ) %>
+
   <script>
     function initMap() {
       var map = new google.maps.Map(document.getElementById('trip-map'), {
@@ -49,4 +61,5 @@
       }.bind( map ));
     };
   </script>
+
 </div>
