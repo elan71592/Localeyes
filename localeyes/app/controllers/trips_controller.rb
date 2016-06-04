@@ -23,6 +23,7 @@ end
 
 def create
   @trip = Trip.new(trip_params)
+  @trip.creator = current_user
   tags = params[:trip][:tags].split(", ")
   if @trip.save
     tags.each do |tag|
