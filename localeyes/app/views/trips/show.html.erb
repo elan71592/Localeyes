@@ -3,5 +3,10 @@
   <div><%= render 'attend_form' %></div>
   <% end %>
 <br>
+
+  <div>
+    <%= render 'favorite_form' %>
+  </div>
+
   <%= react_component( 'TripShow', { trip: @trip, locations: @trip.locations, comments: @trip.comments } ) %>
 </div>

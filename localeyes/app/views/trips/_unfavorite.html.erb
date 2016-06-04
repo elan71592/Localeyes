@@ -1,0 +1,5 @@
+<%= form_for current_user.favorites.find_by(trip_id: trip.id), html: { method: :delete } do |f| %>
+  <div><%= hidden_field_tag "trip_id", "#{trip.id}" %></div>
+  <%= f.submit "unfavorite", class: "waves-effect waves-light btn" %>
+<% end %>
+<br>
