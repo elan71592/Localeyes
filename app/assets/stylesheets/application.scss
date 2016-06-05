@@ -2,6 +2,7 @@
 $primary-color: color("light-blue", "lighten-1") !default;
 $background-color: color("grey","lighten-3");
 $primary-text: color("grey", "darken-4");
+$accent-text: color("deep-orange", "lighten-1");
 @import 'materialize';
 @import "materialize/extras/nouislider";
 @import "animate";
@@ -114,6 +115,11 @@ h2 {
 h3 {
   font-weight: lighter;
 }
+
+
+h5 {
+  font-weight: lighter;
+
 
 .input-field input[type=text]:focus {
   border-bottom: 1px solid #03a9f4 ;
