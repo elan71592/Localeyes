@@ -8,6 +8,12 @@
         <% end %>
     </div>
 
+    <% if user_signed_in? %>
+    <div class="favorite-form-container">
+      <%= render 'favorite_form' %>
+    </div>
+  <% end %>
+
   <% @locations.each_with_index do |location, idx| %>
   <h2>Location <%=idx + 1%></h2>
   <div class="card">
@@ -34,12 +40,6 @@
       </div>
   <% end %>
 
-  <% if user_signed_in? %>
-    <div class="favorite-form-container">
-      <%= render 'favorite_form' %>
-    </div>
-  <% end %>
-
   <br>
 
   <div class="comments-container">
@@ -62,7 +62,7 @@
     <div class="new-comment-button">
       <%= form_for(@comment, url: new_comment_path, method: :get ) do |f| %>
         <%= hidden_field_tag "trip_id", "#{@trip.id}"  %>
-        <%= f.submit "add comment", class: "waves-effect waves-light btn" %>
+        <%= f.submit "add comment", class: "waves-effect waves-light btn light-blue" %>
       <% end %>
     </div>
   <% end %>
