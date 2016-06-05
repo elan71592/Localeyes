@@ -14,33 +14,17 @@
     </div>
   <% end %>
 
-  <div class="chip">
-      <% @trip.tags.each do |tag| %>
-          #<%= tag.name %>
-        <% end %>
-    </div>
-
   <% @locations.each_with_index do |location, idx| %>
-  <h2>Location <%=idx + 1%></h2>
-  <div class="card">
-    <div class="card-image">
-      <img src=<%= location.picture_url %> >
-        <span class="card-title"><%= location.name %></span>
-    </div>
-    <div class="card-content">
-      <ul>
-        <li><%= location.address %></li>
-        <li><%= location.phone_number %></li>
-        <li><%=link_to location.website_url, "#{location.website_url}", target: "_blank"%></li>
-        <li>Note from your tour guide: <%= location.personal_note %></li>
-        <li>Approximate Duration: <%= location.duration %> hour(s)</li>
-        <a href="https://www.google.com/maps/dir/Current+Location/<%= location.address.split().join('+') %>" target='_blank'>Get Directions</a>
-      </ul>
-    </div>
-    </div>
-  <%end %>
+  <h5>Location <%=idx + 1%></h5>
+    <%= render partial: 'location_details', locals: { location: location } %>
+    <% end %>
 
-  <br>
+  <h3>Tags</h3>
+    <% @trip.tags.each do |tag| %>
+      <div class="chip grey lighten-2">
+        #<%= tag.name %>
+      </div>
+    <% end %>
 
   <div class="comments-container">
     <h3>Comments: </h3>
