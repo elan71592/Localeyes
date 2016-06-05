@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $("#card").on("submit", "form", function(e) {
+  $("#new-location").on("submit", "form", function(e) {
   e.preventDefault();
   var target = e.target;
   var url = target.action;
@@ -12,19 +12,19 @@ $(document).ready(function() {
     })
     .done(function(response){
       $("#saved-location-holder").append(response);
-      $("#card").html("");
+      $("#new-location").find(".row").remove();
       $('input').val('');
-      if($("#saved-location-holder").children().length >= 3) {
+      if($("#saved-location-holder").children().length >= 4) {
         $(".finish-trip-message").html("");
         $(".finish-trip-button").show();
       } else {
-        $(".location-number").text(3 - $("#saved-location-holder").children().length);
+        $(".location-number").text(4 - $("#saved-location-holder").children().length);
       };
       $('input').focus();
     });
   });
 
-  $( '#card' ).on( 'click', '.card-action a', function( e ) {
+  $( '#new-location' ).on( 'click', '.card-action a', function( e ) {
     e.preventDefault();
     var target = e.target;
     var urlArr = target.href.split("%2F")
@@ -35,7 +35,7 @@ $(document).ready(function() {
       type: type,
       url: url
     }).done( function( response ) {
-      $( this ).closest( '#card' ).html( '' )
+      $( this ).closest( '#new-location' ).html( '' )
     }.bind( this ))
   });
 
