@@ -1,5 +1,5 @@
 <h4>You are attending <%= trip.name %></h4>
 <%= form_for(current_user.user_trips.find_by(attended_trip_id: trip.id),
              html: { method: :delete , class: "cancel-submit"}) do |f| %>
-  <%= f.submit "cancel", class: "waves-effect waves-light btn" %>
+  <%= f.submit "cancel", class: "waves-effect waves-light btn light-blue" %>
 <% end %>

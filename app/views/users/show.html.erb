@@ -21,14 +21,7 @@
   <h2>My Trips:</h2>
 
   <% @user.trips.each do |trip| %>
-    <ul>
-      <li><%= trip.name %> created <%= time_ago_in_words(trip.created_at) %> ago</li>
-      <ul>
-        <% trip.locations.each do |location| %>
-          <li><%= location.name %></li>
-        <% end %>
-      </ul>
-    </ul>
+    <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
   <% end %>
 
   <h2>Favorites:</h2>
