@@ -66,53 +66,52 @@
       <% end %>
     </div>
   <% end %>
-
-
-
-
-  <script>
-    function initMap() {
-      var map = new google.maps.Map(document.getElementById('trip-map'), {
-        center: {lat: 40.712784, lng: -74.005941},
-        zoom: 11,
-      });
-
-      $.ajax({
-        url: window.location.href + '/locations.json'
-      }).done( function( response ) {
-        response.locations.map( function( location ) {
-          var locationComponents = location.address.split( ' ' ).join( '+' )
-          var contentString =
-            '<div id="content">'+
-              '<div id="siteNotice"></div>'+
-              '<h5 id="firstHeading" class="firstHeading">'+
-                location.name +
-              '</h5>'+
-
-              '<div id="bodyContent">'+
-                '<p>'+ location.address +'</p>' +
-                '<a href='+ 'https://www.google.com/maps/dir/Current+Location/' + locationComponents + ' target='+ '_blank' +'>Get Directions</a>'
-              '</div>'+
-            '</div>';
-
-          var infowindow = new google.maps.InfoWindow({
-            content: contentString
-          });
-
-          var marker = new google.maps.Marker({
-            position: { lat: location.latitude, lng: location.longitude },
-            map: map,
-            title: 'Hello World'
-          });
-          marker.addListener('click', function() {
-            infowindow.open(map, marker);
-          });
-          map.addListener( 'click', function() {
-            infowindow.close();
-          });
-        });
-      }.bind( map ));
-    };
-  </script>
-
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8Bo_Dd2UfKD6HYbDmGNbCKy-pFivNcmw&libraries=places&callback=initMap"
+  async defer></script>
+
+<script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('trip-map'), {
+      center: {lat: 40.712784, lng: -74.005941},
+      zoom: 11,
+    });
+
+    $.ajax({
+      url: window.location.href + '/locations.json'
+    }).done( function( response ) {
+      response.locations.map( function( location ) {
+        var locationComponents = location.address.split( ' ' ).join( '+' )
+        var contentString =
+          '<div id="content">'+
+            '<div id="siteNotice"></div>'+
+            '<h5 id="firstHeading" class="firstHeading">'+
+              location.name +
+            '</h5>'+
+
+            '<div id="bodyContent">'+
+              '<p>'+ location.address +'</p>' +
+              '<a href='+ 'https://www.google.com/maps/dir/Current+Location/' + locationComponents + ' target='+ '_blank' +'>Get Directions</a>'
+            '</div>'+
+          '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+          position: { lat: location.latitude, lng: location.longitude },
+          map: map,
+          title: 'Hello World'
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+        map.addListener( 'click', function() {
+          infowindow.close();
+        });
+      });
+    }.bind( map ));
+  };
+</script>
