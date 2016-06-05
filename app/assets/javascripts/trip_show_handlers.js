@@ -99,17 +99,17 @@ $(document).ready(function() {
    //  }.bind(this))
    // });
 
-$(".comments-container").on("submit", ".delete-comment-button", function(e) {
-  e.preventDefault();
-  var url = e.target.action
-  var type = "DELETE"
+  $(".comments-container").on("submit", ".delete-comment-button", function(e) {
+    e.preventDefault();
+    var url = e.target.action
+    var type = "DELETE"
 
-  $.ajax({
-    url: url,
-    type: type
-  }).done(function(response){
-    $(this).parent().remove();
-  }.bind(this));
-})
+    $.ajax({
+      url: url,
+      type: type
+    }).done(function(response){
+      $(this).parent().remove();
+    }.bind(this));
+  })
 
 });
