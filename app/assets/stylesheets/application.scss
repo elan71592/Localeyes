@@ -81,7 +81,7 @@ body {
 }
 
 .animate-tag {
-  background-color: red;
+  background-color: #ff5722;
   margin: 25px 10px;
   width: 70px;
   color: #fff;
@@ -89,6 +89,7 @@ body {
   text-align: center;
   height: 30px;
   border-radius: 30px;
+  padding: 5%;
 }
 
 .card.img {
@@ -119,7 +120,7 @@ h3 {
 
 h5 {
   font-weight: lighter;
-
+}
 
 .input-field input[type=text]:focus {
   border-bottom: 1px solid #03a9f4 ;

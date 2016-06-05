@@ -1,5 +1,5 @@
 <%= form_for(current_user.user_trips.build(attended_trip_id: trip.id), html: {class: "attend-submit"}) do |f| %>
   <div><%= f.hidden_field :attended_trip_id %></div>
-  <%= f.submit "Attend", class: "waves-effect waves-light btn" %>
+  <%= f.submit "I Attended this Trip", class: "waves-effect waves-light btn light-blue" %>
 <% end %>
 <br>

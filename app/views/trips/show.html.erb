@@ -2,13 +2,13 @@
   <h1><%= @trip.name %></h1>
   <div id="trip-map"></div>
 
-  <% if user_signed_in? %>
-    <div class="attend-form-container">
-      <%= render 'attend_form' %>
+  <div class="chip">
+      <% @trip.tags.each do |tag| %>
+          #<%= tag.name %>
+        <% end %>
     </div>
-  <% end %>
 
-  <% if user_signed_in? %>
+    <% if user_signed_in? %>
     <div class="favorite-form-container">
       <%= render 'favorite_form' %>
     </div>
@@ -19,6 +19,13 @@
     <%= render partial: 'location_details', locals: { location: location } %>
     <% end %>
 
+  <% if user_signed_in? %>
+      <div class="attend-form-container">
+        <%= render 'attend_form' %>
+      </div>
+  <% end %>
+
+  <br>
   <h3>Tags</h3>
     <% @trip.tags.each do |tag| %>
       <div class="chip grey lighten-2">
@@ -46,7 +53,7 @@
     <div class="new-comment-button">
       <%= form_for(@comment, url: new_comment_path, method: :get ) do |f| %>
         <%= hidden_field_tag "trip_id", "#{@trip.id}"  %>
-        <%= f.submit "add comment", class: "waves-effect waves-light btn" %>
+        <%= f.submit "add comment", class: "waves-effect waves-light btn light-blue" %>
       <% end %>
     </div>
   <% end %>
