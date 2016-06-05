@@ -1,11 +1,17 @@
 <div class="comment-body">
+  <blockquote>
   <p><%= comment.body %></p>
   <p>Commenter: <%= link_to comment.user.formatted_name %></p>
   <% if current_user == comment.user %>
-    <%= link_to "edit comment", edit_comment_path(comment) %>
+    <%= link_to edit_comment_path(comment) do %>
+    <i class="tiny material-icons">mode_edit</i>
+    <% end %>
     <%= form_for(comment, :html => { :method => :delete}) do |f| %>
       <%= hidden_field_tag "trip_id", "#{trip.id}"  %>
-      <%= f.submit "delete comment", class: "waves-effect waves-light btn" %>
+      <%= button_tag do %>
+        <i class="tiny material-icons">delete</i>
+      <% end %>
     <% end %>
   <% end %>
+  </blockquote>
 </div>
