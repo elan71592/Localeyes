@@ -1,9 +1,10 @@
-@import "materialize/components/color";
+// @import "materialize/components/color";
 $primary-color: color("light-blue", "lighten-1") !default;
 $background-color: color("grey","lighten-3");
 $primary-text: color("grey", "darken-4");
-@import 'materialize';
-@import "materialize/extras/nouislider";
+@import "material";
+// @import 'materialize';
+// @import "materialize/extras/nouislider";
 
 
 html, body {
@@ -72,4 +73,3 @@ body {
 #tag-bubbles {
   margin: .7% .5% .7% .5%;
 }
-

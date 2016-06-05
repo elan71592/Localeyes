@@ -39,8 +39,11 @@ gem 'faker'
 # Use react for Rails
 gem 'react-rails'
 
-# Materialize gem to use Material Design
-gem 'materialize-sass'
+# # Materialize gem to use Material Design
+# gem 'materialize-sass'
+
+# Material Design Lite gem
+gem 'material_design_lite-rails'
 
 # Google Places API
 gem 'google_places'
