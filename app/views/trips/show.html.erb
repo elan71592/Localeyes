@@ -8,6 +8,12 @@
     </div>
   <% end %>
 
+  <div class="chip">
+      <% @trip.tags.each do |tag| %>
+          #<%= tag.name %>
+        <% end %>
+    </div>
+
   <% @locations.each_with_index do |location, idx| %>
   <h2>Location <%=idx + 1%></h2>
   <div class="card">
