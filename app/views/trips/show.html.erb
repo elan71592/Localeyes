@@ -14,6 +14,12 @@
     </div>
   <% end %>
 
+  <div class="chip">
+      <% @trip.tags.each do |tag| %>
+          #<%= tag.name %>
+        <% end %>
+    </div>
+
   <% @locations.each_with_index do |location, idx| %>
   <h2>Location <%=idx + 1%></h2>
   <div class="card">
@@ -28,6 +34,7 @@
         <li><%=link_to location.website_url, "#{location.website_url}", target: "_blank"%></li>
         <li>Note from your tour guide: <%= location.personal_note %></li>
         <li>Approximate Duration: <%= location.duration %> hour(s)</li>
+        <a href="https://www.google.com/maps/dir/Current+Location/<%= location.address.split().join('+') %>" target='_blank'>Get Directions</a>
       </ul>
     </div>
     </div>

@@ -10,9 +10,9 @@ end
     trip_list.sort_by{|trip| trip.favorites.count}.reverse
  end
 
- def find_trips_by_tags(tag_array)
+ def find_trips_by_tags(search_array)
   tag_results = []
-  tag_array.each {|name| tag_results << Tag.find_by(name: name)}
+  search_array.each {|name| tag_results << Tag.find_by(name: name.downcase)}
     if tag_results == [nil] || tag_results == nil
       trip_results = []
     else
@@ -20,6 +20,29 @@ end
     end
   trip_results
 end
+
+def find_trips_by_names(search_array)
+  name_results = []
+  search_array.each {|name| name_results << Trip.where("lower(name) like ?", "%" + name.downcase + "%")}
+  name_results
+end
+
+def find_all_trips(search_array)
+  name_trips = find_trips_by_names(search_array)[0]
+  tag_trips = find_trips_by_tags(search_array)[0]
+    if name_trips != nil && tag_trips != nil
+      all_trips = name_trips + tag_trips
+      all_trips.uniq
+    elsif name_trips != nil && tag_trips == nil
+      all_trips = name_trips
+    elsif name_trips == nil && tag_trips != nil
+      all_trips = tag_trips
+    else
+      all_trips = []
+      binding.pry
+    end
+ end
+
 
   protect_from_forgery with: :exception
   include ApplicationHelper
