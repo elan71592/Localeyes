@@ -1,4 +1,4 @@
-<%= form_for @comment do |f| %>
+<%= form_for @comment, :html => {class: "comment-submit"} do |f| %>
 
 <% if @comment.errors.any? %>
     <p><%=pluralize(@comment.errors.count, "error") %> prevented this item from saving.</p>
@@ -12,13 +12,7 @@
     <label for="body">Write a comment</label>
     <%=f.text_field :body, hide_label: true %>
   </p>
-
-    <%=f.hidden_field :trip_id, :value => @trip.id %><br>
-    <%=f.hidden_field :user_id, :value => current_user.id %><br>
-
-   <p>
-    <%=f.submit "Comment" %>
-  </p>
+  <%=f.hidden_field :trip_id, :value => @trip.id %>
+  <%=f.hidden_field :user_id, :value => current_user.id %>
+  <%=f.submit "Comment" %>
 <% end %>
-
-<%= link_to 'Back', trip_path(@trip) %>
