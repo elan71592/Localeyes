@@ -14,6 +14,12 @@ $(document).ready(function() {
       $("#saved-location-holder").append(response);
       $("#card").html("");
       $('input').val('');
+      if($("#saved-location-holder").children().length >= 3) {
+        $(".finish-trip-message").html("");
+        $(".finish-trip-button").show();
+      } else {
+        $(".location-number").text(3 - $("#saved-location-holder").children().length);
+      };
       $('input').focus();
     });
   });
