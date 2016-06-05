@@ -6,8 +6,9 @@ def index
   @header = "Most Popular Trips"
 
   if params[:search]
-   tag_array = params[:search].split(" ")
-   @trips_to_display = find_trips_by_tags(tag_array)[0]
+   search_array = params[:search].split(" ")
+   @trips_to_display = find_all_trips(search_array)
+
    @header = "Your Search Results"
     if @trips_to_display == nil
       @message = "Sorry, there are no results for that search."
