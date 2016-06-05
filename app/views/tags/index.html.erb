@@ -1,19 +1,29 @@
-
 <h1> trips by tag name </h1>
 
  <div class="row">
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-                <%@tags.each do |tag| %>
-                <div class="chip" id="tag-bubbles">
-                  <%=link_to "##{tag.name}", tag_path(tag) %>
-                  </div>
-                <% end %>
-            </div>
-            <div class="card-action">
-              <%= link_to "Search for Trips", trips_path %></a>
-            </div>
-          </div>
-        </div>
-      </div>
+  <%@tags.each do |tag| %>
+    <div class="chip-container" id="tag-bubbles">
+      <% @animations = [ 'bounceInUp', 'bounceInDown' ] %>
+      <%= link_to "##{tag.name}", tag_path(tag), class: "animate-tag wow #{@animations.sample}" %>
+    </div>
+  <% end %>
+</div>
+<%= link_to "Search Trips", trips_path, class: "waves-effect waves-light btn light-blue" %>
+
+<script>
+  wow = new WOW(
+    {
+      animateClass: 'animated',
+      offset:       100,
+    }
+  );
+  wow.init();
+
+  $(document).ready(function() {
+  	$('.animate-tag').jqFloat({
+  		width: 10,
+  		height: 15,
+  		speed: 1000
+  	});
+  });
+</script>
