@@ -117,6 +117,34 @@ h3 {
   font-weight: lighter;
 }
 
+.delete-button {
+  border: none;
+  background-color: Transparent;
+  outline: none;
+  color: #039be5;
+}
+
+.delete-button:active:focus {
+  border: none !important;
+  background-color: Transparent !important;
+  outline: none !important;
+   box-shadow: none !important;
+}
+
+.delete-button:active {
+  border: none !important;
+  background-color: Transparent !important;
+  outline: none !important;
+   box-shadow: none !important;
+}
+
+
+.d-button {
+  display: inline-block;
+}
+
+.e-link {
+  display: inline-block;
 
 h5 {
   font-weight: lighter;
@@ -148,3 +176,4 @@ h5 {
 .card-action i {
   padding-left: 2em;
 }
+

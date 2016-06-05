@@ -63,43 +63,42 @@ $(document).ready(function() {
     }.bind(this));
   });
 
-   // $(".new-comment-button").on("submit", function(e) {
-   //  e.preventDefault();
+   $(".new-comment-button").on("submit", ".new_comment", function(e) {
+    e.preventDefault();
 
-   //  var url = e.target.action
-   //  var type = e.target.method
-   //  var data = $(e.target).serialize();
+    var url = e.target.action
+    var type = e.target.method
+    var data = $(e.target).serialize();
 
-   //  $.ajax({
-   //    url: url,
-   //    type: type,
-   //    data: data
-   //  }).done(function(response) {
-   //    $(this).find("form").hide();
-   //    $(this).append(response);
-   //  }.bind(this))
-   // });
+    $.ajax({
+      url: url,
+      type: type,
+      data: data
+    }).done(function(response) {
+      $(this).parent().append(response);
+      $(this).hide();
+    }.bind(this))
+   });
 
-   // $(".new-comment-button").on("submit", ".comment-submit", function(e) {
-   //  e.preventDefault();
+   $(".new-comment-button").on("submit", ".comment-submit", function(e) {
+    e.preventDefault();
 
-   //  var url = e.target.action
-   //  var type = e.target.method
-   //  var data = $(e.target).serialize();
+    var url = e.target.action
+    var type = e.target.method
+    var data = $(e.target).serialize();
 
-   //  $.ajax({
-   //    url: url,
-   //    type: type,
-   //    data: data
-   //  }).done(function(response) {
-   //    debugger;
-   //    $(this).siblings().show();
-   //    $(this).parent().parent().find(".comments-container").append(response);
-   //    $(this).hide();
-   //  }.bind(this))
-   // });
+    $.ajax({
+      url: url,
+      type: type,
+      data: data
+    }).done(function(response) {
+      $(this).siblings().show();
+      $(this).parent().parent().find(".comments-container").append(response);
+      $(this).hide();
+    }.bind(this))
+   });
 
-  $(".comments-container").on("submit", ".delete-comment-button", function(e) {
+  $(".comments-container").on("submit", ".d-button", function(e) {
     e.preventDefault();
     var url = e.target.action
     var type = "DELETE"
@@ -110,6 +109,5 @@ $(document).ready(function() {
     }).done(function(response){
       $(this).parent().remove();
     }.bind(this));
-  })
-
+  });
 });
