@@ -2,18 +2,6 @@
   <h1><%= @trip.name %></h1>
   <div id="trip-map"></div>
 
-  <% if user_signed_in? %>
-    <div class="attend-form-container">
-      <%= render 'attend_form' %>
-    </div>
-  <% end %>
-
-  <% if user_signed_in? %>
-    <div class="favorite-form-container">
-      <%= render 'favorite_form' %>
-    </div>
-  <% end %>
-
   <div class="chip">
       <% @trip.tags.each do |tag| %>
           #<%= tag.name %>
@@ -39,6 +27,18 @@
     </div>
     </div>
   <%end %>
+
+  <% if user_signed_in? %>
+      <div class="attend-form-container">
+        <%= render 'attend_form' %>
+      </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <div class="favorite-form-container">
+      <%= render 'favorite_form' %>
+    </div>
+  <% end %>
 
   <br>
 
