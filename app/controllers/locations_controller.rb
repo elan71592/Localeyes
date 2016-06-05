@@ -8,6 +8,10 @@ class LocationsController < ApplicationController
   def new
     @trip = Trip.find_by(id: params[:trip_id])
     @key = ENV["GOOGLE_MAPS_KEY"]
+
+    if !user_signed_in?
+      redirect_to root_path
+    end
   end
 
   def create
@@ -16,7 +20,6 @@ class LocationsController < ApplicationController
     @trip.locations.push(@location)
     if request.xhr?
       render '_location_card', layout: false, locals: { location: @location, trip: @trip }
-      # Respond with a partial of the location card that a user can add a note and duration
     else
 
     end
