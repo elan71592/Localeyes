@@ -1,5 +1,6 @@
 <div class="comment-body">
   <p><%= comment.body %></p>
+  <p>Commenter: <%= link_to comment.user.formatted_name %></p>
   <% if current_user == comment.user %>
     <%= link_to "edit comment", edit_comment_path(comment) %>
     <%= form_for(comment, :html => { :method => :delete}) do |f| %>
