@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card trip-card light-blue darken-2">
+      <div class="card-content white-text hoverable">
+        <div class="card-title"><%= location.name %></div>
+        <ul>
+          <li><%= location.address %></li>
+          <li><%= location.phone_number %></li>
+          <li><%=link_to location.website_url, "#{location.website_url}", target: "_blank"%></li>
+          <br>
+
+          <li>Tip: <%= location.personal_note %></li>
+          <li>Time needed: <%= pluralize(location.duration,"hour") %></li>
+        </ul>
+      </div>
+    <div class="divider"></div>
+      <div class="card-action white">
+        <a href="https://www.google.com/maps/dir/Current+Location/<%= location.address.split().join('+') %>" target='_blank' class="deep-orange-text text-darken-2">Get Directions</a>
+      </div>
+    </div>
+  </div>
+</div>
