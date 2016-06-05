@@ -8,9 +8,16 @@
   <div class="input-field">
     <%= text_field_tag :search, params[:search] %>
   </div>
+<% end %>
+
+  <span id="search-button">
     <%= submit_tag("Search", :class => "waves-effect waves-light btn-large light-blue")  %>
+  </span>
+  <span id="search-button">
     <a href="/tags" class="waves-effect waves-light btn-large deep-orange">explore</a>
-  <% end %>
+  </span>
+
+
 
 </section>
 
