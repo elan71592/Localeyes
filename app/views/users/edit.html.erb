@@ -6,20 +6,31 @@
 
   <%= form_for @user do |f| %>
 
+
   <h4><%= f.label :first_name %> </h4>
-    <%= f.text_field :first_name %>
+    <div class="input-field">
+      <%= f.text_field :first_name %>
+    </div>
 
   <h4><%= f.label :last_name %> </h4>
-    <%= f.text_field :last_name %>
+    <div class="input-field">
+      <%= f.text_field :last_name %>
+    </div>
 
   <h4><%= f.label :password %></h4>
-    <%= f.password_field :password %>
+    <div class="input-field">
+      <%= f.password_field :password %>
+    </div>
 
   <h4><%= f.label :location %></h4>
-    <%= f.text_field :location %>
+    <div class="input-field">
+      <%= f.text_field :location %>
+    </div>
 
   <h4><%= f.label :email %></h4>
-    <%= f.text_field :email %>
+    <div class="input-field">
+      <%= f.text_field :email %>
+    </div>
 
   <% if @user.errors.any? %>
       <% @user.errors.full_messages.each do |msg| %>
@@ -29,7 +40,7 @@
 
   </div>
 
-    <%= f.submit "Edit", :class => "waves-effect waves-light btn-large" %>
+    <%= f.submit "Edit", :class => "waves-effect waves-light btn-large light-blue" %>
 <% end %>
 
 
