@@ -1,5 +1,7 @@
 @import "materialize/components/color";
-$primary-color: color("blue", "lighten-2") !default;
+$primary-color: color("light-blue", "lighten-1") !default;
+$background-color: color("grey","lighten-3");
+$primary-text: color("grey", "darken-4");
 @import 'materialize';
 @import "materialize/extras/nouislider";
 
@@ -9,6 +11,12 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+body {
+  background-color: $background-color;
+  color: $primary-text;
+}
+
 #map {
   width: 100%;
   height: 500px;
@@ -64,3 +72,4 @@ html, body {
 #tag-bubbles {
   margin: .7% .5% .7% .5%;
 }
+

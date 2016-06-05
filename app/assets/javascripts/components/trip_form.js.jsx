@@ -8,7 +8,7 @@ var TripForm = React.createClass({
           <br/>
           <input type="text" name="trip[tags]" placeholder="Add up to four comma separated tags. Ex: awesome, foodie, artsy"/>
           <br/>
-          <input type="submit" value="Create Trip!"/>
+          <input className="waves-effect waves-light btn-large light-blue" type="submit" value="Create Trip!"/>
         </form>
       </div>
     )
