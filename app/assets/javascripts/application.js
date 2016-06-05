@@ -12,9 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require material
-// require materialize-sprockets
-// require materialize/extras/nouislider
+//= require materialize-sprockets
+//= require materialize/extras/nouislider
 //= require turbolinks
 //= require react
 //= require react_ujs
