@@ -73,3 +73,28 @@ body {
   margin: .7% .5% .7% .5%;
 }
 
+
+.card.img {
+    width: 50px;
+    height: auto;
+}
+
+.card-action.lowercase a {
+  text-transform: lowercase !important;
+}
+
+.card-action.lowercase {
+  text-transform: lowercase;
+}
+
+h1 {
+  font-weight: lighter;
+}
+
+h2 {
+  font-weight: lighter;
+}
+
+h3 {
+  font-weight: lighter;
+}
