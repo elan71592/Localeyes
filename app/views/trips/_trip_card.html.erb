@@ -1,18 +1,25 @@
 <div class="row">
   <div class="col s12 m6">
-    <div class="card light-blue darken-4">
+    <div class="card trip-card light-blue darken-2">
       <div class="card-content white-text">
-        <span class="card-title"><%= link_to trip.name, trip_path(trip) %></span>
-
+        <span class="card-title activator grey-text text-darken-4"><%= link_to trip.name, trip_path(trip) %><i class="material-icons white-text right">more_vert</i></span>
+        <p>Created by: <%= trip.creator.formatted_name %> <%= time_ago_in_words(trip.created_at) %> ago</p>
       </div>
-      <div class="card-action lowercase">
-        Created by: <span><%= link_to trip.creator.formatted_name %>
-        <%= link_to "View Trip", trip_path(trip) %>
-
-        <br><br>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"><%= link_to trip.name, trip_path(trip), class: "grey-text text-darken-4" %><i class="material-icons right">close</i></span>
+      <% trip.locations.each do |location| %>
+      <p><%= location.name %></p>
+      <% end %>
+    </div>
+<div class="divider"></div>
+      <div class="card-action">
+        <%= link_to "View Trip", trip_path(trip), class: "white-text" %>
+        <span class="right white-text"><i class="material-icons">done</i><%= trip.attendees.count %></span>
+        <span class="right white-text"><i class="material-icons">star</i><%= trip.favorites.count %></span>
         <% if trip.tags.count > 0 %>
+        <br><br>
           <% trip.tags.each do |tag| %>
-            <div class="chip">
+            <div class="chip grey lighten-5">
               #<%= tag.name %>
             </div>
           <% end %>
@@ -21,18 +28,3 @@
     </div>
   </div>
 </div>
-
-
-  <div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="images/office.jpg">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-      <p><a href="#">This is a link</a></p>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-    </div>
-  </div>

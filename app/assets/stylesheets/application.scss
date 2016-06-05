@@ -115,7 +115,36 @@ h3 {
   font-weight: lighter;
 }
 
+
 button {
   border: none;
   background-color: white;
 }
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #03a9f4 ;
+  box-shadow: 0 1px 0 0 #03a9f4 ;
+}
+
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid #03a9f4 ;
+  box-shadow: 0 1px 0 0 #03a9f4 ;
+}
+
+.input-field input[type=email]:focus {
+  border-bottom: 1px solid #03a9f4 ;
+  box-shadow: 0 1px 0 0 #03a9f4 ;
+}
+
+.trip-card {
+  width: 100%;
+}
+
+.trip-card a {
+  color: white;
+}
+
+.card-action i {
+  padding-left: 2em;
+}
+

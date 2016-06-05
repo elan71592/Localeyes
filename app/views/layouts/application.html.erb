@@ -1,43 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>localeyes</title>
-  <!--Import Google Icon Font-->
+  <head>
+    <title>localeyes</title>
+      <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
       <%= csrf_meta_tags %>
 
-  <!--Let browser know website is optimized for mobile-->
+      <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
-<body>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '1220201294680870',
-        xfbml      : true,
-        version    : 'v2.6'
-      });
-    };
+  </head>
+  <body>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1220201294680870',
+          xfbml      : true,
+          version    : 'v2.6'
+        });
+      };
 
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-   </script>
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 
-<%= render 'layouts/header' %>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= @key %>&libraries=places&callback=initMap"
-    async defer></script>
-
-
-<%= yield %>
-<%= render 'layouts/footer' %>
-</body>
+    <%= render 'layouts/header' %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+  </body>
 </html>
-
