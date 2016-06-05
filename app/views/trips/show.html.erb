@@ -50,12 +50,12 @@
         <p><%= comment.body %></p>
         <p>Commenter: <%= link_to comment.user.formatted_name %></p>
         <% if current_user == comment.user %>
-          <%= link_to edit_comment_path(comment) do %>
+          <%= link_to edit_comment_path(comment), class: "e-link" do %>
             <i class="tiny material-icons">mode_edit</i>
           <% end %>
-          <%= form_for(comment, :html => { :method => :delete}) do |f| %>
+          <%= form_for(comment, :html => { :method => :delete, class: "d-button"}) do |f| %>
             <%= hidden_field_tag "trip_id", "#{@trip.id}"  %>
-            <%= button_tag( :class => "waves-effect waves-light btn deep-orange") do %>
+            <%= button_tag(class: "delete-button") do %>
               <i class="tiny material-icons">delete</i>
             <% end %>
           <% end %>

@@ -6,7 +6,9 @@
     <%= link_to "edit comment", edit_comment_path(comment) %>
     <%= form_for(comment, :html => { :method => :delete}) do |f| %>
       <%= hidden_field_tag "trip_id", "#{trip.id}"  %>
-      <%= f.submit "delete comment", class: "waves-effect waves-light btn deep-orange" %>
+      <%= button_tag(class: "delete-button") do %>
+        <i class="tiny material-icons">delete</i>
+      <% end %>
     <% end %>
   <% end %>
   </blockquote>

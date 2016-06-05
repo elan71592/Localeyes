@@ -116,9 +116,34 @@ h3 {
 }
 
 
-button {
+.delete-button {
   border: none;
-  background-color: white;
+  background-color: Transparent;
+  outline: none;
+  color: #039be5;
+}
+
+.delete-button:active:focus {
+  border: none !important;
+  background-color: Transparent !important;
+  outline: none !important;
+   box-shadow: none !important;
+}
+
+.delete-button:active {
+  border: none !important;
+  background-color: Transparent !important;
+  outline: none !important;
+   box-shadow: none !important;
+}
+
+
+.d-button {
+  display: inline-block;
+}
+
+.e-link {
+  display: inline-block;
 }
 
 .input-field input[type=text]:focus {

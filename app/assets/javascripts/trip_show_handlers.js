@@ -98,7 +98,7 @@ $(document).ready(function() {
     }.bind(this))
    });
 
-  $(".comments-container").on("submit", ".edit_comment", function(e) {
+  $(".comments-container").on("submit", ".d-button", function(e) {
     e.preventDefault();
     var url = e.target.action
     var type = "DELETE"
