@@ -4,6 +4,7 @@ $background-color: color("grey","lighten-3");
 $primary-text: color("grey", "darken-4");
 @import 'materialize';
 @import "materialize/extras/nouislider";
+@import "animate";
 
 
 html, body {
@@ -73,6 +74,21 @@ body {
   margin: .7% .5% .7% .5%;
 }
 
+.chip-container {
+  display: inline-block;
+  padding: 10px;
+}
+
+.animate-tag {
+  background-color: red;
+  margin: 25px 10px;
+  width: 70px;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  height: 30px;
+  border-radius: 30px;
+}
 
 .card.img {
     width: 50px;
@@ -112,4 +128,15 @@ h3 {
 .input-field input[type=email]:focus {
   border-bottom: 1px solid #03a9f4 ;
   box-shadow: 0 1px 0 0 #03a9f4 ;
+
+.trip-card {
+  width: 100%;
+}
+
+.trip-card a {
+  color: white;
+}
+
+.card-action i {
+  padding-left: 2em;
 }

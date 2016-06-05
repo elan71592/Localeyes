@@ -1,12 +1,5 @@
 <div class="container">
   <h1>Pick A Day Trip</h1>
-
-<% @trips_to_display.first(3).each do |trip| %>
-<%= render partial: 'trip_card', locals: { trip: trip } %>
-<% end %>
-
-
-
 <section id="search-bar">
   <p>Search for a trip by tag name(ex. "foodie", "SoHo", "beer")</p>
 
@@ -20,12 +13,13 @@
   <% end %>
 
 </section>
+
   <%if @message %>
     <p> <%=@message %></p>
   <% end %>
 
   <h1><%=@header%></h1>
-  <section id="trip-list-holder">
+  <section id="trip-list-holder col-6">
     <% @trips_to_display.first(5).each do |trip| %>
     <div class="row">
       <div class="col s12 m6">
@@ -53,6 +47,12 @@
       </div>
       <% end %>
     <a href="/tags" class="waves-effect waves-light btn-large deep-orange">explore</a>
+
+      <%= render partial: 'trip_card', locals: { trip: trip } %>
+    <% end %>
+
+      <a href="/tags" class="waves-effect waves-light btn-large">explore</a>
+
     </section>
   </div>
 
