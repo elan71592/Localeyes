@@ -52,6 +52,9 @@ gem 'mailboxer'
 # Image upload CDN:
 gem 'cloudinary'
 
+# Social plugin gem
+gem 'social-share-button'
+
 # Use lodash for JavaScript
 gem 'lodash-rails'
 # Use ActiveModel has_secure_password
