@@ -1,6 +1,6 @@
   <% random_colors = ["light-blue darken-2", "deep-orange darken-2", "purple darken-2", "pink darken-2", " light-green accent-4"] %>
 
-<div class="row">
+
     <div class="card trip-card <%=random_colors.sample%>">
       <div class="card-content white-text">
         <span class="card-title activator grey-text text-darken-4"><%= link_to trip.name, trip_path(trip) %><i class="material-icons white-text right">more_vert</i></span>
@@ -28,4 +28,3 @@
       </div>
     </div>
 
-</div>
