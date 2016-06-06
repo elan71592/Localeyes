@@ -14,7 +14,6 @@ $(document).ready(function() {
       $("#saved-location-holder").append(response);
       $("#new-location").find(".card").remove();
       $('input').val('');
-      debugger;
       if($("#saved-location-holder").children().length >= 4) {
         $(".finish-trip-message").html("");
         $(".finish-trip-button").show();

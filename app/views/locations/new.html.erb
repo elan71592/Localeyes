@@ -109,7 +109,10 @@
         }
       }).done(function(response){
         $('#new-location').append(response);
-      })
+        $('html, body').animate({
+            scrollTop: $(".row").offset().top
+        }, 600);
+      });
     });
 
     // Sets a listener on a radio button to change the filter type on Places
