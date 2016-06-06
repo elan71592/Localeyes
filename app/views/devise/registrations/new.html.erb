@@ -50,6 +50,8 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%- resource_class.omniauth_providers.each do |provider| %>
+  <a href="<%= omniauth_authorize_path(resource_name, provider) %>"><img src="<%= image_url( 'fb-login.png' ) %>" alt="" class="fb-login"/></a>
+<% end %>
 
 </div>
