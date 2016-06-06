@@ -12,7 +12,7 @@ $(document).ready(function() {
     })
     .done(function(response){
       $("#saved-location-holder").append(response);
-      $("#new-location").find(".row").remove();
+      $("#new-location").find(".card").remove()
       $('input').val('');
       if($("#saved-location-holder").children().length >= 4) {
         $(".finish-trip-message").html("");
