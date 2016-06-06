@@ -14,9 +14,9 @@
 //= require jquery_ujs
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
-//= require turbolinks
 //= require react
 //= require react_ujs
+//= require chosen-jquery
 //= require components
 //= require lodash
 //= require_tree .

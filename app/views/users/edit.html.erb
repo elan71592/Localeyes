@@ -1,9 +1,6 @@
 <div class="container">
 
   <h1>Edit Your Profile</h1>
-
-  <div>
-
   <%= form_for @user do |f| %>
 
 
@@ -17,10 +14,6 @@
       <%= f.text_field :last_name %>
     </div>
 
-  <h4><%= f.label :password %></h4>
-    <div class="input-field">
-      <%= f.password_field :password %>
-    </div>
 
   <h4><%= f.label :location %></h4>
     <div class="input-field">
@@ -32,15 +25,21 @@
       <%= f.text_field :email %>
     </div>
 
+    <h4><%= f.label :upload_profile_picture %></h4>
+    <%= f.file_field :picture %>
+
+    <h4><%= f.label :confirm_password %></h4>
+    <div class="input-field">
+      <%= f.password_field :password %>
+    </div>
+
   <% if @user.errors.any? %>
       <% @user.errors.full_messages.each do |msg| %>
         <h5><%= msg %></h5>
       <% end %>
   <% end %>
 
-  </div>
-
-    <%= f.submit "Edit", :class => "waves-effect waves-light btn-large light-blue" %>
+  <%= f.submit "Edit", :class => "waves-effect waves-light btn-large light-blue" %>
 <% end %>
 
 

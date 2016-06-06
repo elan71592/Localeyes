@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="row">
   <div class="col s12 m7">
     <div class="card">
@@ -24,12 +25,35 @@
         </ul>
 
         <div class="input-field col s6">
-
+=======
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card trip-card light-blue darken-2">
+        <div class="card-content white-text hoverable">
+          <div class="card-title"><%= location.name %></div>
+          <ul>
+            <li><%= location.address %></li>
+            <li><%= location.phone_number %></li>
+            <li><%=link_to location.website_url, "#{location.website_url}", target: "_blank"%></li>
+          </ul>
         </div>
-      </div>
-      <div class="card-action">
-        <%= button_to "Delete", url: "/trips/#{ trip.id }/locations/#{ location.id }" %>
+          <div class="divider"></div>
+        <div class="card-action white">
+             <%= form_for :location, url: "/trips/#{ trip.id }/locations/#{ location.id }", method: :put do |f| %>
+              <label for="Note" class="grey-text text-darken-1">Add a Personalized Note</label>
+              <div class="input-field new-location">
+                <%=f.text_field :personal_note, hide_label: true %>
+              </div>
+              <label for="Time Needed" class="grey-text text-darken-1">Time Needed</label>
+              <div class="input-field new-location">
+                <%=f.text_field :duration, hide_label: true %>
+              </div>
+>>>>>>> master
+
+          <%=f.submit "Save", class: "orange-text text-accent-2 col s6", id: "submit" %>
+            <% end %>
+          <%= link_to "Delete", url: "/trips/#{ trip.id }/locations/#{ location.id }", class: "orange-text text-accent-2 col s6", id: "delete-post" %>
+        </div>
       </div>
     </div>
   </div>
-</div>

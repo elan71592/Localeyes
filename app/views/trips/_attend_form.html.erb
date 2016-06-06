@@ -1,7 +1,7 @@
-<div id="attend_form">
+<span id="attend_form">
 <% if current_user.attending?(@trip) %>
   <%= render partial: 'cancel', locals: {trip: @trip} %>
 <% else %>
   <%= render partial: 'attend', locals: {trip: @trip} %>
 <% end %>
-</div>
+</span>

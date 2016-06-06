@@ -1,60 +1,70 @@
 <div class="container">
-  <h1><%= @trip.name %></h1>
+  <h1 class="center"><%= @trip.name %></h1>
+    <div class="center">
+    <% @trip.tags.each do |tag| %>
+      <div class="chip grey lighten-2 center hoverable">
+        #<%= link_to tag.name, tag_path(tag), class: "grey-text text-darken-3" %>
+      </div>
+    <% end %>
+  </div>
+    <br>
+  <% if user_signed_in? %>
+    <span class="favorite-form-container left">
+      <%= render 'favorite_form' %>
+    </span>
+    <span class="attend-form-container right">
+        <%= render 'attend_form' %>
+    </span>
+  <% end %>
+</div>
+
+
   <div id="trip-map"></div>
 
-  <div class="chip">
-      <% @trip.tags.each do |tag| %>
-          #<%= tag.name %>
-        <% end %>
-    </div>
 
-    <% if user_signed_in? %>
-    <div class="favorite-form-container">
-      <%= render 'favorite_form' %>
-    </div>
-  <% end %>
-
+<div class="container">
+  <div class="row">
+    <div class="col s6">
   <% @locations.each_with_index do |location, idx| %>
   <h5>Location <%=idx + 1%></h5>
     <%= render partial: 'location_details', locals: { location: location } %>
     <% end %>
+  </div>
 
-  <% if user_signed_in? %>
-      <div class="attend-form-container">
-        <%= render 'attend_form' %>
-      </div>
-  <% end %>
-
-  <br>
-  <h3>Tags</h3>
-    <% @trip.tags.each do |tag| %>
-      <div class="chip grey lighten-2">
-        #<%= tag.name %>
-      </div>
-    <% end %>
-
-  <div class="container comments-container">
-    <h3>Comments: </h3>
-    <% @trip.comments.each do |comment| %>
-      <div class="comment-body">
-        <blockquote>
-        <p><%= comment.body %></p>
-        <p>Commenter: <%= link_to comment.user.formatted_name %></p>
-        <% if current_user == comment.user %>
-          <%= link_to edit_comment_path(comment), class: "e-link" do %>
-            <i class="tiny material-icons">mode_edit</i>
-          <% end %>
-          <%= form_for(comment, :html => { :method => :delete, class: "d-button"}) do |f| %>
-            <%= hidden_field_tag "trip_id", "#{@trip.id}"  %>
-            <%= button_tag(class: "delete-button") do %>
-              <i class="tiny material-icons">delete</i>
+  <div class="col s6">
+    <div class="creator-comments">
+      <h5>Comments by the Trip Creator:</h5>
+      <% @trip.comments.each do |comment| %>
+        <% if comment.user == @trip.creator %>
+        <p><%= comment.body %><span class="tiny-font">   posted <%= time_ago_in_words(comment.created_at) %> ago</span></p>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="container comments-container">
+      <h5>Comments: </h5>
+      <% @trip.comments.each do |comment| %>
+        <div class="comment-body">
+          <blockquote>
+            <% if comment.user != @trip.creator %>
+          <p><%= comment.body %></p>
+          <p>Commenter: <%= link_to comment.user.formatted_name %></p>
+          <% if current_user == comment.user %>
+            <%= link_to edit_comment_path(comment), class: "e-link" do %>
+              <i class="tiny material-icons">mode_edit</i>
+            <% end %>
+            <%= form_for(comment, :html => { :method => :delete, class: "d-button"}) do |f| %>
+              <%= hidden_field_tag "trip_id", "#{@trip.id}"  %>
+              <%= button_tag(class: "delete-button") do %>
+                <i class="tiny material-icons">delete</i>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
-        </blockquote>
-      </div>
-    <% end %>
-  </div>
+          <% end %>
+          </blockquote>
+        </div>
+      <% end %>
+    </div>
+
 
   <% if user_signed_in? %>
     <div class="container new-comment-button">
@@ -64,6 +74,7 @@
       <% end %>
     </div>
   <% end %>
+</div>
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8Bo_Dd2UfKD6HYbDmGNbCKy-pFivNcmw&libraries=places&callback=initMap"
@@ -114,3 +125,5 @@
     }.bind( map ));
   };
 </script>
+
+</div>

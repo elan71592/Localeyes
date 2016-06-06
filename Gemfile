@@ -16,8 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -32,6 +31,8 @@ gem 'omniauth-facebook'
 # Use omniauth to make facebook gem work
 gem 'omniauth'
 
+# Jquery plugin for selecting users to message
+gem 'chosen-rails'
 
 # Use Faker for seed data
 gem 'faker'
@@ -47,6 +48,9 @@ gem 'google_places'
 
 # Inbox/Messaging Gem:
 gem 'mailboxer'
+
+# Image upload CDN:
+gem 'cloudinary'
 
 # Use lodash for JavaScript
 gem 'lodash-rails'
