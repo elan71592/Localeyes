@@ -4,12 +4,25 @@
       <div class="card">
         <div class="card-content">
           <span class="card-title"><%= @user.formatted_name%></span>
-           <img class="responsive-img circle" src=<%= @user.picture_url %> >
+           <img class="responsive-img circle" src="<%= @user.picture_url %>" >
           <p>Location: <%= @user.location %></p>
           <p>Trips Curated: <%= @user.trips.count %></p>
           <p># of users that attended a trip you created: <%= @user.total_trip_attendees %>
           <p>Trips Attended: <%= @user.attended_trips.count %></p>
         </div>
+          <% if user_followed?( @user ) %>
+            <div class="card-action">
+              <span class="follow-user-form">
+                <%= render partial: '/followers/unfollow', locals: { followed_id: @user.id } %>
+              </span>
+            </div>
+          <% elsif !user_followed?( @user ) && @user != current_user %>
+            <div class="card-action">
+              <span class="follow-user-form">
+                <%= render partial: '/followers/follow', locals: { followed_id: @user.id } %>
+              </span>
+            </div>
+          <% end %>
         <div class="card-action">
           <%= link_to "Edit Your Profile", edit_user_path(@user) %>
         </div>
@@ -38,4 +51,12 @@
       <%= link_to 'view this trip', trip_path( trip ) %>
     </ul>
   <% end %>
+
+  <h2>Users You're Following</h2>
+    <ul>
+      <% users_following( @user ).each do | user | %>
+        <% @following_user = User.find_by(id: user.followed_id) %>
+        <li><%= link_to @following_user.formatted_name, user_path( @following_user ) %></li>
+      <% end %>
+    </ul>
 </div>

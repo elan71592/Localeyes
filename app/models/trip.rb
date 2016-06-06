@@ -12,7 +12,7 @@ class Trip < ActiveRecord::Base
   has_many :user_requests, through: :requests, source: :user
   has_many :flags, as: :flaggable
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
 end
 
 

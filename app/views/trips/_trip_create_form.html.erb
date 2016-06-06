@@ -1,0 +1,16 @@
+ <div>
+
+    <%= form_for @trip do |f| %>
+
+    <div class="input-field">
+      <%= f.text_field :name, placeholder: "Write a creative title. Ex: Sunday in SoHo, Gluten-free NYC, Museums and Mimosas"  %>
+    </div>
+
+    <div class="input-field">
+      <%= f.select(:tags, Tag.all.collect {|p| [ p.name, p.id ] }, {}, { multiple: true , class: "chosen-select"}) %>
+    </div>
+
+    <%= f.submit "Create Trip", :class => "waves-effect waves-light btn-large light-blue darken-2" %>
+
+    <% end %>
+  </div>

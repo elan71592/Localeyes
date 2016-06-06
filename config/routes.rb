@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   resources :favorites, only: [:create, :destroy]
 
-
   resources :tags, only: [:index, :show]
   resources :comments, only: [:new, :create, :edit, :update, :destroy]
 
@@ -34,6 +33,9 @@ Rails.application.routes.draw do
       post :untrash
     end
   end
+
+  post "/users/follow" => "followers#create"
+  delete "/unfollow" => "followers#destroy"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

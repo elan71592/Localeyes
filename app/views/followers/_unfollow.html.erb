@@ -1,0 +1,5 @@
+<%= form_for( :unfollow, url: '/unfollow', html: { method: :delete, class: "unfollow-submit" } ) do |f| %>
+  <%= f.hidden_field :followed_id, value: followed_id %>
+  <%= f.hidden_field :follower_id, value: current_user.id %>
+  <%= f.submit 'Unfollow' %>
+<% end %>

@@ -28,10 +28,18 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.creator = current_user
-    tags = params[:trip][:tags].split(", ")
+    if params[:trip][:tags].include?(", ")
+      tags = params[:trip][:tags].split(", ")
+    else
+      tags = params[:trip][:tags].split(" ")
+    end
     if @trip.save
       tags.each do |tag|
-        new_tag = Tag.find_or_create_by(name: tag)
+        if tag[0] == "#"
+          new_tag = Tag.find_or_create_by(name: tag[1..-1])
+        else
+          new_tag = Tag.find_or_create_by(name: tag)
+        end
         @trip.tags << new_tag
       end
       if @trip.tags.length < 1
