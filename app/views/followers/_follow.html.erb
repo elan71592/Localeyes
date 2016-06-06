@@ -1,0 +1,5 @@
+<%= form_for( :follow, url: '/users/follow', html: {class: "follow-submit"} ) do |f| %>
+  <%= f.hidden_field :follower_id, value: current_user.id %>
+  <%= f.hidden_field :followed_id, value: followed_id %>
+  <%= f.submit 'Follow' %>
+<% end %>
