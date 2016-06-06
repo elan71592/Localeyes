@@ -19,4 +19,5 @@
 //= require chosen-jquery
 //= require components
 //= require lodash
+//= require social-share-button
 //= require_tree .
