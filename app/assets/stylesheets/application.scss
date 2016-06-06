@@ -31,7 +31,7 @@ body {
 }
 
 .Site-content {
-  flex: 1;
+  flex: 1 0 auto;
 }
 
 #map {
@@ -305,3 +305,7 @@ img.inbox-img{
   margin-left: 16%;
 }
 
+footer {
+  margin-top: 10%;
+  font-size: .5em;
+}
