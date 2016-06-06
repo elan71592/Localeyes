@@ -179,9 +179,19 @@ h5 {
 }
 
 #search-button {
- margin-right: 2em;
+ float:left;
+ margin-right: 3%;
+}
+
+#explore-button {
+ float:left;
 }
 
 .index-trip-column {
 margin-left: 1px;
+}
+
+.trip-index-header {
+  padding-top: 3%;
+  clear:both;
 }
