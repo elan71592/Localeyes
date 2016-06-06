@@ -103,8 +103,7 @@ body {
 }
 
 .card.img {
-    width: 50px;
-    height: auto;
+
 }
 
 .card-action.lowercase a {
@@ -177,7 +176,7 @@ h5 {
 }
 
 .trip-card {
-  width: 93%;
+  width: 400px;
 }
 
 .trip-card a {
@@ -197,11 +196,11 @@ h5 {
  float:left;
 }
 
-.index-trip-column {
-margin-left: 1px;
-}
-
 .trip-index-header {
   padding-top: 3%;
   clear:both;
+}
+
+.trip-column {
+  margin: 0 25% 0 0;
 }
