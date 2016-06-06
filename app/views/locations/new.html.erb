@@ -1,6 +1,13 @@
+<div class="container">
 <h1 class="center"><%= @trip.name %></h1>
   <h5 class="center">Add a location to <%=@trip.name%> by typing in the search bar</h5>
-  <h2 class="col s2">Add a new location</h2>
+
+<div class="section">
+  <div class="finish-trip-button center" style="display:none">
+    <a href='/trips/<%=@trip.id%>' class='waves-effect waves-light btn create-trip-button light-blue darken-2'>save your trip</a>
+  </div>
+</div>
+
   <input id="pac-input" class="controls" type="text"
        placeholder="Enter a location">
    </div>
@@ -10,19 +17,17 @@
     <h5>Add at least <span class="location-number">3</span> location(s) to continue!</h5>
   </div>
 
-  <div class="finish-trip-button" style="display:none">
-    <a href='/trips/<%=@trip.id%>' class='waves-effect waves-light btn create-trip-button'>create your trip</a>
-  </div>
+
 
   <div class="row">
-    <div class="col s6">
+    <div class="col s6 center">
       <div id="new-location">
-        <h2>Add a new location</h2>
+        <h3>Add a new location</h3>
       </div>
     </div>
-    <div class="col s6">
+    <div class="col s6 center">
       <div id="saved-location-holder">
-        <h2>Saved locations</h2>
+        <h3>Saved locations</h3>
       </div>
     </div>
   </div>
@@ -124,3 +129,5 @@
     setupClickListener('changetype-geocode', ['geocode']);
   }
 </script>
+
+</div>
