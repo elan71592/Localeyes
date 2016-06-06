@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, presence: true
 
+  acts_as_messageable
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -30,6 +32,14 @@ class User < ActiveRecord::Base
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  def mailboxer_name
+    self.name
+  end
+
+  def mailboxer_email(object)
+    self.email
   end
 
   def formatted_name
