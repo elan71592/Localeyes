@@ -39,10 +39,22 @@ def find_all_trips(search_array)
       all_trips = tag_trips
     else
       all_trips = []
-      binding.pry
     end
  end
 
+ helper_method :mailbox, :conversation
+
+  private
+
+  def mailbox
+    @mailbox ||= current_user.mailbox
+  end
+
+  def conversation
+    @conversation ||= mailbox.conversations.find(params[:id])
+  end
+
+  protected
 
   protect_from_forgery with: :exception
   include ApplicationHelper

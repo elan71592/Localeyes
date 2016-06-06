@@ -45,6 +45,9 @@ gem 'materialize-sass'
 # Google Places API
 gem 'google_places'
 
+# Inbox/Messaging Gem:
+gem 'mailboxer'
+
 # Use lodash for JavaScript
 gem 'lodash-rails'
 # Use ActiveModel has_secure_password

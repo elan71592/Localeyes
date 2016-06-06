@@ -33,7 +33,6 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    binding.pry
     @comment = Comment.find_by(id: params[:id])
     @trip = @comment.trip
   end
