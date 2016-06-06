@@ -24,14 +24,14 @@
 
 <div class="container">
   <div class="row">
-    <div class="col s6">
+    <div class="col s12 m12 l6">
   <% @locations.each_with_index do |location, idx| %>
   <h5>Location <%=idx + 1%></h5>
     <%= render partial: 'location_details', locals: { location: location } %>
     <% end %>
   </div>
 
-  <div class="col s6">
+  <div class="col s12 m12 l6">
     <div class="creator-comments-container">
       <h5>Comments by the Trip Creator:</h5>
       <% @trip.comments.each do |comment| %>
