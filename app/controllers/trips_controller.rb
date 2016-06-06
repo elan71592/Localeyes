@@ -35,8 +35,11 @@ class TripsController < ApplicationController
     end
     if @trip.save
       tags.each do |tag|
-        binding.pry
-        new_tag = Tag.find_or_create_by(name: tag[1..-1])
+        if tag[0] == "#"
+          new_tag = Tag.find_or_create_by(name: tag[1..-1])
+        else
+          new_tag = Tag.find_or_create_by(name: tag)
+        end
         @trip.tags << new_tag
       end
       if @trip.tags.length < 1

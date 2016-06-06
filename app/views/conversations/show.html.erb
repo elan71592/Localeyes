@@ -1,16 +1,12 @@
+<div class="container">
 <div class="row">
-  <div class="spacer"></div>
   <div class="col-md-12">
-    <%= link_to "Compose", new_conversation_path, class: "btn btn-success" %>
-    <div class="spacer"></div>
-    <div class="col-md-6 text-right">
-      <% if conversation.is_trashed?(current_user) %>
-          <%= link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-info', method: :post %>
-      <% else %>
-          <%= link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-danger', method: :post,
-                      data: {confirm: 'Are you sure?'} %>
-      <% end %>
-    </div>
+    <div class="section">
+      <h3>Inbox</h3>
+    <%= link_to "Compose", new_conversation_path, class: "waves-effect waves-light btn deep-orange" %>
+  </div>
+
+
   </div>
 
   <div class="col-md-4">
@@ -21,24 +17,38 @@
     </div>
   </div>
 
-  <div class="col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-body">
+
+
+    <div class="right">
+      <% if conversation.is_trashed?(current_user) %>
+          <%= link_to 'Untrash', untrash_conversation_path(conversation), class: "waves-effect waves-light btn light-blue darken-2", method: :post %>
+      <% else %>
+          <%= link_to 'Move to trash', trash_conversation_path(conversation), class: "waves-effect waves-light btn light-blue darken-2", method: :post,
+                      data: {confirm: 'Are you sure?'} %>
+      <% end %>
+    </div>
+
         <%= render partial: 'messages' %>
-      </div>
+
+
+
       <div class="panel-footer">
         <!-- Reply Form -->
         <%= form_for :message, url: reply_conversation_path(conversation) do |f| %>
-            <div class="form-group">
-              <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
+            <div class="input-field col s12 m6">
+              <%= f.text_area :body, rows: 4, id: "textarea1", class: "materialize-textarea" %>
+              <label for="textarea1">Reply Message</label>
+
+            <div class="section center">
+            <%= f.submit "Reply", class: "waves-effect waves-light btn light-blue darken-2" %>
             </div>
-            <%= f.submit "Reply", class: 'btn btn-danger pull-right' %>
+          </div>
         <% end %>
-        <div class="clearfix"></div>
       </div>
     </div>
   </div>
 
 
 
+  </div>
 </div>
