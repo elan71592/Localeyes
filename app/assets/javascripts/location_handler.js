@@ -12,8 +12,9 @@ $(document).ready(function() {
     })
     .done(function(response){
       $("#saved-location-holder").append(response);
-      $("#new-location").find(".card").remove()
+      $("#new-location").find(".card").remove();
       $('input').val('');
+      debugger;
       if($("#saved-location-holder").children().length >= 4) {
         $(".finish-trip-message").html("");
         $(".finish-trip-button").show();
