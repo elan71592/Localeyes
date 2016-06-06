@@ -31,6 +31,8 @@ gem 'omniauth-facebook'
 # Use omniauth to make facebook gem work
 gem 'omniauth'
 
+# Jquery plugin for selecting users to message
+gem 'chosen-rails'
 
 # Use Faker for seed data
 gem 'faker'
