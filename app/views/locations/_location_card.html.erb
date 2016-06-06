@@ -9,7 +9,7 @@
         <ul>
           <li><%= location.address %></li>
           <li><%= location.phone_number %></li>
-          <li><%=link_to location.website_url, "#{location.website_url}", target: "_blank"%></li>
+          <li><%=link_to location.website_url, location.website_url, target: "_blank"%></li>
           <%= form_for :location, url: "/trips/#{ trip.id }/locations/#{ location.id }", method: :put do |f| %>
             <label for="Note">Add a Personalized Note</label>
             <div class="input-field">
