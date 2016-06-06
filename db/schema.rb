@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605224620) do
+ActiveRecord::Schema.define(version: 20160606004946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 20160605224620) do
 
   add_index "favorites", ["trip_id"], name: "index_favorites_on_trip_id", using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
+
+  create_table "flags", force: :cascade do |t|
+    t.boolean  "flagged",        default: false
+    t.integer  "user_id"
+    t.integer  "flaggable_id"
+    t.string   "flaggable_type"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "flags", ["flaggable_type", "flaggable_id"], name: "index_flags_on_flaggable_type_and_flaggable_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
@@ -107,6 +118,17 @@ ActiveRecord::Schema.define(version: 20160605224620) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
 
+  create_table "requests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "trip_id"
+    t.boolean  "open",       default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "requests", ["trip_id"], name: "index_requests_on_trip_id", using: :btree
+  add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
+
   create_table "tags", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
@@ -164,6 +186,8 @@ ActiveRecord::Schema.define(version: 20160605224620) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.boolean  "allow_messages",         default: true
+    t.boolean  "available",              default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -173,10 +197,13 @@ ActiveRecord::Schema.define(version: 20160605224620) do
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "trips"
   add_foreign_key "favorites", "users"
+  add_foreign_key "flags", "users"
   add_foreign_key "locations", "trips"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
+  add_foreign_key "requests", "trips"
+  add_foreign_key "requests", "users"
   add_foreign_key "trip_tags", "tags"
   add_foreign_key "trip_tags", "trips"
   add_foreign_key "trips", "users"

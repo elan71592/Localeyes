@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :favorites
   has_many :favorited_trips, through: :favorites, source: :trip
+  has_many :requests
+  has_many :requested_trips, through: :requests, source: :trip
+  has_many :flags
 
   validates :first_name, :last_name, presence: true
 
