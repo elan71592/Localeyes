@@ -8,6 +8,9 @@ class Trip < ActiveRecord::Base
   has_many :tags, through: :trip_tags
   has_many :favorites
   has_many :user_favorites, through: :favorites, source: :user
+  has_many :requests
+  has_many :user_requests, through: :requests, source: :user
+  has_many :flags, as: :flaggable
 
   validates :name, presence: true, uniqueness: true
 end
