@@ -32,21 +32,47 @@
   </div>
 
   <div class="col s6">
-    <div class="creator-comments">
+    <div class="creator-comments-container">
       <h5>Comments by the Trip Creator:</h5>
       <% @trip.comments.each do |comment| %>
+      <div class="container comment-body">
         <% if comment.user == @trip.creator %>
+        <blockquote>
         <p><%= comment.body %><span class="tiny-font">   posted <%= time_ago_in_words(comment.created_at) %> ago</span></p>
+        <p>Commenter: <%= link_to comment.user.formatted_name %></p>
+        <% if current_user == comment.user %>
+            <%= link_to edit_comment_path(comment), class: "e-link" do %>
+              <i class="tiny material-icons">mode_edit</i>
+            <% end %>
+            <%= form_for(comment, :html => { :method => :delete, class: "d-button"}) do |f| %>
+              <%= hidden_field_tag "trip_id", "#{@trip.id}"  %>
+              <%= button_tag(class: "delete-button") do %>
+                <i class="tiny material-icons">delete</i>
+              <% end %>
+            <% end %>
+          <% end %>
         <% end %>
+        </blockquote>
+      </div>
       <% end %>
     </div>
-    <div class="container comments-container">
+
+    <% if user_signed_in? && current_user == @trip.creator %>
+    <div class="container new-comment-creator-button">
+      <%= form_for(@comment, url: new_comment_path, method: :get ) do |f| %>
+        <%= hidden_field_tag "trip_id", "#{@trip.id}"  %>
+        <%= f.submit "add comment", class: "waves-effect waves-light btn deep-orange" %>
+      <% end %>
+    </div>
+  <% end %>
+
+    <div class="not-creator-comments-container">
       <h5>Comments: </h5>
       <% @trip.comments.each do |comment| %>
-        <div class="comment-body">
+        <div class="container comment-body">
           <blockquote>
             <% if comment.user != @trip.creator %>
-          <p><%= comment.body %></p>
+          <p><%= comment.body %><span class="tiny-font">   posted <%= time_ago_in_words(comment.created_at) %> ago</span></p>
           <p>Commenter: <%= link_to comment.user.formatted_name %></p>
           <% if current_user == comment.user %>
             <%= link_to edit_comment_path(comment), class: "e-link" do %>
@@ -66,8 +92,8 @@
     </div>
 
 
-  <% if user_signed_in? %>
-    <div class="container new-comment-button">
+  <% if user_signed_in? && current_user != @trip.creator %>
+    <div class="container new-comment-not-creator-button">
       <%= form_for(@comment, url: new_comment_path, method: :get ) do |f| %>
         <%= hidden_field_tag "trip_id", "#{@trip.id}"  %>
         <%= f.submit "add comment", class: "waves-effect waves-light btn deep-orange" %>

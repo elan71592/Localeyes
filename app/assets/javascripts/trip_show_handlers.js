@@ -63,7 +63,7 @@ $(document).ready(function() {
     }.bind(this));
   });
 
-   $(".new-comment-button").on("submit", ".new_comment", function(e) {
+    $(".new-comment-creator-button").on("submit", ".new_comment", function(e) {
     e.preventDefault();
 
     var url = e.target.action
@@ -80,7 +80,7 @@ $(document).ready(function() {
     }.bind(this))
    });
 
-   $(".new-comment-button").on("submit", ".comment-submit", function(e) {
+   $(".new-comment-creator-button").on("submit", ".comment-submit", function(e) {
     e.preventDefault();
 
     var url = e.target.action
@@ -93,12 +93,60 @@ $(document).ready(function() {
       data: data
     }).done(function(response) {
       $(this).siblings().show();
-      $(this).parent().parent().find(".comments-container").append(response);
+      $(this).parent().parent().find(".creator-comments-container").append(response);
+      $(this).remove();
+    }.bind(this))
+   });
+
+  $(".creator-comments-container").on("submit", ".d-button", function(e) {
+    e.preventDefault();
+    var url = e.target.action
+    var type = "DELETE"
+
+    $.ajax({
+      url: url,
+      type: type
+    }).done(function(response){
+      $(this).parent().remove();
+    }.bind(this));
+  });
+
+   $(".new-comment-not-creator-button").on("submit", ".new_comment", function(e) {
+    e.preventDefault();
+
+    var url = e.target.action
+    var type = e.target.method
+    var data = $(e.target).serialize();
+
+    $.ajax({
+      url: url,
+      type: type,
+      data: data
+    }).done(function(response) {
+      $(this).parent().append(response);
       $(this).hide();
     }.bind(this))
    });
 
-  $(".comments-container").on("submit", ".d-button", function(e) {
+   $(".new-comment-not-creator-button").on("submit", ".comment-submit", function(e) {
+    e.preventDefault();
+
+    var url = e.target.action
+    var type = e.target.method
+    var data = $(e.target).serialize();
+
+    $.ajax({
+      url: url,
+      type: type,
+      data: data
+    }).done(function(response) {
+      $(this).siblings().show();
+      $(this).parent().parent().find(".not-creator-comments-container").append(response);
+      $(this).remove();
+    }.bind(this))
+   });
+
+  $(".not-creator-comments-container").on("submit", ".d-button", function(e) {
     e.preventDefault();
     var url = e.target.action
     var type = "DELETE"
