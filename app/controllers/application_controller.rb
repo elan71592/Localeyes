@@ -6,6 +6,16 @@ def google_client
   @client ||= GooglePlaces::Client.new( ENV[ 'GOOGLE_PLACES_KEY' ] )
 end
 
+def upload_pic( image )
+  auth = {
+    cloud_name: "localeyes-trips",
+    api_key:    ENV[ "CLOUDINARY_KEY" ],
+    api_secret: ENV[ "CLOUDINARY_SECRET" ]
+  }
+  image = Cloudinary::Uploader.upload(Rails.root.join('public', 'uploads', image), auth)
+  image[ 'url' ]
+end
+
  def sort_by_favorites(trip_list)
     trip_list.sort_by{|trip| trip.favorites.count}.reverse
  end

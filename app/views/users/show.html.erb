@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-content">
           <span class="card-title"><%= @user.formatted_name%></span>
-           <img class="responsive-img circle" src=<%= @user.picture_url %> >
+           <img class="responsive-img circle" src="<%= @user.picture_url %>" >
           <p>Location: <%= @user.location %></p>
           <p>Trips Curated: <%= @user.trips.count %></p>
           <p># of users that attended a trip you created: <%= @user.total_trip_attendees %>

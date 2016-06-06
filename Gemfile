@@ -49,6 +49,9 @@ gem 'google_places'
 # Inbox/Messaging Gem:
 gem 'mailboxer'
 
+# Image upload CDN:
+gem 'cloudinary'
+
 # Use lodash for JavaScript
 gem 'lodash-rails'
 # Use ActiveModel has_secure_password
