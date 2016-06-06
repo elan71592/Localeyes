@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :requests
   has_many :requested_trips, through: :requests, source: :trip
   has_many :flags
+  has_many :active_relationships, class_name: :Relationship, foreign_key: 'follower_id', dependent: :destroy
 
   validates :first_name, :last_name, presence: true
 

@@ -52,7 +52,15 @@ def find_all_trips(search_array)
     end
  end
 
- helper_method :mailbox, :conversation
+ def user_followed?( followed_user )
+   Relationship.find_by( follower_id: current_user.id, followed_id: followed_user.id )
+ end
+
+ def users_following( user )
+   Relationship.where( follower_id: user.id )
+ end
+
+ helper_method :mailbox, :conversation, :user_followed?, :users_following
 
   private
 
