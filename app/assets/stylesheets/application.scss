@@ -173,6 +173,14 @@ h5 {
   box-shadow: 0 1px 0 0 #03a9f4 ;
 }
 
+.input-field.reply input[type=text]:focus {
+  border-bottom: 1px solid #03a9f4 ;
+  box-shadow: 0 1px 0 0 #03a9f4 ;
+}
+
+
+
+
 .input-field input[type=password]:focus {
   border-bottom: 1px solid #03a9f4 ;
   box-shadow: 0 1px 0 0 #03a9f4 ;
@@ -250,4 +258,25 @@ input#submit {
   padding-top: 3%;
   clear:both;
 
+}
+
+img.inbox-img{
+    width: 75px;
+    height: auto;
+    border: 3px solid #757575;
+}
+
+.message-card {
+  width: 93%;
+}
+
+.message-card a {
+  color: white;
+}
+
+.chosen-select {
+  display: block;
+}
+.chosen-choices {
+  width: 200px !important;
 }

@@ -1,15 +1,18 @@
 <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
     <div class="form-group">
       <%= f.label :recipients %>
-      <%= f.select(:recipients, User.where( allow_messages: true ).collect {|p| [ p.formatted_name, p.id ] }, {}, { multiple: true , class: "chosen-select form-control" })%>
+        <%= f.select(:recipients, User.where( allow_messages: true ).collect {|p| [ p.formatted_name, p.id ] }, {}, { multiple: true , class: "chosen-select form-control" })%>
+
     </div>
+
     <div class="form-group">
-      <%= f.label :subject %>
       <%= f.text_field :subject, placeholder: "Subject", class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :message %>
-      <%= f.text_area :body, class: 'form-control',placeholder: "Type your message here", rows: 4  %>
+
+       <div class="input-field">
+      <%= f.text_area :body, id: "textarea1", class: 'form-control materialize-textarea', placeholder: "Type your message here", rows: 4  %>
+      </div>
     </div>
 
     <%= f.submit "Send Message", class: "btn btn-success" %>

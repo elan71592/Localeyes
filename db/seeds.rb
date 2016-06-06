@@ -2,6 +2,7 @@ User.create!( first_name: "Pan",
               last_name: "Wangperawong",
               location: "NYC",
               email: "pan@panfan.com",
+              picture_url: "http://panw.weebly.com/uploads/1/5/7/6/15761152/1450400913.png",
               password: "password"
 )
 
