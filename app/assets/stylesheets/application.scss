@@ -34,7 +34,7 @@ body {
 
 #map {
   width: 100%;
-  height: 500px;
+  height: 300px;
 }
 
 #trip-map {
@@ -235,9 +235,15 @@ input#submit {
 }
 
 #delete-post {
+  display: inline-block;
   background:none;
   border:none;
   text-transform: uppercase;
+}
+
+#submit {
+  display: inline-block;
+  margin-right: 25%;
 }
 
 #added {
@@ -252,6 +258,17 @@ input#submit {
 .trip-index-header {
   padding-top: 3%;
   clear:both;
+}
 
+#new-locations-left-column {
+  margin-left: 15%;
+}
+
+#new-location {
+  margin-left: 16%;
+}
+
+#saved-location-holder {
+  margin-left: 16%;
 }
 
