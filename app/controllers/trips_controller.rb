@@ -33,7 +33,6 @@ class TripsController < ApplicationController
     else
       tags = params[:trip][:tags].split(" ")
     end
-    binding.pry
     if @trip.save
       tags.each do |tag|
         binding.pry
