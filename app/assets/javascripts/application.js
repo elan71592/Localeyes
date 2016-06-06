@@ -16,6 +16,7 @@
 //= require materialize/extras/nouislider
 //= require react
 //= require react_ujs
+//= require chosen-jquery
 //= require components
 //= require lodash
 //= require_tree .

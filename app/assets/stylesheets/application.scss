@@ -1,3 +1,6 @@
+/*
+*= require chosen
+*/
 @import "materialize/components/color";
 $primary-color: color("light-blue", "lighten-1") !default;
 $background-color: color("grey","lighten-3");
@@ -215,7 +218,6 @@ h5 {
 margin-left: 1px;
 }
 
-<<<<<<< HEAD
 input#submit {
   background:none;
   border:none;
