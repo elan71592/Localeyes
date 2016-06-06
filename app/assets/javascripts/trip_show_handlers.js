@@ -92,9 +92,10 @@ $(document).ready(function() {
       type: type,
       data: data
     }).done(function(response) {
+      debugger;
       $(this).siblings().show();
       $(this).parent().parent().find(".comments-container").append(response);
-      $(this).hide();
+      $(this).remove();
     }.bind(this))
    });
 
