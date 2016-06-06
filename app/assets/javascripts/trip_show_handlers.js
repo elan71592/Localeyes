@@ -1,4 +1,6 @@
-$(document).ready(function() {
+var ready;
+
+ready = function() {
   $(".favorite-form-container").on("submit", ".favorite-submit", function(e){
     e.preventDefault();
     var url = e.target.action;
@@ -92,9 +94,10 @@ $(document).ready(function() {
       type: type,
       data: data
     }).done(function(response) {
+      debugger;
       $(this).siblings().show();
       $(this).parent().parent().find(".comments-container").append(response);
-      $(this).hide();
+      $(this).remove();
     }.bind(this))
    });
 
@@ -110,4 +113,7 @@ $(document).ready(function() {
       $(this).parent().remove();
     }.bind(this));
   });
-});
+}
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
