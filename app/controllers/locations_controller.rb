@@ -7,8 +7,12 @@ class LocationsController < ApplicationController
   def new
     @trip = Trip.find_by( id: params[ :trip_id ] )
 
-    if !user_signed_in?
-      redirect_to root_path
+    if trip_complete?( @trip )
+      redirect_to error_path
+    else
+      if !user_signed_in?
+        redirect_to root_path
+      end
     end
   end
 

@@ -45,7 +45,11 @@ class ApplicationController < ActionController::Base
    Relationship.where( follower_id: user.id )
   end
 
-  helper_method :mailbox, :conversation, :user_followed?, :users_following
+  def trip_complete?( trip )
+    trip.locations.length >= 3
+  end
+
+  helper_method :mailbox, :conversation, :user_followed?, :users_following, :trip_complete?
 
   private
 

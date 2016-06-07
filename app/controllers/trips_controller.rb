@@ -65,6 +65,15 @@ class TripsController < ApplicationController
     @comment = Comment.new
   end
 
+  def destroy
+    @trip = Trip.find_by( id: params[ :id ] )
+    @trip.destroy
+
+    if request.xhr?
+      render partial: "deleted_locations"
+    end
+  end
+
   private
     def trip_params
       params.require( :trip ).permit( :name )

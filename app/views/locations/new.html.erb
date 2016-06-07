@@ -138,4 +138,34 @@
   }
 </script>
 
+<script>
+
+  $( 'nav' ).on( 'click', 'a', function( e ) {
+    var valueOfClick = confirm( "If you leave this page, your trip will be deleted. Do you want to continue?" )
+    if(valueOfClick === true) {
+      deleteTrip();
+    } else {
+      e.preventDefault();
+    };
+  });
+
+  var deleteTrip = function() {
+    var data = window.location.href;
+    var newHref = [];
+    data.split( '/' ).forEach( function( part ) {
+      if ( part === 'locations' || part === 'new' ) {
+        return false;
+      } else {
+        newHref.push( part )
+      };
+    });
+    $.ajax({
+      type: 'delete',
+      url: newHref.join( '/' )
+    }).done( function( response ) {
+      console.log(response)
+    });
+  };
+</script>
+
 </div>
