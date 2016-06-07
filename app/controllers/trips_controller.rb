@@ -61,8 +61,27 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find_by( id: params[ :id ] )
-    @locations = @trip.locations
-    @comment = Comment.new
+
+    if @trip == nil
+      redirect_to new_trip_path
+    else
+      @locations = @trip.locations
+      @comment = Comment.new
+
+      if @trip.locations.length < 3
+        redirect_to new_trip_location_path( @trip )
+      end
+    end
+
+  end
+
+  def destroy
+    @trip = Trip.find_by( id: params[ :id ] )
+    @trip.destroy
+
+    if request.xhr?
+      render partial: "deleted_locations"
+    end
   end
 
   private

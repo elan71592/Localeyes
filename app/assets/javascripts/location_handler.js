@@ -15,7 +15,7 @@ $(document).ready(function() {
       $("#new-location").find(".card").remove();
       $('input').val('');
       if($("#saved-location-holder").children().length >= 4) {
-        $(".finish-trip-message").html("");
+        $(".finish-trip-message").hide();
         $(".finish-trip-button").show();
       } else {
         $(".location-number").text(4 - $("#saved-location-holder").children().length);
@@ -55,7 +55,9 @@ $(document).ready(function() {
         $(".finish-trip-message").html("");
         $(".finish-trip-button").show();
       } else {
+        $(".finish-trip-message").show();
         $(".location-number").text(4 - $("#saved-location-holder").children().length);
+        $(".finish-trip-button").hide();
       };
     }.bind( this ))
   });

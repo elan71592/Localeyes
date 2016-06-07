@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by( id: params[ :id ] )
+
+    if !user_signed_in?
+      redirect_to new_user_registration_path
+    end
+
     @common_interests = []
     @common_trips = []
 
