@@ -49,18 +49,20 @@
   <h2>Favorites:</h2>
 
   <% @user.favorites.each do |favorite| %>
-    <%= favorite.trip.name %> made by <%=favorite.trip.creator.formatted_name %>
+    <%= render partial: 'trips/trip_card', locals: { trip: favorite.trip} %>
   <% end %>
 
+  <% if @common_trips.length > 1 %>
   <h2>Trip Recommendations</h2>
 
   <% @common_trips.each do | trip | %>
     <ul>
-      <li><%= trip.name %></li>
-      <%= link_to 'view this trip', trip_path( trip ) %>
+      <%= render partial: 'trips/trip_card', locals: { trip: favorite.trip} %>
     </ul>
   <% end %>
+  <% end %>
 
+  <% if users_following(@user).length > 1 %>
   <h2>Users You're Following</h2>
     <ul>
       <% users_following( @user ).each do | user | %>
@@ -68,4 +70,5 @@
         <li><%= link_to @following_user.formatted_name, user_path( @following_user ) %></li>
       <% end %>
     </ul>
+    <% end %>
 </div>
