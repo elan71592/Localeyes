@@ -1,6 +1,8 @@
 <div class="container">
   <h1 class="center"><%= @trip.name %></h1>
-    <div class="center">
+    <h6 class="center">Created by: <%= @trip.creator.formatted_name%> (<%= time_ago_in_words(@trip.created_at)%> ago) </h6>
+
+    <div class="section center">
     <% @trip.tags.each do |tag| %>
       <div class="chip grey lighten-2 center hoverable">
         #<%= link_to tag.name, tag_path(tag), class: "grey-text text-darken-3" %>
@@ -164,3 +166,5 @@
   };
 </script>
 </div>
+
+
