@@ -7,16 +7,20 @@
         <a href=<%= user_path(@receipts.first.message.sender) %> >
           <img class="circle responsive-img inbox-img" src=<%= @receipts.first.message.sender.picture_url %> >
         </a>
+        <% else %>
+        <a href=<%= user_path(@receipts.first.message.sender) %> >
+          <i class="medium material-icons light-blue-text text-darken-2">account_circle</i>
+        </a>
       <% end %>
-      <% if @receipts.first.message.sender.picture_url == nil %>
-        <h5>Conversation with: <%= link_to @receipts.first.message.sender.formatted_name, user_path(@receipts.first.message.sender) %></h5>
-      <% else %>
         <h5>Conversation with: <%= @receipts.first.message.sender.formatted_name %></h5>
-      <% end %>
     <% else %>
       <% if @receipts.first.conversation.recipients[0].picture_url != nil %>
         <a href=<%= user_path(@receipts.first.conversation.recipients[0]) %> >
           <img class="circle responsive-img inbox-img" src=<%= @receipts.first.conversation.recipients[0].picture_url %> >
+        </a>
+      <% else %>
+        <a href=<%= user_path(@receipts.first.message.sender) %> >
+          <i class="medium material-icons light-blue-text text-darken-2">account_circle</i>
         </a>
       <% end %>
       <% if @receipts.first.conversation.recipients[0].picture_url == nil %>
