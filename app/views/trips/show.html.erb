@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="center"><%= @trip.name %></h1>
-    <h6 class="center">Created by: <%= @trip.creator.formatted_name%> (<%= time_ago_in_words(@trip.created_at)%> ago) </h6>
+    <h6 class="center">Created by: <%= link_to @trip.creator.formatted_name, user_path(@trip.creator) %> (<%= time_ago_in_words(@trip.created_at)%> ago) </h6>
 
     <div class="section center">
     <% @trip.tags.each do |tag| %>
