@@ -98,6 +98,12 @@ $(document).ready(function() {
     }.bind(this))
    });
 
+   $(".new-comment-creator-button").on("click", ".close-comment", function(e) {
+      e.preventDefault();
+      $(".new-comment-creator-button").children().eq(0).show();
+      $(".new-comment-creator-button").children().eq(1).remove();
+   });
+
   $(".creator-comments-container").on("submit", ".d-button", function(e) {
     e.preventDefault();
     var url = e.target.action
@@ -144,6 +150,12 @@ $(document).ready(function() {
       $(this).parent().parent().find(".not-creator-comments-container").append(response);
       $(this).remove();
     }.bind(this))
+   });
+
+   $(".new-comment-not-creator-button").on("click", ".close-comment", function(e) {
+      e.preventDefault();
+      $(".new-comment-not-creator-button").children().eq(0).show();
+      $(".new-comment-not-creator-button").children().eq(1).remove();
    });
 
   $(".not-creator-comments-container").on("submit", ".d-button", function(e) {

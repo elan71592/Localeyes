@@ -2,9 +2,11 @@ var TripCreate = React.createClass({
   render: function() {
     return (
       <div>
-        {
-          <TripForm/>
-        }
+        <div className="row">
+          {
+            <TripForm/>
+          }
+        </div>
       </div>
     )
   }
