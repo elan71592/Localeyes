@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20160606184403) do
     t.string   "website_url"
     t.string   "picture_url"
     t.string   "personal_note"
-    t.integer  "duration"
+    t.string   "duration"
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "trip_id"
