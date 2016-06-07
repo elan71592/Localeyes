@@ -22,12 +22,12 @@
   <h1 class="trip-index-header"><%=@header%></h1>
 
   <div class="row">
-      <div class="col s12 m4 l3 trip-column">
+      <div class="col s11 m4 l3 trip-column">
         <% @trips_to_display.first(10).each do |trip| %>
           <%= render partial: 'trip_card', locals: { trip: trip } %>
           <% end %>
       </div>
-      <div class="col s12 m4 l3 trip-column">
+      <div class="col s11 m4 l3 trip-column">
         <% if @trips_to_display[11..20] %>
         <% @trips_to_display[11..20].each do |trip| %>
           <%= render partial: 'trip_card', locals: { trip: trip } %>
