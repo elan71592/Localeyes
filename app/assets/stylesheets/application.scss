@@ -313,7 +313,7 @@ footer {
   font-size: 3vmin;
 }
 img.profile-pic {
-    width: 100px;
+    width: 150px;
     height: auto;
     border: 3px solid #757575;
 }
@@ -405,10 +405,23 @@ margin-bottom: 0;
   z-index: 9999;
 }
 
+.collection-item.active {
+  background-color: #0288d1 !important;
+}
+
+.collection-item.active a {
+  color: white !important;
+}
+
+.message-card-inbox a {
+  color: #ff5722 !important;
+}
+
 .logo-image {
   width: auto;
   height: 2em;
 }
+
 
 .nav-wrapper {
   margin-left: 3em;
@@ -454,3 +467,4 @@ margin-bottom: 0;
 .blue-accent {
   color: #0288d1;
 }
+
