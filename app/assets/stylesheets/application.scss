@@ -31,7 +31,7 @@ body {
 }
 
 .Site-content {
-  flex: 1;
+  flex: 1 0 auto;
 }
 
 #map {
@@ -225,6 +225,7 @@ h5 {
 
 .trip-column {
   margin: 0 25% 0 0;
+  width: 80%;
 }
 
 .index-trip-column {
@@ -296,6 +297,11 @@ img.inbox-img{
 
 
 
+
+footer {
+  margin-top: 10%;
+  font-size: .5em;
+}
 
 img.profile-pic {
     width: 100px;
