@@ -1,10 +1,113 @@
 <!-- Home page if not logged in -->
 <%= render partial: 'video_header' %>
-<div class="container center-align">
+<div class="center-align">
+
+<div class="info-around-parallax grey lighten-5">
+  <div class="container">
+    <div class="center">
+      <h3 class="light-blue-text text-darken-2 info-text">what is localeyes?</h3>
+      <div class="divider"></div>
+      <div class="container">
+      <p>Do you ever visit a place and want something to do, but you don't know what to do? <span class="blue-accent">Localeyes</span> is an app where locals curate day trips of their favorite places that other people can go do. On <span class="blue-accent">localeyes</span> you can</p>
+      <p>Put info about the different icons here to explain what they mean</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Parallax desktop -->
+  <div class="parallax-container hide-on-med-and-down">
+    <div class="parallax-card-container">
+    <div class="row">
+      <div class="center col s12 m4 l4">
+        <div class="card-panel home-card">
+          <i class="large material-icons light-blue-text text-darken-2">search</i>
+          <h4 class="deep-orange-text">find something new</h4>
+          <p>search through our list of curated day trips made by locals</p>
+        </div>
+      </div>
+      <div class="center col s12 m4 l4">
+        <div class="card-panel home-card">
+          <i class="large material-icons light-blue-text text-darken-2">location_on</i>
+          <h4 class="deep-orange-text">explore and enjoy</h4>
+          <p>find your perfect day trip and let localeyes guide you along the way!</p>
+        </div>
+      </div>
+      <div class="center col s12 m4 l4">
+        <div class="card-panel home-card">
+          <i class="large material-icons light-blue-text text-darken-2">my_location</i>
+          <h4 class="deep-orange-text">curate your own trips</h4>
+          <p>are you a local? use localeyes to create your favorite day trips and share them with others</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row home-buttons">
+  <div class="center col s12">
+    <%= link_to "Login", new_user_session_path, class: "waves-effect waves-light btn light-blue darken-2"%>
+    <span class="grey-text text-darken-3 or">or</span>
+    <%= link_to "Join", new_user_registration_path, class: "waves-effect waves-light btn deep-orange"%>
+  </div>
+</div>
+      <div class="parallax">
+        <img src="assets/parallax.png" class="parallax-img">
+      </div>
+    </div>
+</div>
+
+<!-- Mobile parallax (not parallax, its a fixed image now) -->
+ <div class="parallax-container-mobile hide-on-large-only">
+    <div class="parallax-card-container">
+    <div class="row">
+      <div class="center col s12 m4 l4">
+        <div class="card-panel home-card">
+          <i class="large material-icons light-blue-text text-darken-2">search</i>
+          <h4 class="deep-orange-text">find something new</h4>
+          <p>search through our list of curated day trips made by locals</p>
+        </div>
+      </div>
+      <div class="center col s12 m4 l4">
+        <div class="card-panel home-card">
+          <i class="large material-icons light-blue-text text-darken-2">location_on</i>
+          <h4 class="deep-orange-text">explore and enjoy</h4>
+          <p>find your perfect day trip and let localeyes guide you along the way!</p>
+        </div>
+      </div>
+      <div class="center col s12 m4 l4">
+        <div class="card-panel home-card">
+          <i class="large material-icons light-blue-text text-darken-2">my_location</i>
+          <h4 class="deep-orange-text">curate your own trips</h4>
+          <p>are you a local? use localeyes to create your favorite day trips and share them with others</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row home-buttons">
+  <div class="center col s12">
+    <%= link_to "Login", new_user_session_path, class: "waves-effect waves-light btn light-blue darken-2"%>
+    <span class="grey-text text-darken-3 or">or</span>
+    <%= link_to "Join", new_user_registration_path, class: "waves-effect waves-light btn deep-orange"%>
+  </div>
+</div>
+    </div>
+
+<div class="info-around-parallax bottom-info grey lighten-5">
+  <div class="container">
+    <div class="center">
+      <h3 class="light-blue-text text-darken-2 info-text">Something else</h3>
+      <div class="divider"></div>
+      <div class="container">
+      <p>Something else about <span class="blue-accent">localeyes</span></p>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
-<p>This is the home page if not logged in</p>
 
 
-<p> Lots of stuff about our site will go here </p>
 </div>

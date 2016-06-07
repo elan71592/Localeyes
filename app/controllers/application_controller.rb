@@ -45,6 +45,10 @@ class ApplicationController < ActionController::Base
    Relationship.where( follower_id: user.id )
   end
 
+  def trip_complete?( trip )
+    trip.locations.length >= 3
+  end
+
   def shuffle_trips(recommended_trips, followed_trips)
     if recommended_trips != nil && followed_trips != nil
       recommended_trips.push(followed_trips.flatten!)
@@ -58,7 +62,7 @@ class ApplicationController < ActionController::Base
   end
 
 
-  helper_method :mailbox, :conversation, :user_followed?, :users_following, :shuffle_trips
+  helper_method :mailbox, :conversation, :user_followed?, :users_following, :trip_complete, :shuffle_trips
 
   private
 
