@@ -39,7 +39,7 @@
         <% if comment.user == @trip.creator %>
         <blockquote>
         <p><%= comment.body %><span class="tiny-font">   posted <%= time_ago_in_words(comment.created_at) %> ago</span></p>
-        <p>Commenter: <%= link_to comment.user.formatted_name %></p>
+        <p>Commenter: <%= link_to comment.user.formatted_name, user_path(comment.user) %></p>
         <% if current_user == comment.user %>
             <%= link_to edit_comment_path(comment), class: "e-link" do %>
               <i class="tiny material-icons">mode_edit</i>
@@ -73,7 +73,7 @@
           <blockquote>
             <% if comment.user != @trip.creator %>
           <p><%= comment.body %><span class="tiny-font">   posted <%= time_ago_in_words(comment.created_at) %> ago</span></p>
-          <p>Commenter: <%= link_to comment.user.formatted_name %></p>
+          <p>Commenter: <%= link_to comment.user.formatted_name, user_path(comment.user) %></p>
           <% if current_user == comment.user %>
             <%= link_to edit_comment_path(comment), class: "e-link" do %>
               <i class="tiny material-icons">mode_edit</i>
