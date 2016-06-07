@@ -176,8 +176,14 @@ h5 {
   box-shadow: 0 1px 0 0 #03a9f4 ;
 }
 
+textarea:focus {
+  border-bottom: 1px solid #03a9f4 !important;
+  box-shadow: 0 1px 0 0 #03a9f4 !important;
+}
 
-
+label.active {
+  color: #03a9f4 !important;
+}
 
 .input-field input[type=password]:focus {
   border-bottom: 1px solid #03a9f4 ;
@@ -326,5 +332,77 @@ img.profile-pic {
   position: fixed;
 }
 
+/* Video Background Clases  */
+
+.video-container {
+  top: -4em;
+}
+
+#header-video {
+    top: 0;
+    position: static;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+}
+
+#overlay {
+  position: absolute;
+  top: 8%;
+  color: #FFF;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 2147483647;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%
+}
+
+#overlay p {
+  font-size: 18vmin;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+#overlay h5 {
+  margin-top: 0;
+  font-size: 4vmin;
+}
+
+#overlay a {
+  margin-top: 4em;
+}
+
+video {
+    display: inline-block;
+    position: fixed;
+}
+.video-fade {
+  opacity: .95;
+}
+
+.video-container .pattern-overlay {
+background-color: rgba(71, 71, 71, 0.59);
+padding: 110px 0 32px;
+min-height: 496px;
+}
+/* End of Video Background Classes*/
+
+.navbar-fixed {
+  z-index: 9999;
+}
+
+.collection-item.active {
+  background-color: #0288d1 !important;
+}
+
+.collection-item.active a {
+  color: white !important;
+}
+
+.message-card-inbox a {
+  color: #ff5722 !important;
+}
 
 

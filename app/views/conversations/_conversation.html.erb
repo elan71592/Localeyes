@@ -1,17 +1,14 @@
-<div class="media">
-  <div class="media-left">
-    <a href="#">
-      <img class="circle responsive-img" src=<%= conversation.originator.picture_url %> >
-    </a>
+  <div class="col s12 m6">
+    <div class="card light-blue darken-2">
+      <div class="card-content white-text">
+        <span class="card-title"><%= conversation.subject %></span>
+        <p>from: <%= conversation.originator.formatted_name %></p>
+        <p><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></p>
+        <p>last message: <%= truncate conversation.messages.last.body, length: 145 %></p>
+      </div>
+      <div class="card-action white message-card-inbox">
+        <%= link_to "View", conversation_path(conversation)  %>
+      </div>
+    </div>
   </div>
-  <div class="media-body">
-    <h4 class="media-heading">
-      <%= conversation.originator.picture_url %>
-      <%= conversation.originator.formatted_name %> <br>
-      <small><b>Subject: </b><%= conversation.subject %></small><br>
-      <small><b>Date: </b><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
-    </h4>
-    <%= truncate conversation.messages.last.body, length: 145 %>
-    <%= link_to "View", conversation_path(conversation)  %>
-  </div>
-</div>
+

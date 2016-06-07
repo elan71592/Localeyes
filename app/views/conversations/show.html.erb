@@ -1,54 +1,44 @@
 <div class="container">
-<div class="row">
-  <div class="col-md-12">
-    <div class="section">
+  <div class="row">
+    <div class="col s12 m12 l12">
       <h3>Inbox</h3>
-    <%= link_to "Compose", new_conversation_path, class: "waves-effect waves-light btn deep-orange" %>
-  </div>
-
-
-  </div>
-
-  <div class="col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <%= render 'mailbox/folders' %>
-      </div>
+      <%= link_to "Compose", new_conversation_path, class: "waves-effect waves-light btn deep-orange" %>
     </div>
   </div>
 
-
-
-    <div class="right">
-      <% if conversation.is_trashed?(current_user) %>
-          <%= link_to 'Untrash', untrash_conversation_path(conversation), class: "waves-effect waves-light btn light-blue darken-2", method: :post %>
-      <% else %>
-          <%= link_to 'Move to trash', trash_conversation_path(conversation), class: "waves-effect waves-light btn light-blue darken-2", method: :post,
-                      data: {confirm: 'Are you sure?'} %>
-      <% end %>
-    </div>
-
-        <%= render partial: 'messages' %>
-
-
-
-      <div class="panel-footer">
-        <!-- Reply Form -->
-        <%= form_for :message, url: reply_conversation_path(conversation) do |f| %>
-            <div class="input-field col s12 m6">
-              <%= f.text_area :body, rows: 4, id: "textarea1", class: "materialize-textarea" %>
-              <label for="textarea1">Reply Message</label>
-
-            <div class="section center">
-            <%= f.submit "Reply", class: "waves-effect waves-light btn light-blue darken-2" %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
+  <div class="row">
+    <%= render 'mailbox/folders' %>
   </div>
 
 
 
+  <div class="row center">
+    <div class="col s12">
+    <% if conversation.is_trashed?(current_user) %>
+        <%= link_to 'Untrash', untrash_conversation_path(conversation), class: "waves-effect waves-light btn light-blue darken-2", method: :post %>
+    <% else %>
+        <%= link_to 'Move to trash', trash_conversation_path(conversation), class: "waves-effect waves-light btn light-blue darken-2", method: :post,
+                    data: {confirm: 'Are you sure?'} %>
+    <% end %>
+    </div>
   </div>
-</div>
+
+  <%= render partial: 'messages' %>
+
+
+
+  <div class="container">
+    <!-- Reply Form -->
+    <%= form_for :message, url: reply_conversation_path(conversation) do |f| %>
+        <div class="input-field col s12 m6">
+          <%= f.text_area :body, rows: 4, id: "textarea1", class: "materialize-textarea" %>
+          <label for="textarea1">Reply Message</label>
+        </div>
+
+        <div class="section center">
+        <%= f.submit "Reply", class: "waves-effect waves-light btn deep-orange" %>
+        </div>
+    <% end %>
+  </div>
+  </div>
+
