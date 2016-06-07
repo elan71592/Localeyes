@@ -223,9 +223,8 @@ h5 {
   clear:both;
 }
 
-.trip-column {
-  margin: 0 25% 0 0;
-  width: 80%;
+#trip-index-container {
+  width: 90%;
 }
 
 .index-trip-column {
@@ -291,16 +290,15 @@ img.inbox-img{
 .chosen-select {
   display: block;
 }
+
 .chosen-choices {
   width: 200px !important;
 }
 
 
-
-
 footer {
   margin-top: 10%;
-  font-size: .5em;
+  font-size: .8em;
 }
 
 img.profile-pic {
@@ -327,8 +325,6 @@ img.profile-pic {
   right: 50px;
   position: fixed;
 }
-
-
 
 /* Video Background Clases  */
 
@@ -390,3 +386,4 @@ min-height: 496px;
 .navbar-fixed {
   z-index: 9999;
 }
+
