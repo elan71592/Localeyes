@@ -6,12 +6,12 @@
       <%= form_tag(trips_path, :method => "get") do %>
         <%= text_field_tag :search, params[:search], :placeholder => "Search for a trip by tag name(ex. 'foodie', 'SoHo', 'beer')"%>
         <div id="search-button">
-          <%= submit_tag("Search", :class => "waves-effect waves-light btn-large light-blue")  %>
+          <%= submit_tag("Search", :class => "waves-effect waves-light btn-large light-blue darken-2")  %>
         </div>
       <% end %>
 
       <div id="explore-button">
-        <a href="/tags" class="waves-effect waves-light btn-large light-blue">explore</a>
+        <a href="/tags" class="waves-effect waves-light btn-large light-blue darken-2">explore</a>
       </div>
     </div>
   </section>
@@ -39,7 +39,7 @@
       </div>
     </div>
 
-    <div class="center">
+    <div class="center section">
       <a href="/tags" class="waves-effect waves-light btn-large deep-orange">explore</a>
     </div>
   </div>
