@@ -94,7 +94,6 @@ $(document).ready(function() {
     }).done(function(response) {
       $(this).siblings().show();
       $(this).parent().parent().find(".creator-comments-container").append(response);
-      debugger;
       $(this).remove();
     }.bind(this))
    });
@@ -103,7 +102,6 @@ $(document).ready(function() {
       e.preventDefault();
       $(".new-comment-creator-button").children().eq(0).show();
       $(".new-comment-creator-button").children().eq(1).remove();
-
    });
 
   $(".creator-comments-container").on("submit", ".d-button", function(e) {
@@ -152,6 +150,12 @@ $(document).ready(function() {
       $(this).parent().parent().find(".not-creator-comments-container").append(response);
       $(this).remove();
     }.bind(this))
+   });
+
+   $(".new-comment-not-creator-button").on("click", ".close-comment", function(e) {
+      e.preventDefault();
+      $(".new-comment-not-creator-button").children().eq(0).show();
+      $(".new-comment-not-creator-button").children().eq(1).remove();
    });
 
   $(".not-creator-comments-container").on("submit", ".d-button", function(e) {
