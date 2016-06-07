@@ -1,74 +1,87 @@
 <div class="container">
-  <div class="row">
-    <div class="col s12 m6">
-      <div class="card">
-        <div class="card-content">
-           <img class="responsive-img circle profile-pic" src="<%= @user.picture_url %>" >
-          <span class="username"><%= @user.formatted_name%></span>
-          <% if @user.location != nil %>
-          <p>Location: <%= @user.location %></p>
-          <% else %>
-          <p>Location: N/A</p>
-          <% end %>
-          <p>Trips Curated: <%= @user.trips.count %></p>
-          <p>Total Trip Attendees: <%= @user.total_trip_attendees %>
-          <p>Trips Attended: <%= @user.attended_trips.count %></p>
-        </div>
-          <% if user_followed?( @user ) %>
-            <div class="card-action">
-              <span class="follow-user-form">
+  <div class="card" id="profile-card">
+    <div class="container">
+      <div class="card-content center">
+      <% if @user.picture_url != nil %>
+      <img class="responsive-img circle profile-pic" src="<%= @user.picture_url %>">
+      <% end %>
+      <h3 class="username"><%= @user.formatted_name%></h3>
+        <div class="row">
+          <div class="col s12 m6 l6">
+            <% if @user.location != nil %>
+              <p>Location: <%= @user.location %></p>
+            <% else %>
+              <p>Location: N/A</p>
+            <% end %>
+            <p>Bio: <%=@user.bio%></p>
+            <% if @user == current_user %>
+              <%= link_to "Edit Your Profile", edit_user_path(@user) %>
+            <% end %>
+            <% if user_followed?( @user ) %>
+                <span class="follow-user-form">
                 <%= render partial: '/followers/unfollow', locals: { followed_id: @user.id } %>
-              </span>
-            </div>
-          <% elsif !user_followed?( @user ) && @user != current_user %>
-            <div class="card-action">
-              <span class="follow-user-form">
+                </span>
+
+              <% elsif !user_followed?( @user ) && @user != current_user %>
+                <span class="follow-user-form">
                 <%= render partial: '/followers/follow', locals: { followed_id: @user.id } %>
-              </span>
-            </div>
-          <% end %>
-        <div class="card-action">
-          <% if @user == current_user %>
-          <%= link_to "Edit Your Profile", edit_user_path(@user) %>
-          <% end %>
-          <% if @user.available == true %>
-          <span class="right">Request a Tour</span><i class="small right material-icons grey-text text-darken-3">directions_walk</i>
-          <% end %>
-        </div>
+                </span>
+              <% end %>
+          </div>
+          <div class="col s12 m6 l6">
+            <p>Trips Curated: <%= @user.trips.count %></p>
+            <p>Total Trip Attendees: <%= @user.total_trip_attendees %>
+            <p>Trips Attended: <%= @user.attended_trips.count %></p>
+            <% if @user.available == true %>
+              <p><%= link_to "Message To Request A Tour",new_conversation_path %></p>
+              <i class="small material-icons grey-text text-darken-3">directions_walk</i>
+            <% end %>
+          </div>
+         </div>
       </div>
     </div>
   </div>
 
-
-  <h2>My Trips:</h2>
-
-  <% @user.trips.each do |trip| %>
-    <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
-  <% end %>
-
-  <h2>Favorites:</h2>
-
-  <% @user.favorites.each do |favorite| %>
-    <%= render partial: 'trips/trip_card', locals: { trip: favorite.trip} %>
-  <% end %>
-
-  <% if @common_trips.length > 1 %>
-  <h2>Trip Recommendations</h2>
-
-  <% @common_trips.each do | trip | %>
-    <ul>
-      <%= render partial: 'trips/trip_card', locals: { trip: favorite.trip} %>
-    </ul>
-  <% end %>
-  <% end %>
-
-  <% if users_following(@user).length > 0 %>
-  <h2>Users You're Following</h2>
-    <ul>
-      <% users_following( @user ).each do | user | %>
-        <% @following_user = User.find_by(id: user.followed_id) %>
-        <li><%= link_to @following_user.formatted_name, user_path( @following_user ) %></li>
+    <div class="row">
+      <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s12"><a href="#tab1">Dashboard</a></li>
+        <li class="tab col s12"><a class="active" href="#tab2">My Trips</a></li>
+        <li class="tab col s12"><a href="#tab3">Favorites</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div id="tab1" class="col s12">
+      <h3>Dashboard:</h3>
+      <p>Recommended trips for you and trips created by users you're following</p>
+      <% if @dashboard_trips[0] != nil%>
+        <% @dashboard_trips[0].each do |trip| %>
+        <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
+        <% end %>
+      <% else %>
+      <p> Start following users and favoriting trips to get suggestions!</p>
       <% end %>
-    </ul>
-    <% end %>
-</div>
+
+       </div>
+    <div id="tab2" class="col s12">
+      <h3>My Trips:</h3>
+      <% @user.trips.each do |trip| %>
+        <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
+      <% end %>
+    </div>
+    <div id="tab3" class="col s12">
+      <h3>Favorites:</h3>
+      <% @user.favorites.each do |favorite| %>
+        <%= render partial: 'trips/trip_card', locals: { trip: favorite.trip} %>
+      <% end %>
+    </div>
+
+
+
+
+
+
+
+
+

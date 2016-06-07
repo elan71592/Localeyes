@@ -297,12 +297,23 @@ img.inbox-img{
 
 
 footer {
-  margin-top: 10%;
+/* used to have margin-top: 4% but I need to change it for the home page, not sure if it was really needed */
+  margin-top: 0;
   font-size: .8em;
 }
 
+.home-buttons {
+ margin-top: 5%;
+}
+
+.or {
+  margin-left: 2%;
+  margin-right: 2%;
+  text-transform: uppercase;
+  font-size: 3vmin;
+}
 img.profile-pic {
-    width: 100px;
+    width: 150px;
     height: auto;
     border: 3px solid #757575;
 }
@@ -340,6 +351,7 @@ img.profile-pic {
     margin-left: auto;
     margin-right: auto;
     z-index: 1;
+    margin-bottom: 0;
 }
 
 #overlay {
@@ -348,7 +360,7 @@ img.profile-pic {
   color: #FFF;
   text-align: center;
   padding: 10px 0;
-  z-index: 2147483647;
+  z-index: 1;
   margin-left: auto;
   margin-right: auto;
   width: 100%
@@ -375,12 +387,17 @@ video {
 }
 .video-fade {
   opacity: .95;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  height: 100%;
 }
 
 .video-container .pattern-overlay {
 background-color: rgba(71, 71, 71, 0.59);
 padding: 110px 0 32px;
 min-height: 496px;
+padding-bottom: 0;
+margin-bottom: 0;
 }
 /* End of Video Background Classes*/
 
@@ -388,7 +405,66 @@ min-height: 496px;
   z-index: 9999;
 }
 
+.collection-item.active {
+  background-color: #0288d1 !important;
+}
+
+.collection-item.active a {
+  color: white !important;
+}
+
+.message-card-inbox a {
+  color: #ff5722 !important;
+}
+
 .logo-image {
   width: auto;
   height: 2em;
 }
+
+
+.nav-wrapper {
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+
+.parallax-container {
+  height: 100vmin;
+}
+
+.parallax-container-mobile {
+  background: url(parallax-mobile.png);
+  margin: 0 auto;
+  padding-bottom: 3em;
+}
+
+.parallax-card-container {
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+.home-card {
+  width: auto;
+  height: 17em auto;
+  margin-top: 25%;
+}
+
+.info-around-parallax {
+  margin-top: -5em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.info-around-parallax p {
+  font-size: 3vmin;
+}
+
+.info-text {
+  font-weight: 400;
+}
+
+.blue-accent {
+  color: #0288d1;
+}
+

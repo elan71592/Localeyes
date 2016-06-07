@@ -49,7 +49,20 @@ class ApplicationController < ActionController::Base
     trip.locations.length >= 3
   end
 
-  helper_method :mailbox, :conversation, :user_followed?, :users_following, :trip_complete?
+  def shuffle_trips(recommended_trips, followed_trips)
+    if recommended_trips != nil && followed_trips != nil
+      recommended_trips.push(followed_trips.flatten!)
+    elsif recommended_trips != nil
+      recommended_trips
+    elsif followed_trips != nil
+      followed_trips
+    else
+      []
+    end
+  end
+
+
+  helper_method :mailbox, :conversation, :user_followed?, :users_following, :trip_complete, :shuffle_trips
 
   private
 

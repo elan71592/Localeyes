@@ -25,6 +25,18 @@ class UsersController < ApplicationController
         end
       end
     end
+
+    followed_users = []
+    users_following(@user).each do |user|
+      followed_users << User.find_by(id: user.followed_id)
+    end
+    followed_trips = []
+      followed_users.each do |user|
+        followed_trips << user.trips
+      end
+
+    @followed_trips = followed_trips
+    @dashboard_trips = shuffle_trips(@common_trips, @followed_trips)
   end
 
   def edit
@@ -46,7 +58,9 @@ class UsersController < ApplicationController
   end
 
   private
-    def update_params
-      params.require( :user ).permit( :first_name, :last_name, :location, :email, :available, :allow_messages )
-    end
+
+
+  def update_params
+    params.require(:user).permit( :first_name, :last_name, :location, :email, :available, :bio, :allow_messages)
+  end
 end
