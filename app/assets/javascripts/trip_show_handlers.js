@@ -94,8 +94,16 @@ $(document).ready(function() {
     }).done(function(response) {
       $(this).siblings().show();
       $(this).parent().parent().find(".creator-comments-container").append(response);
+      debugger;
       $(this).remove();
     }.bind(this))
+   });
+
+   $(".new-comment-creator-button").on("click", ".close-comment", function(e) {
+      e.preventDefault();
+      $(".new-comment-creator-button").children().eq(0).show();
+      $(".new-comment-creator-button").children().eq(1).remove();
+
    });
 
   $(".creator-comments-container").on("submit", ".d-button", function(e) {

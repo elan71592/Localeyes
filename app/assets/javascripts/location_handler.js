@@ -51,6 +51,12 @@ $(document).ready(function() {
       url: url
     }).done( function( response ) {
       $( this ).closest('.row').remove();
+      if($("#saved-location-holder").children().length >= 4) {
+        $(".finish-trip-message").html("");
+        $(".finish-trip-button").show();
+      } else {
+        $(".location-number").text(4 - $("#saved-location-holder").children().length);
+      };
     }.bind( this ))
   });
 })

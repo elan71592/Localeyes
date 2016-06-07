@@ -25,11 +25,11 @@
 <div class="container">
   <div class="row">
     <div class="col s12 m12 l6">
-  <% @locations.each_with_index do |location, idx| %>
-  <h5>Location <%=idx + 1%></h5>
-    <%= render partial: 'location_details', locals: { location: location } %>
-    <% end %>
-  </div>
+      <% @locations.each_with_index do |location, idx| %>
+        <h5>Location <%=idx + 1%></h5>
+          <%= render partial: 'location_details', locals: { location: location } %>
+      <% end %>
+    </div>
 
   <div class="col s12 m12 l6">
     <div class="creator-comments-container">
@@ -57,8 +57,8 @@
       <% end %>
     </div>
 
-    <% if user_signed_in? && current_user == @trip.creator %>
-    <div class="container new-comment-creator-button">
+  <% if user_signed_in? && current_user == @trip.creator %>
+    <div class="new-comment-creator-button">
       <%= form_for(@comment, url: new_comment_path, method: :get ) do |f| %>
         <%= hidden_field_tag "trip_id", "#{@trip.id}"  %>
         <%= f.submit "add comment", class: "waves-effect waves-light btn deep-orange" %>
