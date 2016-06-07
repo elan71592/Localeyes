@@ -6,6 +6,9 @@ class LocationsController < ApplicationController
 
   def new
     @trip = Trip.find_by( id: params[ :trip_id ] )
+    if @trip.locations.length >= 1
+      @locations = @trip.locations
+    end
 
     if trip_complete?( @trip )
       redirect_to error_path

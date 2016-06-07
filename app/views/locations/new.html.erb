@@ -18,7 +18,11 @@
    <div id="map"></div>
 
   <div class="finish-trip-message center">
-    <h5>Add at least <span class="location-number">3</span> more location(s) to continue!</h5>
+    <% if @locations %>
+      <h5>Add at least <span class="location-number"><%= 3 - @locations.length %></span> more location(s) to continue!</h5>
+    <% else  %>
+      <h5>Add at least <span class="location-number">3</span> more location(s) to continue!</h5>
+    <% end %>
   </div>
 
 
@@ -32,6 +36,11 @@
     <div class="col s12 m5 l6">
       <div id="saved-location-holder">
         <h3>Saved locations</h3>
+        <% if @locations %>
+          <% @locations.each do |location| %>
+            <%= render partial: "location_card_success", layout: false, locals: {location: location, trip: @trip} %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
