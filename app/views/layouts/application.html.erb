@@ -3,9 +3,13 @@
   <head>
     <title>localeyes</title>
       <!--Import Google Icon Font-->
+      <meta name="apple-mobile-web-app-capable" content="yes" />
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png" />
       <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png" />
-      
+      <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png" />
+      <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png" />
+
       <%= favicon_link_tag 'favicon.ico' %>
       <%= stylesheet_link_tag    'application', media: 'all' %>
       <%= javascript_include_tag 'application' %>
@@ -21,5 +25,13 @@
     <%= yield %>
   </main>
     <%= render 'layouts/footer' %>
+
+    <script>
+      window.addEventListener("load",function() {
+        setTimeout( function() {
+          window.scrollTo(0, 1);
+        }, 0);
+      });
+    </script>
   </body>
 </html>
