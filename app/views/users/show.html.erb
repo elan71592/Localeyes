@@ -3,11 +3,15 @@
     <div class="col s12 m6">
       <div class="card">
         <div class="card-content">
-          <span class="card-title"><%= @user.formatted_name%></span>
-           <img class="responsive-img circle" src="<%= @user.picture_url %>" >
+           <img class="responsive-img circle profile-pic" src="<%= @user.picture_url %>" >
+          <span class="username"><%= @user.formatted_name%></span>
+          <% if @user.location != nil %>
           <p>Location: <%= @user.location %></p>
+          <% else %>
+          <p>Location: N/A</p>
+          <% end %>
           <p>Trips Curated: <%= @user.trips.count %></p>
-          <p># of users that attended a trip you created: <%= @user.total_trip_attendees %>
+          <p>Total Trip Attendees: <%= @user.total_trip_attendees %>
           <p>Trips Attended: <%= @user.attended_trips.count %></p>
         </div>
           <% if user_followed?( @user ) %>
@@ -24,7 +28,12 @@
             </div>
           <% end %>
         <div class="card-action">
+          <% if @user == current_user %>
           <%= link_to "Edit Your Profile", edit_user_path(@user) %>
+          <% end %>
+          <% if @user.available == true %>
+          <span class="right">Request a Tour</span><i class="small right material-icons grey-text text-darken-3">directions_walk</i>
+          <% end %>
         </div>
       </div>
     </div>
