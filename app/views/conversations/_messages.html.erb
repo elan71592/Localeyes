@@ -2,15 +2,28 @@
 
 <div class="container">
   <div class="row center">
-    <% if @receipts.first.message.sender.picture_url != nil %>
-      <a href=<%= user_path(@receipts.first.message.sender) %> >
-        <img class="circle responsive-img inbox-img" src=<%= @receipts.first.message.sender.picture_url %> >
-      </a>
-    <% end %>
-    <% if @receipts.first.message.sender.picture_url == nil %>
-      <h5>Conversation with: <%= link_to @receipts.first.message.sender.formatted_name, user_path(@receipts.first.message.sender) %></h5>
+    <% if @receipts.first.message.sender != current_user %>
+      <% if @receipts.first.message.sender.picture_url != nil %>
+        <a href=<%= user_path(@receipts.first.message.sender) %> >
+          <img class="circle responsive-img inbox-img" src=<%= @receipts.first.message.sender.picture_url %> >
+        </a>
+      <% end %>
+      <% if @receipts.first.message.sender.picture_url == nil %>
+        <h5>Conversation with: <%= link_to @receipts.first.message.sender.formatted_name, user_path(@receipts.first.message.sender) %></h5>
+      <% else %>
+        <h5>Conversation with: <%= @receipts.first.message.sender.formatted_name %></h5>
+      <% end %>
     <% else %>
-      <h5>Conversation with: <%= @receipts.first.message.sender.formatted_name %></h5>
+      <% if @receipts.first.conversation.recipients[0].picture_url != nil %>
+        <a href=<%= user_path(@receipts.first.conversation.recipients[0]) %> >
+          <img class="circle responsive-img inbox-img" src=<%= @receipts.first.conversation.recipients[0].picture_url %> >
+        </a>
+      <% end %>
+      <% if @receipts.first.conversation.recipients[0].picture_url == nil %>
+        <h5>Conversation with: <%= link_to @receipts.first.conversation.recipients[0].formatted_name, user_path(@receipts.first.conversation.recipients[0]) %></h5>
+      <% else %>
+        <h5>Conversation with: <%= @receipts.first.conversation.recipients[0].formatted_name %></h5>
+      <% end %>
     <% end %>
     <h5>Subject: <%= @receipts.first.message.subject %></h5>
   </div>
