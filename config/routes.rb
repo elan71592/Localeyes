@@ -85,4 +85,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  get '/error' => 'errors#not_found'
+  get "*any", via: :all, to: 'errors#not_found'
 end
