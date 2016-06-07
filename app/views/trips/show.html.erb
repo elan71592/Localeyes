@@ -24,14 +24,14 @@
 
 <div class="container">
   <div class="row">
-    <div class="col s6">
+    <div class="col s12 m12 l6">
   <% @locations.each_with_index do |location, idx| %>
   <h5>Location <%=idx + 1%></h5>
     <%= render partial: 'location_details', locals: { location: location } %>
     <% end %>
   </div>
 
-  <div class="col s6">
+  <div class="col s12 m12 l6">
     <div class="creator-comments-container">
       <h5>Comments by the Trip Creator:</h5>
       <% @trip.comments.each do |comment| %>
@@ -91,7 +91,6 @@
       <% end %>
     </div>
 
-
   <% if user_signed_in? && current_user != @trip.creator %>
     <div class="container new-comment-not-creator-button">
       <%= form_for(@comment, url: new_comment_path, method: :get ) do |f| %>
@@ -102,6 +101,17 @@
   <% end %>
 </div>
 </div>
+
+<% if !user_followed?( @trip.creator ) && @trip.creator != current_user %>
+  <div class="popup">
+    <%= form_for( :follow, url: '/users/follow', html: {class: "follow-submit-trip"} ) do |f| %>
+      <%= f.hidden_field :follower_id, value: current_user.id %>
+      <%= f.hidden_field :followed_id, value: @trip.creator.id %>
+      <%= f.submit "Follow #{@trip.creator.formatted_name}" %>
+    <% end %>
+    <a href="#" class="close-popup">close</a>
+  </div>
+<% end %>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8Bo_Dd2UfKD6HYbDmGNbCKy-pFivNcmw&libraries=places&callback=initMap"
   async defer></script>
@@ -151,5 +161,4 @@
     }.bind( map ));
   };
 </script>
-
 </div>

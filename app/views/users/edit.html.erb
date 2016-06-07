@@ -26,7 +26,27 @@
     </div>
 
     <h4><%= f.label :upload_profile_picture %></h4>
+    <div class="input-field">
     <%= f.file_field :picture %>
+    </div>
+
+    <div class="section">
+      <br>
+    <%= f.check_box :available, id:"available" %>
+    <%= f.label "I am available to be a tour guide", for:"available", id:"available" %>
+    <br>
+    </div>
+
+        <div class="section">
+      <br>
+    <%= f.check_box :allow_messages, id:"allow_messages" %>
+    <%= f.label "Allow Users to Message Me", for:"allow_messages", id:"allow_messages" %>
+    <br>
+    </div>
+
+
+
+
 
     <h4><%= f.label :confirm_password %></h4>
     <div class="input-field">
