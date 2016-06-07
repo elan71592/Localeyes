@@ -1,12 +1,19 @@
 <!-- This form is /conversations/:id (You reply back and forth here) -->
 
 <div class="container">
-  <div class="center">
-    <a href=<%= user_path(@receipts.first.message.sender) %> >
-      <img class="circle responsive-img inbox-img" src=<%= @receipts.first.message.sender.picture_url %> >
-    </a>
-    <h5>Conversation with: <%= @receipts.first.message.sender.formatted_name %></h5>
+  <div class="row center">
+    <% if @receipts.first.message.sender.picture_url != nil %>
+      <a href=<%= user_path(@receipts.first.message.sender) %> >
+        <img class="circle responsive-img inbox-img" src=<%= @receipts.first.message.sender.picture_url %> >
+      </a>
+    <% end %>
+    <% if @receipts.first.message.sender.picture_url == nil %>
+      <h5>Conversation with: <%= link_to @receipts.first.message.sender.formatted_name, user_path(@receipts.first.message.sender) %></h5>
+    <% else %>
+      <h5>Conversation with: <%= @receipts.first.message.sender.formatted_name %></h5>
+    <% end %>
     <h5>Subject: <%= @receipts.first.message.subject %></h5>
+  </div>
 
     <% @receipts.each do |receipt| %>
       <% message = receipt.message %>
@@ -17,9 +24,9 @@
                 <%= message.body %>
             </div>
             <small class="right grey-text"><%=  message.created_at.strftime("%-m/%-d/%y %l:%M%P") %> (about <%= time_ago_in_words(message.created_at) %> ago)</small>
+            <small class="left grey-text"><%=  message.sender.formatted_name %></small>
           </div>
         </div>
       </div>
-    </div>
   <% end %>
 </div>
