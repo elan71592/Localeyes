@@ -229,9 +229,8 @@ label.active {
   clear:both;
 }
 
-.trip-column {
-  margin: 0 25% 0 0;
-  width: 80%;
+#trip-index-container {
+  width: 90%;
 }
 
 .index-trip-column {
@@ -297,16 +296,15 @@ img.inbox-img{
 .chosen-select {
   display: block;
 }
+
 .chosen-choices {
   width: 200px !important;
 }
 
 
-
-
 footer {
   margin-top: 10%;
-  font-size: .5em;
+  font-size: .8em;
 }
 
 img.profile-pic {
@@ -334,6 +332,7 @@ img.profile-pic {
   position: fixed;
 }
 
+
 .collection-item.active {
   background-color: #0288d1 !important;
 }
@@ -345,3 +344,4 @@ img.profile-pic {
 .message-card-inbox a {
   color: #ff5722 !important;
 }
+

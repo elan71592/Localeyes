@@ -1,13 +1,11 @@
 class LocationsController < ApplicationController
-
   def index
-    @trip = Trip.find_by(id: params[:trip_id])
+    @trip = Trip.find_by( id: params[ :trip_id ] )
     @locations = @trip.locations
   end
 
   def new
-    @trip = Trip.find_by(id: params[:trip_id])
-    @key = ENV["GOOGLE_MAPS_KEY"]
+    @trip = Trip.find_by( id: params[ :trip_id ] )
 
     if !user_signed_in?
       redirect_to root_path
@@ -15,13 +13,12 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.create(location_params)
-    @trip = Trip.find_by(id: params[:trip_id])
-    @trip.locations.push(@location)
+    @location = Location.create( location_params )
+    @trip = Trip.find_by( id: params[ :trip_id ])
+    @trip.locations.push( @location )
+
     if request.xhr?
       render '_location_card', layout: false, locals: { location: @location, trip: @trip }
-    else
-
     end
   end
 
@@ -29,10 +26,10 @@ class LocationsController < ApplicationController
     @location = Location.find_by( id: params[ :id ] )
     @location.update_attributes( update_params )
     @trip = Trip.find_by( id: params[ :trip_id ] )
+
     if request.xhr?
       render '_location_card_success', layout: false, locals: { location: @location, trip: @trip }
     end
-    # redirect_to new_trip_location_path( @trip )
   end
 
   def destroy
