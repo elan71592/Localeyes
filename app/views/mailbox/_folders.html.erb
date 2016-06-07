@@ -1,33 +1,29 @@
-<div class="col hide-on-small-only m3 l2">
-  <ul class="section table-of-contents">
-
-    <ul class="nav nav-pills nav-stacked">
-      <li class="<%= active_page(:inbox) %>">
+<div class="col s12 m6">
+    <ul class="collection">
+      <li class="<%= active_page(:inbox) %> collection-item">
         <%= link_to mailbox_inbox_path do  %>
-        <span class="label label-danger pull-right"><%=unread_messages_count%></span>
-        <em class="fa fa-inbox fa-lg"></em>
-
+        <i class="tiny material-icons">email</i>
         <span>Inbox</span>
+        <span class="label label-danger pull-right"><%=unread_messages_count%></span>
 
         <% end %>
       </li>
-      <li class="<%= active_page(:sent) %>">
+      <li class="<%= active_page(:sent) %> collection-item">
         <%= link_to mailbox_sent_path do %>
 
-        <em class="fa fa-paper-plane-o fa-lg"></em>
+        <i class="tiny material-icons">message</i>
 
         <span>Sent</span>
 
         <% end %>
       </li>
 
-      <li class="<%= active_page(:trash) %>">
+      <li class="<%= active_page(:trash) %> collection-item">
         <%= link_to mailbox_trash_path do %>
-        <em class="fa fa-trash-o fa-lg"></em>
+        <i class="tiny material-icons">delete</i>
 
         <span>Trash</span>
         <% end %>
       </li>
-    </ul>
   </ul>
 </div>

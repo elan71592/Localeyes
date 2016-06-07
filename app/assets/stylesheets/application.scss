@@ -176,8 +176,14 @@ h5 {
   box-shadow: 0 1px 0 0 #03a9f4 ;
 }
 
+textarea:focus {
+  border-bottom: 1px solid #03a9f4 !important;
+  box-shadow: 0 1px 0 0 #03a9f4 !important;
+}
 
-
+label.active {
+  color: #03a9f4 !important;
+}
 
 .input-field input[type=password]:focus {
   border-bottom: 1px solid #03a9f4 ;
@@ -326,4 +332,16 @@ img.profile-pic {
   position: fixed;
 }
 
+
+.collection-item.active {
+  background-color: #0288d1 !important;
+}
+
+.collection-item.active a {
+  color: white !important;
+}
+
+.message-card-inbox a {
+  color: #ff5722 !important;
+}
 

@@ -57,6 +57,7 @@ class ApplicationController < ActionController::Base
       @conversation ||= mailbox.conversations.find(params[:id])
     end
 
+
   protected
 
     protect_from_forgery with: :exception
