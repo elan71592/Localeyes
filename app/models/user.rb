@@ -78,4 +78,5 @@ class User < ActiveRecord::Base
     Relationship.where(follower_id: self.id).length
   end
 
+
 end

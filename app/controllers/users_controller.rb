@@ -42,6 +42,7 @@ class UsersController < ApplicationController
 
     @followed_trips = followed_trips
     @dashboard_trips = shuffle_trips(@common_trips, @followed_trips)
+
   end
 
   def edit

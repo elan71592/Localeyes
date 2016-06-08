@@ -12,6 +12,17 @@
           <%= @user.formatted_name%>
         </h3>
 
+        <% if current_user != @user %>
+          <% if mutuals?(@user) %>
+            <i class="material-icons grey-text text-darken-1">people</i>
+            <h6>You follow each other</h6>
+          <% end %>
+        <% else %>
+          <h6>That's you!</h6>
+        <% end %>
+
+
+
         <div class="section">
           <% if @user.location != nil %>
             <i class="material-icons grey-text text-darken-1">location_on</i><span class="thin"><%= @user.location %></span>
