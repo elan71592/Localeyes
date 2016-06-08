@@ -3,7 +3,7 @@
 
  <div class="row">
   <%@tags.each do |tag| %>
-    <div class="chip grey lighten-5 bounceInDown animated">
+    <div class="chip grey lighten-5 bounceInDown animated hoverable">
       <%= link_to "##{tag.name}", tag_path(tag) %>
     </div>
   <% end %>
