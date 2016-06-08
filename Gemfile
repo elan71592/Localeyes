@@ -66,15 +66,11 @@ gem 'lodash-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-<<<<<<< HEAD
+
 #Use country select for dropdown of country names
-=======
 gem 'rails_12factor', group: :production
 
 gem 'puma'
-
-ruby "2.3.0"
->>>>>>> master
 
 group :development, :test do
   # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console
