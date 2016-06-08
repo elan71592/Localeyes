@@ -1,11 +1,15 @@
 <% if user_signed_in? %>
   <%= render partial: 'video_header' %>
 
-<div class="container center">
-<h2>Trending Trips</h2>
+<div class="container">
+  <h2>Trending Trips</h2>
+  <div class="row">
   <% @featured.each do |featured| %>
-    <p><%= "#{featured.name}, created by #{featured.creator.formatted_name} #{time_ago_in_words(featured.created_at)} ago" %></p>
+    <div class="col s12 m6 m6">
+      <%= render partial: 'trips/trip_card', locals: { trip: featured } %>
+    </div>
   <% end %>
+  </div>
 </div>
 
 <% else %>
