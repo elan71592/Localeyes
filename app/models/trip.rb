@@ -13,4 +13,12 @@ class Trip < ActiveRecord::Base
   has_many :flags, as: :flaggable
 
   validates :name, presence: true
+
+  def creator_comments
+    self.comments.where(user_id: self.creator.id)
+  end
+
+  def user_comments
+    self.comments - creator_comments
+  end
 end

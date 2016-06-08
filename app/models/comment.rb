@@ -4,4 +4,6 @@ class Comment < ActiveRecord::Base
 
   has_many :flags, as: :flaggable
 
+
+
 end
