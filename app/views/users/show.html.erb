@@ -34,8 +34,11 @@
             <p>Trips Curated: <%= @user.trips.count %></p>
             <p>Total Trip Attendees: <%= @user.total_trip_attendees %>
             <p>Trips Attended: <%= @user.attended_trips.count %></p>
-            <% if @user.available == true %>
+            <% if @user.available == true && @user != current_user %>
               <p><%= link_to "Message To Request A Tour",new_conversation_path %></p>
+              <i class="small material-icons grey-text text-darken-3">directions_walk</i>
+            <% elsif @user.available == true %>
+              <p>Available for tours</p>
               <i class="small material-icons grey-text text-darken-3">directions_walk</i>
             <% end %>
           </div>

@@ -13,7 +13,7 @@
   </div>
   <%=f.hidden_field :trip_id, :value => trip.id %>
   <%=f.hidden_field :user_id, :value => current_user.id %>
-  <%=f.submit "Comment" %>
+  <%=f.submit "Comment", class: "waves-effect waves-light btn deep-orange" %>
   <a href="#" class="close-comment">cancel</a>
 <% end %>
 
