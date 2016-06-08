@@ -28,15 +28,12 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.creator = current_user
-<<<<<<< HEAD
     if params[ :trip ][ :tags ].include?( ", " )
       tags = params[ :trip ][ :tags ].split( ", " )
     else
       tags = params[ :trip ][ :tags ].split( " " )
     end
-=======
     tags = Tag.split_tags(params[ :trip ][ :tags ])
->>>>>>> master
 
     if @trip.save
       tags.each do |tag|
