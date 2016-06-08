@@ -72,7 +72,16 @@ class TripsController < ApplicationController
         redirect_to new_trip_location_path( @trip )
       end
     end
+  end
 
+  def coordinates
+    trip = Trip.find_by( id: params[ :id ] )
+    place = GOOGLE_CLIENT.spots_by_query( "#{trip.city}, #{trip.state}" )
+    @coordinates = [ place.first.lat, place.first.lng ]
+
+    if request.xhr?
+      render partial: 'coordinates', layout: false, locals: { coordinates: @coordinates }
+    end
   end
 
   def destroy
