@@ -20,9 +20,11 @@
               <label for="Time Needed" class="grey-text text-darken-1">Time Needed</label>
               <%= f.select(:duration, options_for_select([["1 hour", "1 hour"], ["1.5 hours", "1.5 hours"], ["2 hours", "2 hours"], ["2.5 hours", "2.5 hours"], ["3 hours", "3 hours"], ["3.5 hours", "3.5 hours"], ["4 hours", "4 hours"], ["4.5 hours", "4.5 hours"], ["5 hours", "5 hours"], ["5.5 hours", "5.5 hours"], ["6+ hours", "6+ hours"]])) %>
           <div class="row">
+            <div class="container">
           <%=f.submit "Save", class: "orange-text text-accent-2", id: "submit" %>
             <% end %>
           <%= link_to "Delete", url: "/trips/#{ trip.id }/locations/#{ location.id }", class: "orange-text text-accent-2", id: "delete-post" %>
+            </div>
         </div>
       </div>
     </div>
