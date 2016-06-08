@@ -4,7 +4,7 @@
         <span class="card-title"><%= conversation.subject %></span>
         <p>from: <%= conversation.originator.formatted_name %></p>
         <p><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></p>
-        <p>last message: <%= truncate conversation.messages.last.body, length: 145 %></p>
+        <p class="message-body">last message: <%= truncate conversation.messages.last.body, length: 30 %></p>
       </div>
       <div class="card-action white message-card-inbox">
         <%= link_to "View", conversation_path(conversation)  %>

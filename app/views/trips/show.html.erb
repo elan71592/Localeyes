@@ -36,9 +36,12 @@
   <div class="col s12 m12 l6">
     <div class="creator-comments-container">
       <h5>Comments by the Trip Creator:</h5>
-      <% @trip.comments.each do |comment| %>
+      <% if @creator_comments.length == 0 %>
+        <p class="no-comments-message">No comments by the trip creator.</p>
+      <% else %>
+      <p class="no-comments-message hidden-comments-message">No comments by the trip creator.</p>
+      <% @creator_comments.each do |comment| %>
       <div class="container comment-body">
-        <% if comment.user == @trip.creator %>
         <blockquote>
         <p><%= comment.body %><span class="tiny-font">   posted <%= time_ago_in_words(comment.created_at) %> ago</span></p>
         <p>Commenter: <%= link_to comment.user.formatted_name, user_path(comment.user) %></p>
@@ -52,10 +55,10 @@
                 <i class="tiny material-icons">delete</i>
               <% end %>
             <% end %>
-          <% end %>
         <% end %>
         </blockquote>
       </div>
+      <% end %>
       <% end %>
     </div>
 
@@ -70,10 +73,13 @@
 
     <div class="not-creator-comments-container">
       <h5>Comments: </h5>
-      <% @trip.comments.each do |comment| %>
+      <% if @user_comments.length == 0 %>
+        <p class="no-comments-message">No comments for this trip currently</p>
+      <% else %>
+        <p class="no-comments-message hidden-comments-message">No comments for this trip currently</p>
+      <% @user_comments.each do |comment| %>
         <div class="container comment-body">
           <blockquote>
-            <% if comment.user != @trip.creator %>
           <p><%= comment.body %><span class="tiny-font">   posted <%= time_ago_in_words(comment.created_at) %> ago</span></p>
           <p>Commenter: <%= link_to comment.user.formatted_name, user_path(comment.user) %></p>
           <% if current_user == comment.user %>
@@ -87,14 +93,14 @@
               <% end %>
             <% end %>
           <% end %>
-          <% end %>
           </blockquote>
         </div>
+      <% end %>
       <% end %>
     </div>
 
   <% if user_signed_in? && current_user != @trip.creator %>
-    <div class="container new-comment-not-creator-button">
+    <div class="new-comment-not-creator-button">
       <%= form_for(@comment, url: new_comment_path, method: :get ) do |f| %>
         <%= hidden_field_tag "trip_id", "#{@trip.id}"  %>
         <%= f.submit "add comment", class: "waves-effect waves-light btn deep-orange" %>

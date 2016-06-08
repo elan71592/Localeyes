@@ -92,6 +92,9 @@ $(document).ready(function() {
       type: type,
       data: data
     }).done(function(response) {
+      if ($(".creator-comments-container").children().length === 2) {
+        $(this).parent().parent().find(".creator-comments-container").find(".no-comments-message").hide();
+      }
       $(this).siblings().show();
       $(this).parent().parent().find(".creator-comments-container").append(response);
       $(this).remove();
@@ -113,7 +116,10 @@ $(document).ready(function() {
       url: url,
       type: type
     }).done(function(response){
-      $(this).parent().remove();
+      $(this).closest("div").remove();
+      if ($(".creator-comments-container").children().length === 2) {
+        $(".creator-comments-container").find(".no-comments-message").show();
+      };
     }.bind(this));
   });
 
@@ -146,6 +152,9 @@ $(document).ready(function() {
       type: type,
       data: data
     }).done(function(response) {
+      if ($(".not-creator-comments-container").children().length === 2) {
+        $(this).parent().parent().find(".not-creator-comments-container").find(".no-comments-message").hide();
+      }
       $(this).siblings().show();
       $(this).parent().parent().find(".not-creator-comments-container").append(response);
       $(this).remove();
@@ -167,7 +176,10 @@ $(document).ready(function() {
       url: url,
       type: type
     }).done(function(response){
-      $(this).parent().remove();
+      $(this).closest("div").remove();
+      if ($(".not-creator-comments-container").children().length === 2) {
+        $(".not-creator-comments-container").find(".no-comments-message").show();
+      };
     }.bind(this));
   });
 });
