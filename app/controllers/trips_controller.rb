@@ -1,25 +1,24 @@
 class TripsController < ApplicationController
   def index
-    @trips = Trip.all
-    @trips_to_display = sort_by_favorites( @trips )
-    @header = "Most Popular Trips"
+    @trips_to_display = Trip.sort_by_favorites
+    @search_results = false
+    @trip = Trip.new
+  end
 
-    if params[ :search ]
-      search_array = params[:search].split(" ")
-      @trips_to_display = find_all_trips( search_array ).flatten
-      @header = "Your Search Results"
-
-      if @trips_to_display.empty?
-        @message = "Sorry, there are no results for that search."
-        @header = "Most Popular Trips"
-        @trips_to_display = sort_by_favorites( @trips )
-      end
+  def search
+    search_array = params[:search].split(" ")
+    city = params[:city]
+    state = params[:state]
+    country = params[:country]
+    @trips_to_display = Trip.find_all_trips( search_array, city, state, country )
+    if @trips_to_display != nil
+      @search_results = true
     end
+    render :template => 'trips/index'
   end
 
   def new
     @trip = Trip.new
-
     if !user_signed_in?
       redirect_to root_path
     end
@@ -28,7 +27,6 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.creator = current_user
-
     if params[ :trip ][ :tags ].include?( ", " )
       tags = params[ :trip ][ :tags ].split( ", " )
     else
@@ -88,6 +86,6 @@ class TripsController < ApplicationController
 
   private
     def trip_params
-      params.require( :trip ).permit( :name )
+      params.require( :trip ).permit( :name, :city, :state, :country )
     end
 end

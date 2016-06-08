@@ -17,26 +17,6 @@ class ApplicationController < ActionController::Base
     image[ 'url' ]
   end
 
-  def sort_by_favorites( trip_list )
-    trip_list.sort_by{|trip| trip.favorites.count}.reverse
-  end
-
-  def find_trips_by_tags( search_array )
-    tags = Tag.where( "name LIKE ANY ( array[ ? ] )", search_array )
-    tags.map { | tag | tag.trips }
-  end
-
-  def find_trips_by_names( search_array )
-    search = search_array.map { | name | "%#{ name }%" }
-    Trip.where( "name LIKE ANY ( array[?] )", search ).to_a
-  end
-
-  def find_all_trips( search_array )
-    name_trips = find_trips_by_names(search_array)
-    tag_trips = find_trips_by_tags(search_array)
-    ( name_trips + tag_trips ).uniq
-  end
-
   def user_followed?( followed_user )
    Relationship.find_by( follower_id: current_user.id, followed_id: followed_user.id )
   end

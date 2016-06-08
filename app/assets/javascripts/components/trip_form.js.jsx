@@ -21,11 +21,11 @@ var TripForm = React.createClass({
           </div>
           <div className="row">
             <div className="input-field col s12 m12 l12">
-              <input type="text" name="trip[state]" placeholder="State name (US only)" />
+              <input type="text" name="trip[state]" placeholder="Abbreviated state name (ex. NY, NJ, CA) US only" />
             </div>
           </div>
         <p>Country</p>
-          <select>
+          <select name="trip[country]">
             <option value="AF">Afghanistan</option>
             <option value="AX">Åland Islands</option>
             <option value="AL">Albania</option>
