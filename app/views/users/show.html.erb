@@ -2,76 +2,109 @@
   <div class="card" id="profile-card">
     <div class="container">
       <div class="card-content center">
-      <% if @user.picture_url != nil %>
-        <img class="responsive-img circle profile-pic" src="<%= @user.picture_url %>">
-      <% else %>
-        <i class="large material-icons light-blue-text text-darken-2">account_circle</i>
-      <% end %>
+        <% if @user.picture_url != nil %>
+          <img class="responsive-img circle profile-pic" src="<%= @user.picture_url %>">
+        <% else %>
+          <i class="large material-icons light-blue-text text-darken-2">account_circle</i>
+        <% end %>
 
-      <h3 class="username"><%= @user.formatted_name%></h3>
-      <div class="section">
-      <% if @user.location != nil %>
-           <i class="material-icons grey-text text-darken-1">location_on</i><span class="thin"><%= @user.location %></span>
-      <% else %>
-          <i class="material-icons grey-text text-darken-1">location_on</i><span class="thin">N/A</span>
-      <% end %>
-      <% if @user.bio != nil %>
-        <i class="material-icons grey-text text-darken-1 icon-margin-left">account_box</i><span class="thin"> <%=@user.bio%></span>
-      <% else %>
-        <i class="material-icons grey-text text-darken-1 icon-margin-left">account_box</i><span class="thin">  N/A</span>
-      <% end %>
-      <% if @user.available == true %>
-          <i class="material-icons grey-text text-darken-1 icon-margin-left">directions_walk</i><span class="thin">Available for Tours</span>
-      <% end %>
-    </div>
+        <h3 class="username">
+          <%= @user.formatted_name%>
+        </h3>
+
+        <% if current_user != @user %>
+          <% if mutuals?(@user) %>
+            <i class="material-icons grey-text text-darken-1">people</i>
+            <h6>You follow each other</h6>
+          <% end %>
+        <% else %>
+          <h6>That's you!</h6>
+        <% end %>
+
+
+
+        <div class="section">
+          <% if @user.location != nil %>
+            <i class="material-icons grey-text text-darken-1">location_on</i><span class="thin"><%= @user.location %></span>
+          <% else %>
+            <i class="material-icons grey-text text-darken-1">location_on</i><span class="thin">N/A</span>
+          <% end %>
+
+          <% if @user.bio != nil %>
+            <i class="material-icons grey-text text-darken-1 icon-margin-left">account_box</i><span class="thin"> <%=@user.bio%></span>
+          <% else %>
+            <i class="material-icons grey-text text-darken-1 icon-margin-left">account_box</i><span class="thin">  N/A</span>
+          <% end %>
+
+          <% if @user.available == true %>
+            <i class="material-icons grey-text text-darken-1 icon-margin-left">directions_walk</i><span class="thin">Available for Tours</span>
+          <% end %>
+        </div>
 
 
         <div class="row section">
-          <div class="col s12 m6 l3"><p>Followers</p><br><p class="profile-stats light-blue-text text-darken-2"> <%= @user.followers_count %></p></div>
-          <div class="col s12 m6 l3"><p>Following</p><br><p class="profile-stats light-blue-text text-darken-2"> <%= @user.following_count %></p></div>
-          <div class="col s12 m6 l3"><p>Trips Curated</p><br><p class="profile-stats light-blue-text text-darken-2"> <%= @user.trips.length %></p></div>
+          <div class="col s12 m6 l3">
+            <p>Followers</p>
+            <p class="profile-stats light-blue-text text-darken-2"> <%= @user.followers_count %></p>
+          </div>
+
+          <div class="col s12 m6 l3">
+            <p>Following</p>
+            <p class="profile-stats light-blue-text text-darken-2"> <%= @user.following_count %></p>
+          </div>
+
+          <div class="col s12 m6 l3">
+            <p>Trips Curated</p>
+            <p class="profile-stats light-blue-text text-darken-2"> <%= @user.trips.length %></p>
+          </div>
+
           <% if @user.total_trip_attendees != nil %>
-          <div class="col s12 m6 l3"><p>Trip Attendees</p><br><p class="profile-stats light-blue-text text-darken-2"> <%= @user.total_trip_attendees %></div>
-          <% else %>
-          <div class="col s12 m6 l3"><p>Trip Attendees</p><br><span class="profile-stats light-blue-text text-darken-2"> 0</span></div>
-          <% end %>
-          </div>
-
-          <div class="col s12 m12 l12">
-            <% if @user == current_user %>
-            <%= button_to "Edit Your Profile", edit_user_path(@user), :method => "get", class: "btn-large waves-effect waves-light light-blue darken-2" %>
-            <% end %>
-          </div>
-
-          <div class="col s12 m12 l12">
-            <% if @user.user_followed?( current_user ) %>
-                <span class="follow-user-form">
-                <%= render partial: '/followers/unfollow', locals: { followed_id: @user.id } %>
-                </span>
-
-              <% elsif !@user.user_followed?( current_user ) && @user != current_user %>
-                <span class="follow-user-form">
-                <%= render partial: '/followers/follow', locals: { followed_id: @user.id } %>
-                </span>
-              <% end %>
+            <div class="col s12 m6 l3">
+              <p>Trip Attendees</p>
+              <p class="profile-stats light-blue-text text-darken-2"> <%= @user.total_trip_attendees %>
             </div>
-
-          <div class="section">
-          <div class="col s12 m12 l12">
-            <% if @user.available == true && @user != current_user %>
-            <%= button_to "Message To Request A Tour",new_conversation_path, :method => "get", class: "btn-large waves-effect waves-light light-blue darken-2" %>
-            <% end %>
-          </div>
+          <% else %>
+            <div class="col s12 m6 l3">
+              <p>Trip Attendees</p>
+              <span class="profile-stats light-blue-text text-darken-2"> 0</span>
+            </div>
+          <% end %>
         </div>
 
-         </div>
+        <div class="col s12 m12 l12">
+          <% if @user == current_user %>
+            <%= button_to "Edit Your Profile", edit_user_path(@user), :method => "get", class: "btn-large waves-effect waves-light light-blue darken-2" %>
+          <% end %>
+        </div>
+
+        <div class="col s12 m12 l12">
+          <% if @user.user_followed?( current_user ) %>
+            <span class="follow-user-form">
+              <%= render partial: '/followers/unfollow', locals: { followed_id: @user.id } %>
+            </span>
+
+          <% elsif !@user.user_followed?( current_user ) && @user != current_user %>
+            <span class="follow-user-form">
+              <%= render partial: '/followers/follow', locals: { followed_id: @user.id } %>
+            </span>
+          <% end %>
+        </div>
+
+        <div class="section">
+          <div class="col s12 m12 l12">
+            <% if @user.available == true && @user != current_user %>
+              <%= button_to "Message To Request A Tour",new_conversation_path, :method => "get", class: "btn-large waves-effect waves-light light-blue darken-2" %>
+            <% end %>
+        </div>
       </div>
     </div>
   </div>
+</div>
+
 
 <% if @user == current_user %>
-    <div class="row">
-      <div class="col s12">
+  <div class="row">
+    <div class="col s12">
       <ul class="tabs">
         <li class="tab col s12"><a href="#tab1">Dashboard</a></li>
         <li class="tab col s12"><a class="active" href="#tab2">My Trips</a></li>
@@ -79,61 +112,85 @@
       </ul>
     </div>
   </div>
+
   <div class="row">
     <div id="tab1" class="col s12">
-      <div class="col s12 m6 l6">
+
+      <div class="col s12 m6 l8 pull-l1">
         <div class="container">
-      <h3>Dashboard:</h3>
-      <% if @dashboard_trips[0] != nil%>
-        <% @dashboard_trips[0].each do |trip| %>
-        <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
-        <% end %>
-      </div>
-      </div>
-      <div class="col s12 m12 l6">
-          <h3>Following:</h3>
-            <div class="hoverable chip">
-              <% @followed_users.each do |user| %>
-                <% if user.picture_url != nil %>
-                  <img src=<%= user.picture_url %>>
-                    <a href=<%= user_path(user) %> >
-                      <%= user.formatted_name %>
-                    </a>
-                  <% else %>
-                    <a href=<%= user_path(user) %> >
-                      <%= user.formatted_name %>
-                    </a>
-                  <% end %>
-                <% end %>
-              </div>
+          <h3>Recommended Trips</h3>
+          <h6>Based on your favorites and the users you follow</h6>
+            <% if @dashboard_trips[0] != nil%>
+              <% @dashboard_trips[0].each do |trip| %>
+                <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
+            <% end %>
         </div>
+      </div>
+
+      <div class="col s12 m6 l3 pull-l1">
+        <h3>Following:</h3>
+        <h6>People you're following</h6><br>
+          <% @followed_users.each do |user| %>
+            <% if user.picture_url != nil %>
+              <div class="hoverable chip follower-chip">
+                <img src=<%= user.picture_url %>>
+                  <a href=<%= user_path(user) %> >
+                    <%= user.formatted_name %>
+                  </a>
+              </div>
+            <% else %>
+              <div class="hoverable chip follower-chip">
+                <a href=<%= user_path(user) %> >
+                  <%= user.formatted_name %>
+                </a>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+
       <% else %>
-      <p> Start following users and favoriting trips to get suggestions!</p>
+        <p>Start following users and favoriting trips to get suggestions!</p>
       <% end %>
     </div>
 
     <div id="tab2" class="col s12">
       <div class="container">
-      <h3>My Trips:</h3>
-      <% @user.trips.each do |trip| %>
-        <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
-      <% end %>
+        <% if @user.trips.length > 0 %>
+          <h3>My Trips:</h3>
+          <% @user.trips.each do |trip| %>
+            <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
+          <% end %>
+        <% else %>
+          <h3 class="center">You haven't made any trips yet.</h3>
+          <div class="section center">
+            <%= button_to "Create a Trip", new_trip_path, :method => "get", class: "waves-effect waves-light btn light-blue darken-2"%></li>
+          </div>
+        <% end %>
       </div>
     </div>
+
     <div id="tab3" class="col s12">
       <div class="container">
-      <h3>Favorites:</h3>
-      <% @user.favorites.each do |favorite| %>
-        <%= render partial: 'trips/trip_card', locals: { trip: favorite.trip} %>
-      <% end %>
+          <% if @user.favorites.length > 0 %>
+            <h3>Favorites:</h3>
+            <% @user.favorites.each do |favorite| %>
+              <%= render partial: 'trips/trip_card', locals: { trip: favorite.trip} %>
+            <% end %>
+          <% else %>
+            <h3 class="center">You haven't favorited any trips yet.</h3>
+            <div class="section center">
+             <%= button_to "Find a trip", trips_path, :method => "get", class: "waves-effect waves-light btn-large deep-orange darken-2" %>
+            </div>
+          <% end %>
       </div>
     </div>
+  </div>
 
-<!-- else...if the user is not the current user -->
-    <% else %>
+  <!-- else...if the user is not the current user -->
+<% else %>
 
-    <div class="row">
-      <div class="col s12">
+  <div class="row">
+    <div class="col s12">
       <ul class="tabs">
         <li class="tab col s12"><a href="#tab1">Followers/Following</a></li>
         <li class="tab col s12"><a class="active" href="#tab2"><%= @user.formatted_name %>'s Trips</a></li>
@@ -141,53 +198,56 @@
       </ul>
     </div>
   </div>
+
   <div class="row">
     <div id="tab1" class="col s12">
-        <div class="container">
-      <div class="col s12 m6 l6">
-        <h3>Following:</h3>
-      <% if @followed_users.length > 0 %>
-          <% @followed_users.each do |user| %>
-          <div class="hoverable chip">
-            <% if user.picture_url != nil %>
-            <img src=<%= user.picture_url %>>
-            <a href=<%= user_path(user) %> >
-              <%= user.formatted_name %>
-            </a>
-            <% else %>
-            <a href=<%= user_path(user) %> >
-              <%= user.formatted_name %>
-            </a>
+        <div class="col s12 m6 l6">
+          <h3>Following:</h3>
+          <% if @followed_users.length > 0 %>
+            <% @followed_users.each do |user| %>
+              <% if user.picture_url != nil %>
+                <div class="hoverable chip follower-chip">
+                  <img src=<%= user.picture_url %>>
+                    <a href=<%= user_path(user) %> >
+                      <%= user.formatted_name %>
+                    </a>
+              </div>
+                <% else %>
+                  <div class="hoverable chip follower-chip">
+                    <a href=<%= user_path(user) %> >
+                    <%= user.formatted_name %>
+                    </a>
+                  </div>
+                <% end %>
             <% end %>
-          </div>
-            <% end %>
-        <% else %>
-        <h6><%= @user.formatted_name %> isn't following anyone yet</h6>
-        <% end %>
-      </div>
-
-      <div class="col s12 m6 l6">
-      <h3>Followers:</h3>
-      <% if @followers.length > 0 %>
-      <% @followers.each do |user| %>
-        <div class="hoverable chip">
-          <% if user.picture_url != nil %>
-          <img src=<%= user.picture_url %>>
-          <a href=<%= user_path(user) %> >
-          <%= user.formatted_name %>
-          </a>
           <% else %>
-          <a href=<%= user_path(user) %> >
-            <%= user.formatted_name %>
-          </a>
+            <h6><%= @user.formatted_name %> isn't following anyone yet</h6>
           <% end %>
         </div>
-      <% end %>
-      <% else %>
-        <h6><%= @user.formatted_name %> doesn't have any followers yet.</h6>
-      <% end %>
-      </div>
 
+        <div class="col s12 m6 l6">
+          <h3>Followers:</h3>
+            <% if @followers.length > 0 %>
+              <% @followers.each do |user| %>
+                <% if user.picture_url != nil %>
+                  <div class="hoverable chip follower-chip">
+                    <img src=<%= user.picture_url %>>
+                    <a href=<%= user_path(user) %> >
+                      <%= user.formatted_name %>
+                    </a>
+                  </div>
+                <% else %>
+                  <div class="hoverable chip follower-chip">
+                    <a href=<%= user_path(user) %> >
+                      <%= user.formatted_name %>
+                    </a>
+                  </div>
+                <% end %>
+              <% end %>
+            <% else %>
+              <h6><%= @user.formatted_name %> doesn't have any followers yet.</h6>
+            <% end %>
+        </div>
     </div>
 
     <div id="tab2" class="col s12">
@@ -207,13 +267,13 @@
       <div class="container">
         <% if @user.favorites.length > 0 %>
           <h3><%= @user.formatted_name %>'s Favorites:</h3>
-          <% @user.favorites.each do |favorite| %>
-          <%= render partial: 'trips/trip_card', locals: { trip: favorite.trip} %>
-          <% end %>
-      <% else %>
+            <% @user.favorites.each do |favorite| %>
+              <%= render partial: 'trips/trip_card', locals: { trip: favorite.trip} %>
+            <% end %>
+        <% else %>
           <h3><%= @user.formatted_name %> hasn't favorited any trips yet.</h3>
-      <% end %>
+        <% end %>
       </div>
     </div>
-
+  </div>
 <% end %>

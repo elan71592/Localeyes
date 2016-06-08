@@ -1,30 +1,43 @@
 <div class="container">
-  <h1>Pick A Day Trip</h1>
+  <h1>Find A Day Trip</h1>
 
   <section id="search-bar">
     <div class="input-field">
-      <%= form_tag(trips_path, :method => "get") do %>
-        <%= text_field_tag :search, params[:search], :placeholder => "Search for a trip by tag name(ex. 'foodie', 'SoHo', 'beer')"%>
+      <%= form_tag(trips_search_path, method: :get) do %>
+        <%= text_field_tag :search, params[:search], :placeholder => "Search by tag name(ex. 'foodie', 'SoHo', 'beer')"%>
+        <%= text_field_tag :city, params[:city], :placeholder => "City"%>
+        <%= text_field_tag :state, params[:state], :placeholder => "State (NY, NJ, CA)"%>
+        <%= text_field_tag :country, params[:country], :placeholder => "Country"%>
         <div id="search-button">
           <%= submit_tag("Search", :class => "waves-effect waves-light btn-large light-blue darken-2")  %>
         </div>
-      <% end %>
+        <% end %>
+
 
       <div id="explore-button">
         <a href="/tags" class="waves-effect waves-light btn-large light-blue darken-2">explore</a>
       </div>
     </div>
   </section>
-<br><br>
-<div class="section">
-  <%if @message %>
-    <p class="error-message"> <%=@message %></p>
-  <% end %>
-</div>
 
   <div id="trip-index-container">
     <div class="row">
-      <h1 class="trip-index-header"><%= @header %></h1>
+      <% if @trips_to_display == [] %>
+        <h1 class="trip-index-header">
+          Your Search Results
+        </h1>
+        <p>
+          Sorry, there were no results for your search
+        </p>
+      <% elsif @search_results == false %>
+        <h1 class="trip-index-header">
+          Most Popular Trips
+        </h1>
+      <% elsif @search_results == true %>
+        <h1 class="trip-index-header">
+          Your Search Results
+        </h1>
+      <% end %>
 
       <div class="col s12 m6 l6 trip-column">
         <% @trips_to_display.first( 10 ).each do | trip | %>

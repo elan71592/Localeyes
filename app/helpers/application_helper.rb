@@ -8,5 +8,8 @@ module ApplicationHelper
   end
   # There is a built in method for elapsed time called "time_ago_in_words(timestamp)"
 
+  def mutuals?(profile_user)
+    Relationship.find_by( follower_id: current_user.id, followed_id: profile_user.id ) && Relationship.find_by(follower_id: profile_user.id, followed_id: current_user.id)
+  end
 
 end

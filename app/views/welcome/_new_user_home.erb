@@ -1,8 +1,30 @@
 <!-- Home page if not logged in -->
+
+<!-- Desktop video -->
 <%= render partial: 'video_header' %>
+
+<!-- Mobile top of page -->
+<%= image_tag('parallax-mobile', width: "100%", height: "495px", class: "hide-on-large-only") %>
+
+<div id="overlay">
+<div class="container center hide-on-large-only">
+  <div class="row">
+    <div class="center col s12">
+      <div class="card-panel home-card-mobile">
+        <h4 class="deep-orange-text">localeyes</h4>
+        <p id="mobile-top-p" class="light-blue-text text-darken-2">An app that connects tourists to day trips curated by locals.</p>
+      </div>
+    </div>
+  </div>
+  <div class="container center">
+    <a href="/trips" class="waves-effect waves-light btn-large deep-orange hoverable">Browse Trips</a>
+  </div>
+</div>
+</div>
+
 <div class="center-align">
 
-<div class="info-around-parallax grey lighten-5">
+<div class="info-around-parallax grey lighten-5 hide-on-med-and-down">
   <div class="container">
     <div class="center">
       <h3 class="light-blue-text text-darken-2 info-text">what is localeyes?</h3>
@@ -11,30 +33,26 @@
         <div class="row">
           <div class="col s12">
             <p><span class="blue-accent">localeyes</span> invites users to explore new parts of a city they've never been to before or think they know all too well. The app allows locals to curate day trips of their favorite places, providing a seamless platform for tourists or other locals to explore these trips for new and unique things to do.</p>
-            <p>with <span class="blue-accent">localeyes</span> you can: </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="center col s6 m3 l3">
-            <i class="small material-icons grey-text text-darken-3">directions_walk</i>
-            <p class="small-text">designate yourself as a guide for your trip</p>
-          </div>
-          <div class="center col s6 m3 l3">
-            <i class="small material-icons grey-text text-darken-3">person_add</i>
-            <p class="small-text">follow other users to find the trips you like best</p>
-          </div>
-          <div class="center col s6 m3 l3">
-            <i class="small material-icons grey-text text-darken-3">star_border</i>
-            <p class="small-text">favorite curated trips</p>
-          </div>
-          <div class="center col s6 m3 l3">
-            <i class="small material-icons grey-text text-darken-3">check</i>
-            <p class="small-text">tell others what trips you've attended</p>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
+<div class="small-info-around-parallax grey lighten-5 hide-on-large-only">
+  <div class="container">
+    <div class="center">
+      <h3 class="light-blue-text text-darken-2 info-text">what is localeyes?</h3>
+      <div class="divider"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <p><span class="blue-accent">localeyes</span> invites users to explore new parts of a city they've never been to before or think they know all too well. The app allows locals to curate day trips of their favorite places, providing a seamless platform for tourists or other locals to explore these trips for new and unique things to do.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -119,10 +137,28 @@
 <div class="info-around-parallax bottom-info grey lighten-5">
   <div class="container">
     <div class="center">
-      <h3 class="light-blue-text text-darken-2 info-text">Something else</h3>
+      <h3 class="light-blue-text text-darken-2 info-text">with <span class="blue-accent">localeyes</span> you can: </h3>
       <div class="divider"></div>
+      <div class="row"></div>
       <div class="container">
-      <p>Something else about <span class="blue-accent">localeyes</span></p>
+        <div class="row">
+          <div class="center col s6 m3 l3">
+            <i class="small material-icons grey-text text-darken-3">directions_walk</i>
+            <p class="small-text">designate yourself as a guide for your trip</p>
+          </div>
+          <div class="center col s6 m3 l3">
+            <i class="small material-icons grey-text text-darken-3">person_add</i>
+            <p class="small-text">follow other users to find the trips you like best</p>
+          </div>
+          <div class="center col s6 m3 l3">
+            <i class="small material-icons grey-text text-darken-3">star_border</i>
+            <p class="small-text">favorite curated trips</p>
+          </div>
+          <div class="center col s6 m3 l3">
+            <i class="small material-icons grey-text text-darken-3">check</i>
+            <p class="small-text">tell others what trips you've attended</p>
+          </div>
+        </div>
       </div>
     </div>
 

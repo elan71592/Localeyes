@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @followed_users = @user.followed
     @followed_trips = @user.get_followed_trips
     @dashboard_trips = Trip.shuffle_trips( @common_trips, @followed_trips )
+
   end
 
   def edit
