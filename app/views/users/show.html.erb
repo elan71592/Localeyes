@@ -69,6 +69,7 @@
     </div>
   </div>
 
+<% if @user == current_user %>
     <div class="row">
       <div class="col s12">
       <ul class="tabs">
@@ -80,15 +81,16 @@
   </div>
   <div class="row">
     <div id="tab1" class="col s12">
-      <div class="col s12 m8 l8">
+      <div class="col s12 m6 l6">
+        <div class="container">
       <h3>Dashboard:</h3>
-      <p>Recommended trips for you and trips created by users you're following</p>
       <% if @dashboard_trips[0] != nil%>
         <% @dashboard_trips[0].each do |trip| %>
         <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
         <% end %>
       </div>
-      <div class="col s12 m3 l3">
+      </div>
+      <div class="col s12 m12 l6">
       <h3>Following:</h3>
       <% @followed_users.each do |user| %>
         <div class="hoverable chip">
@@ -108,22 +110,25 @@
       <% else %>
       <p> Start following users and favoriting trips to get suggestions!</p>
       <% end %>
+    </div>
 
-       </div>
     <div id="tab2" class="col s12">
+      <div class="container">
       <h3>My Trips:</h3>
       <% @user.trips.each do |trip| %>
         <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
       <% end %>
+      </div>
     </div>
     <div id="tab3" class="col s12">
+      <div class="container">
       <h3>Favorites:</h3>
       <% @user.favorites.each do |favorite| %>
         <%= render partial: 'trips/trip_card', locals: { trip: favorite.trip} %>
       <% end %>
+      </div>
     </div>
-
-
+<% end %>
 
 
 
