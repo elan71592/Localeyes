@@ -346,13 +346,29 @@ img.profile-pic {
   display: none;
   width: 300px;
   height: 50px;
-  background-color: #000;
-  bottom: 0;
-  right: 50px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  bottom: 1em;
+  right: 0;
   position: fixed;
 }
 
+.profile-stats {
+  font-weight: bold;
+  font-size: 120%;
+}
 
+.thin {
+  font-weight: light;
+}
+
+.icon-margin-left {
+  margin-left: 20px;
+}
+
+.icon-margin-right {
+  margin-right: 10px;
+}
 /* Video Background Clases  */
 
 .video-container {
@@ -504,4 +520,14 @@ p.small-text {
 
 .hidden-comments-message {
   display: none;
+}
+
+.error-message {
+  color: #b71c1c;
+}
+
+a.trip-index-tag {
+  text-transform: lowercase !important;
+  margin-right: 0px !important;
+  color: #424242 !important;
 }
