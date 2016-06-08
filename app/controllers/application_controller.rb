@@ -41,6 +41,10 @@ class ApplicationController < ActionController::Base
    Relationship.find_by( follower_id: current_user.id, followed_id: followed_user.id )
   end
 
+  def followers_for( user )
+    Relationship.where(followed_id: user.id)
+  end
+
   def users_following( user )
    Relationship.where( follower_id: user.id )
   end

@@ -26,6 +26,11 @@ class UsersController < ApplicationController
       end
     end
 
+    @followers = []
+    followers_for(@user).each do |user|
+      @followers << User.find_by(id: user.follower_id)
+    end
+
     @followed_users = []
     users_following(@user).each do |user|
       @followed_users << User.find_by(id: user.followed_id)
