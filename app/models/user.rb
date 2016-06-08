@@ -69,4 +69,13 @@ class User < ActiveRecord::Base
   def total_trip_attendees
     self.trips.map { |trip| trip.attendees.count }.reduce(:+)
   end
+
+  def followers
+    Relationship.where(followed_id: self.id).length
+  end
+
+  def following
+    Relationship.where(follower_id: self.id).length
+  end
+
 end

@@ -2,7 +2,9 @@
   <%= f.hidden_field :follower_id, value: current_user.id %>
   <%= f.hidden_field :followed_id, value: followed_id %>
 
-  <%= f.submit "Follow", class: "waves-effect waves-light btn light-blue" %>
+  <%= button_tag(type: "submit", class: "btn-floating btn-large waves-effect waves-light light-blue darken-2 center") do %>
+              <i class="material-icons">person_add</i>
+        <% end %>
 
   <% end %>
 
