@@ -136,4 +136,5 @@ class User < ActiveRecord::Base
     end
     followed_trips
   end
+
 end
