@@ -38,7 +38,7 @@
         <div class="col s12 m6">
           <div class="card message-card light-blue darken-2">
             <div class="card-content white-text">
-                <%= message.body %>
+                <p class="message-body"><%= message.body %></p>
             </div>
             <small class="right grey-text"><%=  message.created_at.strftime("%-m/%-d/%y %l:%M%P") %> (about <%= time_ago_in_words(message.created_at) %> ago)</small>
             <small class="left grey-text"><%=  message.sender.formatted_name %></small>

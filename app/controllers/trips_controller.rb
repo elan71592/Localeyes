@@ -67,6 +67,8 @@ class TripsController < ApplicationController
     else
       @locations = @trip.locations
       @comment = Comment.new
+      @creator_comments = @trip.comments.where( user_id: @trip.creator.id)
+      @user_comments = @trip.comments - @creator_comments
 
       if @trip.locations.length < 3
         redirect_to new_trip_location_path( @trip )
