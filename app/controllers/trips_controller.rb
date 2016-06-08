@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+
   def index
     @trips_to_display = Trip.sort_by_favorites
     @search_results = false
@@ -10,8 +11,8 @@ class TripsController < ApplicationController
     city = params[:city]
     state = params[:state]
     country = params[:country]
-    @trips_to_display = Trip.find_all_trips( search_array, city, state, country )
-    if @trips_to_display != nil
+    @trips_to_display = Trip.find_all_trips(search_array, city, state, country)
+    if @trips_to_display != []
       @search_results = true
     end
     render :template => 'trips/index'

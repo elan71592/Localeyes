@@ -22,20 +22,48 @@ class Trip < ActiveRecord::Base
     Trip.where(city: city, state: state, country: country)
   end
 
-  def self.find_trips_by_tags( search_array )
-    tags = Tag.where( "name LIKE ANY ( array[ ? ] )", search_array )
-    tags.map { | tag | tag.trips }
+  # def self.find_trips_by_tags( search_array )
+  #   tags = Tag.where( "name LIKE ANY ( array[ ? ] )", search_array )
+  #   tags.map { | tag | tag.trips }
+  # end
+
+  # def self.find_trips_by_names( search_array )
+  #   search = search_array.map { | name | "%#{ name }%" }
+  #   Trip.where( "name LIKE ANY ( array[?] )", search ).to_a
+  # end
+
+  def self.filter_by_names(search_array, city, state, country)
+    location_array = find_trips_by_location(city, state, country)
+    name_filtered_array = []
+    location_array.select do |trip|
+      search_array.map do |name|
+        if trip.name.downcase.include?(name.downcase)
+          name_filtered_array << trip
+        end
+      end
+    end
+    name_filtered_array
   end
 
-  def self.find_trips_by_names( search_array )
-    search = search_array.map { | name | "%#{ name }%" }
-    Trip.where( "name LIKE ANY ( array[?] )", search ).to_a
+  def self.filter_by_tags(search_array, city, state, country)
+    location_array = find_trips_by_location(city, state, country)
+    tag_filtered_array = []
+    location_array.select do |trip|
+      search_array.map do |tag_name|
+        trip.tags.each do |tag|
+          if tag.name.downcase == tag_name.downcase
+            tag_filtered_array << trip
+          end
+        end
+      end
+    end
+    tag_filtered_array
   end
 
-  def self.find_all_trips( search_array, city, state, country )
-    location_trips = find_trips_by_location(city, state, country)
-    name_trips = find_trips_by_names(search_array)
-    tag_trips = find_trips_by_tags(search_array)
-    ( name_trips + tag_trips + location_trips ).flatten.uniq
+  def self.find_all_trips(search_array, city, state, country)
+    name_trips = self.filter_by_names(search_array, city, state, country)
+    tag_trips = self.filter_by_tags(search_array, city, state, country)
+    all_trips = (name_trips + tag_trips).flatten.uniq
   end
+
 end

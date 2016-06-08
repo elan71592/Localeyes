@@ -20,13 +20,15 @@
     </div>
   </section>
 
-
   <div id="trip-index-container">
     <div class="row">
-      <% if @trips_to_display == nil %>
-        <h1>
-          Sorry, there were no results for your search
+      <% if @trips_to_display == [] %>
+        <h1 class="trip-index-header">
+          Your Search Results
         </h1>
+        <p>
+          Sorry, there were no results for your search
+        </p>
       <% elsif @search_results == false %>
         <h1 class="trip-index-header">
           Most Popular Trips
