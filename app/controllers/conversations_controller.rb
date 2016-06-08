@@ -1,6 +1,10 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    redirect_to mailbox_inbox_path
+  end
+
   def new
   end
 
