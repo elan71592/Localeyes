@@ -19,7 +19,7 @@ var TripForm = React.createClass({
               <input type="text" name="trip[city]" placeholder="City name" />
             </div>
           </div>
-           <label for="trip[state]">State</label>
+           <p className="search-label grey-text text-lighten-1">State</p>
             <select name="trip[state]">
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
@@ -74,7 +74,7 @@ var TripForm = React.createClass({
               <option value="WY">Wyoming</option>
             </select>
             <br></br>
-        <label for="trip[country]">Country</label>
+        <p className="search-label grey-text text-lighten-1">Country</p>
           <select name="trip[country]">
             <option value="US">United States</option>
             <option value="AF">Afghanistan</option>

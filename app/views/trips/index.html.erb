@@ -6,12 +6,11 @@
       <%= form_tag(trips_search_path, method: :get) do %>
         <%= text_field_tag :search, params[:search], :placeholder => "Search by tag name(ex. 'foodie', 'SoHo', 'beer')"%>
         <%= text_field_tag :city, params[:city], :placeholder => "City"%>
-        <p>State</p>
+        <p class="grey-text text-lighten-1 search-label">State</p>
         <%= render partial: 'states' %>
-        <p>Country</p>
+        <p class="grey-text text-lighten-1 search-label">Country</p>
         <%= country_select("trip", "country", include_blank: true, priority_countries: ["US"]) %>
-
-        <br>
+        <br><br>
         <div id="search-button">
           <%= submit_tag("Search", :class => "waves-effect waves-light btn-large light-blue darken-2")  %>
         </div>
