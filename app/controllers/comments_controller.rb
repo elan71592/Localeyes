@@ -26,6 +26,10 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find_by(id: params[:id])
     @trip = @comment.trip
+
+    if current_user != @comment.user
+      redirect_to root_path
+    end
   end
 
   def update
