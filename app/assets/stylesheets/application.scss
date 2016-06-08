@@ -505,3 +505,9 @@ p.small-text {
 .hidden-comments-message {
   display: none;
 }
+
+a.trip-index-tag {
+  text-transform: lowercase !important;
+  margin-right: 0px !important;
+  color: #424242 !important;
+}
