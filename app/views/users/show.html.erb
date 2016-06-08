@@ -107,7 +107,8 @@
 
       <div class="col s12 m6 l8 pull-l1">
         <div class="container">
-          <h3>Dashboard:</h3>
+          <h3>Recommended Trips</h3>
+          <h6>Based on your favorites and the users you follow</h6>
             <% if @dashboard_trips[0] != nil%>
               <% @dashboard_trips[0].each do |trip| %>
                 <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
@@ -117,6 +118,7 @@
 
       <div class="col s12 m6 l3 pull-l1">
         <h3>Following:</h3>
+        <h6>People you're following</h6><br>
           <% @followed_users.each do |user| %>
             <% if user.picture_url != nil %>
               <div class="hoverable chip follower-chip">
