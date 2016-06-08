@@ -524,4 +524,9 @@ p.small-text {
 
 .error-message {
   color: #b71c1c;
+
+a.trip-index-tag {
+  text-transform: lowercase !important;
+  margin-right: 0px !important;
+  color: #424242 !important;
 }
