@@ -397,6 +397,10 @@ img.profile-pic {
   width: 100%
 }
 
+#mobile-top-p {
+  font-size: 1em !important;
+}
+
 #overlay p {
   font-size: 18vmin;
   font-weight: 300;
@@ -467,7 +471,7 @@ margin-bottom: 0;
 .parallax-container-mobile {
   background: url(parallax-mobile.png);
   margin: 0 auto;
-  padding-bottom: 3em;
+  padding-bottom: 5em;
 }
 
 .parallax-card-container {
@@ -481,6 +485,12 @@ margin-bottom: 0;
   margin-top: 25%;
 }
 
+.home-card-mobile {
+  width: auto;
+  height: 17em auto;
+  margin-top: 10%;
+}
+
 .info-around-parallax {
   margin-top: -5em;
   padding-top: 2em;
@@ -488,6 +498,15 @@ margin-bottom: 0;
 }
 
 .info-around-parallax p {
+  font-size: 3vmin;
+}
+
+.small-info-around-parallax {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.small-info-around-parallax p {
   font-size: 3vmin;
 }
 
@@ -531,6 +550,7 @@ a.trip-index-tag {
   margin-right: 0px !important;
   color: #424242 !important;
 }
+
 
 .chip {
   margin-bottom: 10px;

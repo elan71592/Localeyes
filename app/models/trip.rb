@@ -21,4 +21,20 @@ class Trip < ActiveRecord::Base
   def user_comments
     self.comments - creator_comments
   end
+
+  def self.shuffle_trips( recommended_trips, followed_trips )
+    if recommended_trips != nil && followed_trips != nil
+      recommended_trips.push(followed_trips.flatten!)
+    elsif recommended_trips != nil
+      recommended_trips
+    elsif followed_trips != nil
+      followed_trips
+    else
+      []
+    end
+  end
+
+  def trip_complete?
+    self.locations.length >= 3
+  end
 end

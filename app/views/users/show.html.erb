@@ -78,12 +78,12 @@
         </div>
 
         <div class="col s12 m12 l12">
-          <% if user_followed?( @user ) %>
+          <% if @user.user_followed?( current_user ) %>
             <span class="follow-user-form">
               <%= render partial: '/followers/unfollow', locals: { followed_id: @user.id } %>
             </span>
 
-          <% elsif !user_followed?( @user ) && @user != current_user %>
+          <% elsif !@user.user_followed?( current_user ) && @user != current_user %>
             <span class="follow-user-form">
               <%= render partial: '/followers/follow', locals: { followed_id: @user.id } %>
             </span>
@@ -155,18 +155,32 @@
 
     <div id="tab2" class="col s12">
       <div class="container">
-        <h3>My Trips:</h3>
-        <% @user.trips.each do |trip| %>
-          <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
+        <% if @user.trips.length > 0 %>
+          <h3>My Trips:</h3>
+          <% @user.trips.each do |trip| %>
+            <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
+          <% end %>
+        <% else %>
+          <h3 class="center">You haven't made any trips yet.</h3>
+          <div class="section center">
+            <%= button_to "Create a Trip", new_trip_path, :method => "get", class: "waves-effect waves-light btn light-blue darken-2"%></li>
+          </div>
         <% end %>
       </div>
     </div>
 
     <div id="tab3" class="col s12">
       <div class="container">
-        <h3>Favorites:</h3>
-          <% @user.favorites.each do |favorite| %>
-            <%= render partial: 'trips/trip_card', locals: { trip: favorite.trip} %>
+          <% if @user.favorites.length > 0 %>
+            <h3>Favorites:</h3>
+            <% @user.favorites.each do |favorite| %>
+              <%= render partial: 'trips/trip_card', locals: { trip: favorite.trip} %>
+            <% end %>
+          <% else %>
+            <h3 class="center">You haven't favorited any trips yet.</h3>
+            <div class="section center">
+             <%= button_to "Find a trip", trips_path, :method => "get", class: "waves-effect waves-light btn-large deep-orange darken-2" %>
+            </div>
           <% end %>
       </div>
     </div>
