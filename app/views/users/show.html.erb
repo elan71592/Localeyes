@@ -44,12 +44,12 @@
           </div>
 
           <div class="col s12 m12 l12">
-            <% if user_followed?( @user ) %>
+            <% if @user.user_followed?( current_user ) %>
                 <span class="follow-user-form">
                 <%= render partial: '/followers/unfollow', locals: { followed_id: @user.id } %>
                 </span>
 
-              <% elsif !user_followed?( @user ) && @user != current_user %>
+              <% elsif !@user.user_followed?( current_user ) && @user != current_user %>
                 <span class="follow-user-form">
                 <%= render partial: '/followers/follow', locals: { followed_id: @user.id } %>
                 </span>
@@ -217,10 +217,3 @@
     </div>
 
 <% end %>
-
-
-
-
-
-
-
