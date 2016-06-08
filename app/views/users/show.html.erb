@@ -3,7 +3,7 @@
     <div class="container">
       <div class="card-content center">
         <% if @user.picture_url != nil %>
-          <img class="responsive-img circle profile-pic" src="<%= @user.picture_url %>">
+          <img class="responsive-img profile-pic" src="<%= @user.picture_url %>">
         <% else %>
           <i class="large material-icons light-blue-text text-darken-2">account_circle</i>
         <% end %>
