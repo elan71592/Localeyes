@@ -66,8 +66,10 @@ gem 'lodash-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-
 #Use country select for dropdown of country names
+gem 'country_select'
+
+
 gem 'rails_12factor', group: :production
 
 gem 'puma'
