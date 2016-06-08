@@ -56,6 +56,21 @@ class Trip < ActiveRecord::Base
     all_trips = (name_trips + tag_trips).flatten.uniq
   end
 
+  def self.find_trips_by_tags( search_array )
+    tags = Tag.where( "lower(name) LIKE ANY ( array[ ? ] )", search_array )
+    tag_trips = tags.map { | tag | tag.trips }
+  end
+
+  def self.find_trips_by_names( search_array )
+    search = search_array.map { | name | "%#{ name.downcase }%" }
+    trips = Trip.where( "lower(name) LIKE ANY ( array[?] )", search ).to_a
+  end
+
+  def self.find_trips_by_names_tags(search_array)
+    all_trips = (self.find_trips_by_tags(search_array) + self.find_trips_by_names(search_array)).flatten.uniq
+    return all_trips
+  end
+
   def creator_comments
     self.comments.where(user_id: self.creator.id)
   end
