@@ -1,7 +1,9 @@
 <%= form_for( :unfollow, url: '/unfollow', html: { method: :delete, class: "unfollow-submit" } ) do |f| %>
   <%= f.hidden_field :followed_id, value: followed_id %>
   <%= f.hidden_field :follower_id, value: current_user.id %>
-   <%= f.submit "Unfollow", class: "waves-effect waves-light btn light-blue" %>
+   <%= button_tag(type: "submit", class: "btn-floating btn-large waves-effect waves-light light-blue darken-2 center") do %>
+              <i class="material-icons">pan_tool</i>
+        <% end %>
 <% end %>
 
 

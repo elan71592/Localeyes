@@ -28,21 +28,19 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.creator = current_user
+<<<<<<< HEAD
     if params[ :trip ][ :tags ].include?( ", " )
       tags = params[ :trip ][ :tags ].split( ", " )
     else
       tags = params[ :trip ][ :tags ].split( " " )
     end
+=======
+    tags = Tag.split_tags(params[ :trip ][ :tags ])
+>>>>>>> master
 
     if @trip.save
       tags.each do |tag|
-        if tag[0] == "#"
-          new_tag = Tag.find_or_create_by( name: tag[ 1..-1 ] )
-        else
-          new_tag = Tag.find_or_create_by( name: tag )
-        end
-
-        @trip.tags << new_tag
+        @trip.tags << Tag.find_create_tags(tag)
       end
 
       if @trip.tags.length < 1
@@ -66,8 +64,8 @@ class TripsController < ApplicationController
     else
       @locations = @trip.locations
       @comment = Comment.new
-      @creator_comments = @trip.comments.where( user_id: @trip.creator.id)
-      @user_comments = @trip.comments - @creator_comments
+      @creator_comments = @trip.creator_comments
+      @user_comments = @trip.user_comments
 
       if @trip.locations.length < 3
         redirect_to new_trip_location_path( @trip )

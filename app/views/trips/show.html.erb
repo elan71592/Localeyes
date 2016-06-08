@@ -110,19 +110,6 @@
 </div>
 </div>
 
-<% if user_signed_in? %>
-  <% if !user_followed?( @trip.creator ) && @trip.creator != current_user %>
-    <div class="popup">
-      <%= form_for( :follow, url: '/users/follow', html: {class: "follow-submit-trip"} ) do |f| %>
-        <%= f.hidden_field :follower_id, value: current_user.id %>
-        <%= f.hidden_field :followed_id, value: @trip.creator.id %>
-        <%= f.submit "Follow #{@trip.creator.formatted_name}" %>
-      <% end %>
-      <a href="#" class="close-popup">close</a>
-    </div>
-  <% end %>
-<% end %>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8Bo_Dd2UfKD6HYbDmGNbCKy-pFivNcmw&libraries=places&callback=initMap"
   async defer></script>
 
@@ -174,3 +161,22 @@
 </div>
 
 
+
+<% if user_signed_in? %>
+  <% if !@trip.creator.user_followed?( current_user ) && @trip.creator != current_user %>
+    <div class="popup center">
+      <a href="#" class="close-popup right"><i class="material-icons">close</i></a>
+      <%= form_for( :follow, url: '/users/follow', html: {class: "follow-submit-trip"} ) do |f| %>
+        <%= f.hidden_field :follower_id, value: current_user.id %>
+        <%= f.hidden_field :followed_id, value: @trip.creator.id %>
+        <%= button_tag(type: "submit", class: "btn-floating btn-large waves-effect waves-light light-blue darken-2 right") do %>
+              <i class="material-icons">person_add</i>
+        <% end %>
+                <div class="section right">
+      <p class="grey-text text-darken-3 left">Follow <%=@trip.creator.formatted_name%></p>
+    </div>
+      <% end %>
+      <br>
+    </div>
+  <% end %>
+<% end %>

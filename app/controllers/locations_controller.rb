@@ -14,7 +14,7 @@ class LocationsController < ApplicationController
         @locations = @trip.locations
       end
 
-      if trip_complete?( @trip )
+      if @trip.trip_complete?
         redirect_to error_path
       else
         if !user_signed_in?

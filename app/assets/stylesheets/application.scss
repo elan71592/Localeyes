@@ -346,13 +346,29 @@ img.profile-pic {
   display: none;
   width: 300px;
   height: 50px;
-  background-color: #000;
-  bottom: 0;
-  right: 50px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  bottom: 1em;
+  right: 0;
   position: fixed;
 }
 
+.profile-stats {
+  font-weight: bold;
+  font-size: 120%;
+}
 
+.thin {
+  font-weight: light;
+}
+
+.icon-margin-left {
+  margin-left: 20px;
+}
+
+.icon-margin-right {
+  margin-right: 10px;
+}
 /* Video Background Clases  */
 
 .video-container {
@@ -379,6 +395,10 @@ img.profile-pic {
   margin-left: auto;
   margin-right: auto;
   width: 100%
+}
+
+#mobile-top-p {
+  font-size: 1em !important;
 }
 
 #overlay p {
@@ -451,7 +471,7 @@ margin-bottom: 0;
 .parallax-container-mobile {
   background: url(parallax-mobile.png);
   margin: 0 auto;
-  padding-bottom: 3em;
+  padding-bottom: 5em;
 }
 
 .parallax-card-container {
@@ -465,6 +485,12 @@ margin-bottom: 0;
   margin-top: 25%;
 }
 
+.home-card-mobile {
+  width: auto;
+  height: 17em auto;
+  margin-top: 10%;
+}
+
 .info-around-parallax {
   margin-top: -5em;
   padding-top: 2em;
@@ -472,6 +498,15 @@ margin-bottom: 0;
 }
 
 .info-around-parallax p {
+  font-size: 3vmin;
+}
+
+.small-info-around-parallax {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.small-info-around-parallax p {
   font-size: 3vmin;
 }
 
@@ -505,3 +540,14 @@ p.small-text {
 .hidden-comments-message {
   display: none;
 }
+
+.error-message {
+  color: #b71c1c;
+}
+
+a.trip-index-tag {
+  text-transform: lowercase !important;
+  margin-right: 0px !important;
+  color: #424242 !important;
+}
+

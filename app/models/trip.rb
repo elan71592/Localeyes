@@ -22,16 +22,6 @@ class Trip < ActiveRecord::Base
     Trip.where(city: city, state: state, country: country)
   end
 
-  # def self.find_trips_by_tags( search_array )
-  #   tags = Tag.where( "name LIKE ANY ( array[ ? ] )", search_array )
-  #   tags.map { | tag | tag.trips }
-  # end
-
-  # def self.find_trips_by_names( search_array )
-  #   search = search_array.map { | name | "%#{ name }%" }
-  #   Trip.where( "name LIKE ANY ( array[?] )", search ).to_a
-  # end
-
   def self.filter_by_names(search_array, city, state, country)
     location_array = find_trips_by_location(city, state, country)
     name_filtered_array = []
@@ -64,6 +54,30 @@ class Trip < ActiveRecord::Base
     name_trips = self.filter_by_names(search_array, city, state, country)
     tag_trips = self.filter_by_tags(search_array, city, state, country)
     all_trips = (name_trips + tag_trips).flatten.uniq
+  end
+
+  def creator_comments
+    self.comments.where(user_id: self.creator.id)
+  end
+
+  def user_comments
+    self.comments - creator_comments
+  end
+
+  def self.shuffle_trips( recommended_trips, followed_trips )
+    if recommended_trips != nil && followed_trips != nil
+      recommended_trips.push(followed_trips.flatten!)
+    elsif recommended_trips != nil
+      recommended_trips
+    elsif followed_trips != nil
+      followed_trips
+    else
+      []
+    end
+  end
+
+  def trip_complete?
+    self.locations.length >= 3
   end
 
 end
