@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     if !user_signed_in?
       redirect_to new_user_registration_path
     end
+    # PANSAMPANSAM
+    # Nothing below this comment should be in this method.
+    # All of the logic below should be wrapped up in your user model
+    # and called directly on @user in your view.
 
     @common_interests = []
     @common_trips = []
@@ -46,7 +50,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by( id: params[ :id ] )
     @user.update_attributes( update_params )
-
+    # PANSAMPANSAM
+    # This picture getting stuff feels super hacky.
     if params[ :user ][ :picture ] != nil
       uploaded_io = params[ :user ][ :picture ]
       file = File.open( Rails.root.join('public', 'uploads', uploaded_io.original_filename ), 'wb' ) do |file|

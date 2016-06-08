@@ -23,6 +23,9 @@ class CommentsController < ApplicationController
     end
   end
 
+  # PANSAMPANSAM
+  # Any protections in your edit update and destroy to prevent
+  # a user from changing another user's trips?
   def edit
     @comment = Comment.find_by(id: params[:id])
     @trip = @comment.trip

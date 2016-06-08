@@ -1,5 +1,10 @@
 class TripsController < ApplicationController
   def index
+    # PANSAMPANSAM
+    # This controller action should be refactored.
+    # A lot of this logic belongs in the model.
+    # This method should be no longer than 5 lines.
+    # Maybe even 3.
     @trips = Trip.all
     @trips_to_display = sort_by_favorites( @trips )
     @header = "Most Popular Trips"
@@ -28,7 +33,9 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.creator = current_user
-
+    # PANSAMPANSAM
+    # Put this logic in the model or in a "tag parser"
+    # service object / module in concerns.
     if params[ :trip ][ :tags ].include?( ", " )
       tags = params[ :trip ][ :tags ].split( ", " )
     else
@@ -37,6 +44,8 @@ class TripsController < ApplicationController
 
     if @trip.save
       tags.each do |tag|
+        # PANSAMPANSAM
+        # Hacky conditional. Should be tidied up by your tag parser
         if tag[0] == "#"
           new_tag = Tag.find_or_create_by( name: tag[ 1..-1 ] )
         else
