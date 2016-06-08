@@ -3,29 +3,11 @@
 
  <div class="row">
   <%@tags.each do |tag| %>
-    <div class="chip-container" id="tag-bubbles">
-      <% @animations = [ 'bounceInUp', 'bounceInDown' ] %>
-      <%= link_to "##{tag.name}", tag_path(tag), class: "animate-tag wow #{@animations.sample}" %>
+    <div class="chip grey lighten-5 bounceInDown animated">
+      <%= link_to "##{tag.name}", tag_path(tag) %>
     </div>
   <% end %>
 </div>
 <%= link_to "Search Trips", trips_path, class: "waves-effect waves-light btn light-blue" %>
 
-<script>
-  wow = new WOW(
-    {
-      animateClass: 'animated',
-      offset:       100,
-    }
-  );
-  wow.init();
-
-  $(document).ready(function() {
-  	$('.animate-tag').jqFloat({
-  		width: 0,
-  		height: 0,
-  		speed: 1000
-  	});
-  });
-</script>
 </div>

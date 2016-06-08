@@ -26,12 +26,12 @@ class UsersController < ApplicationController
       end
     end
 
-    followed_users = []
+    @followed_users = []
     users_following(@user).each do |user|
-      followed_users << User.find_by(id: user.followed_id)
+      @followed_users << User.find_by(id: user.followed_id)
     end
     followed_trips = []
-      followed_users.each do |user|
+      @followed_users.each do |user|
         followed_trips << user.trips
       end
 

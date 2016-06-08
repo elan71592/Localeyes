@@ -3,7 +3,9 @@
     <div class="container">
       <div class="card-content center">
       <% if @user.picture_url != nil %>
-      <img class="responsive-img circle profile-pic" src="<%= @user.picture_url %>">
+        <img class="responsive-img circle profile-pic" src="<%= @user.picture_url %>">
+      <% else %>
+        <i class="large material-icons light-blue-text text-darken-2">account_circle</i>
       <% end %>
       <h3 class="username"><%= @user.formatted_name%></h3>
         <div class="row">
@@ -53,12 +55,31 @@
   </div>
   <div class="row">
     <div id="tab1" class="col s12">
+      <div class="col s12 m8 l8">
       <h3>Dashboard:</h3>
       <p>Recommended trips for you and trips created by users you're following</p>
       <% if @dashboard_trips[0] != nil%>
         <% @dashboard_trips[0].each do |trip| %>
         <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
         <% end %>
+      </div>
+      <div class="col s12 m3 l3">
+      <h3>Following:</h3>
+      <% @followed_users.each do |user| %>
+        <div class="hoverable chip">
+          <% if user.picture_url != nil %>
+          <img src=<%= user.picture_url %>>
+          <a href=<%= user_path(user) %> >
+          <%= user.formatted_name %>
+          </a>
+          <% else %>
+          <a href=<%= user_path(user) %> >
+            <%= user.formatted_name %>
+          </a>
+          <% end %>
+        </div>
+      <% end %>
+      </div>
       <% else %>
       <p> Start following users and favoriting trips to get suggestions!</p>
       <% end %>
