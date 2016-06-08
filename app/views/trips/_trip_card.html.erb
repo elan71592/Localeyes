@@ -24,8 +24,8 @@
     <br>
     <br>
       <% trip.tags.each do |tag| %>
-        <div class="chip grey lighten-5">
-          #<%= tag.name %>
+        <div class="chip grey lighten-5 hoverable">
+          #<%= link_to tag.name, tag_path(tag), class: "trip-index-tag" %>
         </div>
       <% end %>
     <% end %>
