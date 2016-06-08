@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col s12 m12 l12">
       <h3>Inbox</h3>
-      <%= link_to "Compose", new_conversation_path, class: "waves-effect waves-light btn deep-orange" %>
+      <%= button_to "Compose", new_conversation_path, class: "waves-effect waves-light btn deep-orange", method: => "get" %>
     </div>
   </div>
 
