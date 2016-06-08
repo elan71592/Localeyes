@@ -60,7 +60,7 @@
 
   <% if @user.errors.any? %>
       <% @user.errors.full_messages.each do |msg| %>
-        <h5><%= msg %></h5>
+        <h5 class="error-message"><%= msg %></h5>
       <% end %>
   <% end %>
 
