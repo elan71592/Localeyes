@@ -163,7 +163,7 @@
 
 
 <% if user_signed_in? %>
-  <% if !user_followed?( @trip.creator ) && @trip.creator != current_user %>
+  <% if !@trip.creator.user_followed?( current_user ) && @trip.creator != current_user %>
     <div class="popup center">
       <a href="#" class="close-popup right"><i class="material-icons">close</i></a>
       <%= form_for( :follow, url: '/users/follow', html: {class: "follow-submit-trip"} ) do |f| %>

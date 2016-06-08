@@ -70,6 +70,29 @@ class User < ActiveRecord::Base
     self.trips.map { |trip| trip.attendees.count }.reduce(:+)
   end
 
+  def common_trips
+    common_interests = []
+    common_trips = []
+
+    tag_name = []
+
+    self.trips.each do | trip |
+      trip.tags.each do | tag |
+        common_interests << tag if !tag_name.include? tag.name
+        tag_name << tag.name
+      end
+    end
+
+    common_interests.each do | tag |
+      tag.trips.each do | trip |
+        if !self.attended_trips.include?( trip ) && trip.creator != self
+          common_trips << trip
+        end
+      end
+    end
+    common_trips
+  end
+
   def followers_count
     Relationship.where(followed_id: self.id).length
   end
@@ -78,4 +101,39 @@ class User < ActiveRecord::Base
     Relationship.where(follower_id: self.id).length
   end
 
+  def user_followed?( current_user )
+    Relationship.find_by( follower_id: current_user.id, followed_id: self.id )
+  end
+
+  def followers_for
+    Relationship.where(followed_id: self.id)
+  end
+
+  def following
+   Relationship.where( follower_id: self.id )
+  end
+
+  def followers
+    followers = []
+    self.followers_for.each do |user|
+      followers << User.find_by(id: user.follower_id)
+    end
+    followers
+  end
+
+  def followed
+    followed_users = []
+    self.following.each do |user|
+      followed_users << User.find_by(id: user.followed_id)
+    end
+    followed_users
+  end
+
+  def get_followed_trips
+    followed_trips = []
+    self.followed.each do |user|
+      followed_trips << user.trips
+    end
+    followed_trips
+  end
 end
