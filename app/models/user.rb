@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   end
 
   def formatted_name
-    self.first_name + " " + self.last_name[0] + "."
+    self.first_name.capitalize + " " + self.last_name[0].capitalize + "."
   end
 
   def attending?(trip)
@@ -70,11 +70,11 @@ class User < ActiveRecord::Base
     self.trips.map { |trip| trip.attendees.count }.reduce(:+)
   end
 
-  def followers
+  def followers_count
     Relationship.where(followed_id: self.id).length
   end
 
-  def following
+  def following_count
     Relationship.where(follower_id: self.id).length
   end
 
