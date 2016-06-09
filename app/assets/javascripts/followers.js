@@ -14,6 +14,7 @@ $( document ).ready( function() {
     }).done( function( response ) {
       $( target ).hide();
       $( target ).parent().append( response );
+      $(".follower-count").text(parseInt($(".follower-count").text()) + 1)
     });
   });
 
@@ -31,6 +32,7 @@ $( document ).ready( function() {
     }).done( function( response ) {
       $( target ).hide();
       $( target ).parent().append( response );
+      $(".follower-count").text(parseInt($(".follower-count").text()) - 1)
     });
   });
 });
