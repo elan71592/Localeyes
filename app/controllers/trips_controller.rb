@@ -3,7 +3,6 @@ class TripsController < ApplicationController
   def index
     @trips_to_display = Trip.sort_by_favorites
     @search_results = false
-    @trip = Trip.new
   end
 
   def search
