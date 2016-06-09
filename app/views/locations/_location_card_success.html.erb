@@ -10,7 +10,7 @@
           <li><%= location.phone_number %></li>
           <li><%=link_to "go to website", "#{location.website_url}", target: "_blank", class: "location-details-website-link" %></li>
           <li>Tip: <%= location.personal_note %></li>
-          <li>Time needed: <%= pluralize(location.duration,"hour") %></li>
+          <li>Time needed: <%= location.duration %></li>
         </ul>
       </div>
       <div class="card-action white">

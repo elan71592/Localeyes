@@ -44,6 +44,16 @@ class LocationsController < ApplicationController
     end
   end
 
+  def coordinates
+    trip = Trip.find_by( id: params[ :id ] )
+    place = GOOGLE_CLIENT.spots_by_query( "#{trip.city}, #{trip.state}" )
+    @coordinates = [ place.first.lat, place.first.lng ]
+
+    if request.xhr?
+      render partial: 'trips/coordinates', layout: false, locals: { coordinates: @coordinates }
+    end
+  end
+
   def destroy
     @location = Location.find_by(id: params[:id])
     @location.destroy

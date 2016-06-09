@@ -131,9 +131,19 @@
   async defer></script>
 
 <script>
+  var coordinates = {}
+  $.ajax({
+    url: window.location.href + '/coordinates'
+  }).done( function( response ) {
+    obj = JSON.parse(response);
+    coordinates.lat = obj.lat;
+    coordinates.lng = obj.lng;
+    initMap();
+  });
+
   function initMap() {
     var map = new google.maps.Map(document.getElementById('trip-map'), {
-      center: {lat: 40.712784, lng: -74.005941},
+      center: coordinates,
       zoom: 11,
       scrollwheel: false,
     });

@@ -74,6 +74,8 @@ gem 'rails_12factor', group: :production
 
 gem 'puma'
 
+gem 'pry-rails', group: :production
+
 group :development, :test do
   # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console
   gem 'pry-rails'

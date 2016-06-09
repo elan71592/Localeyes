@@ -40,6 +40,10 @@ Rails.application.routes.draw do
   post "/users/follow" => "followers#create"
   delete "/unfollow" => "followers#destroy"
 
+  get '/trips/:id/coordinates' => 'trips#coordinates'
+
+  get '/trips/:id/locations/new/coordinates' => 'locations#coordinates'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
