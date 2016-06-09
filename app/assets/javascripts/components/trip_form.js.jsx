@@ -21,6 +21,7 @@ var TripForm = React.createClass({
           </div>
            <p className="search-label grey-text text-lighten-1">State</p>
             <select name="trip[state]">
+              <option value="-">-</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
