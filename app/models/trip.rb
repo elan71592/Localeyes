@@ -80,11 +80,11 @@ class Trip < ActiveRecord::Base
   end
 
   def self.shuffle_trips( recommended_trips, followed_trips )
-    if recommended_trips != nil && followed_trips != nil
+    if !recommended_trips.empty? && !followed_trips.empty?
       recommended_trips.push(followed_trips.flatten!)
-    elsif recommended_trips != nil
+    elsif !recommended_trips.empty?
       recommended_trips
-    elsif followed_trips != nil
+    elsif !followed_trips.empty?
       followed_trips
     else
       []
