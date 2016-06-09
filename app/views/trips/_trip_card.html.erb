@@ -4,8 +4,10 @@
   <div class="card-content white-text">
     <span class="card-title activator grey-text text-darken-4"><%= link_to trip.name, trip_path(trip) %><i class="material-icons white-text right">more_vert</i></span>
     <p>Created by: <%= trip.creator.formatted_name %> <%= time_ago_in_words(trip.created_at) %> ago</p>
-    <% if trip.city != nil || trip.state != nil || trip.country != nil %>
+    <% if trip.city != "" && trip.state != "-" %>
     <p><%= trip.city %>, <%= trip.state %>, <%= trip.country %></p>
+    <% elsif trip.city != "" && trip.state == "-" %>
+    <p><%= trip.city %>, <%= trip.country %> </p>
     <% end %>
   </div>
 
