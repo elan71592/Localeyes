@@ -1,7 +1,7 @@
 class Trip < ActiveRecord::Base
   belongs_to :creator, class_name: "User", foreign_key: :user_id
-  has_many :user_trips, :foreign_key => "attended_trip_id"
-  has_many :attendees, :through => :user_trips
+  has_many :user_trips, :foreign_key => "attended_trip_id", dependent: :destroy
+  has_many :attendees, :through => :user_trips, dependent: :destroy
   has_many :locations, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :trip_tags
