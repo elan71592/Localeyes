@@ -66,11 +66,15 @@ gem 'lodash-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-
 #Use country select for dropdown of country names
+gem 'country_select'
+
+
 gem 'rails_12factor', group: :production
 
 gem 'puma'
+
+gem 'pry-rails', group: :production
 
 group :development, :test do
   # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console

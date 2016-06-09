@@ -1,10 +1,11 @@
 <footer class="light-blue darken-2">
-  <div class="container">
+  <div class="container light-blue darken-2">
     <div class="row">
       <div class="col s12 m6 l6">
         <h5 class="white-text">localeyes</h5>
         <p class="grey-text text-lighten-4">An app that connects tourists to day trips curated by locals.</p>
-        <p> © 2016 localeyes, all rights reserved</p>
+        <p class="white-text"><%= link_to "Find a Trip", trips_path, class: "white-text" %>  |  <%= link_to "Create a Trip", new_trip_path, class: "white-text" %></p>
+
       </div>
       <div class="col s12 m6 l6">
         <h5 class="white-text">creators</h5>
@@ -13,8 +14,8 @@
           <a class="grey-text text-lighten-3" href="https://github.com/elan71592">Elan K.  |  </a>
           <a class="grey-text text-lighten-3" href="https://github.com/hannataylor">Hanna T.  |  </a>
           <a class="grey-text text-lighten-3" href="https://github.com/jmcolella">John C.</a></li>
+          <p class="white-text"> © 2016 localeyes, all rights reserved</p>
           <br>
-          <li> <a class="black-text text-lighten-4 left" href="https://github.com/elan71592/Localeyes">Source Code</a></li>
         </ul>
       </div>
       </div>

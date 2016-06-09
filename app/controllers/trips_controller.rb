@@ -3,15 +3,14 @@ class TripsController < ApplicationController
   def index
     @trips_to_display = Trip.sort_by_favorites
     @search_results = false
-    @trip = Trip.new
   end
 
   def search
     search_array = params[:search].split(" ")
     city = params[:city]
     state = params[:state]
-    country = params[:country]
-    if params[:city] == "" && params[:state] == "" && params[:country] == ""
+    country = params[:trip][:country]
+    if params[:city] == "" && params[:state] == "" && params[:trip][:country] == ""
       @trips_to_display = Trip.find_trips_by_names_tags(search_array)
     else
       @trips_to_display = Trip.find_all_trips(search_array, city, state, country)
