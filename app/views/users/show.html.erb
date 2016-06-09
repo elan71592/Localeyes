@@ -119,8 +119,8 @@
         <div class="container">
           <h3>Recommended Trips</h3>
           <h6>Based on your favorites and the users you follow</h6>
-            <% if @dashboard_trips[0] != nil%>
-              <% @dashboard_trips[0].each do |trip| %>
+            <% if @dashboard_trips[0] != nil %>
+              <% @dashboard_trips.each do |trip| %>
                 <%= render partial: 'trips/trip_card', locals: { trip: trip } %>
             <% end %>
         </div>

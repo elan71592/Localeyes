@@ -10,8 +10,7 @@ class UsersController < ApplicationController
     @followers = @user.followers
     @followed_users = @user.followed
     @followed_trips = @user.get_followed_trips
-    @dashboard_trips = Trip.shuffle_trips( @common_trips, @followed_trips )
-
+    @dashboard_trips = Trip.shuffle_trips( @common_trips, @followed_trips ).flatten
   end
 
   def edit
