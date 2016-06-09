@@ -1,13 +1,13 @@
 class User < ActiveRecord::Base
-  has_many :trips
+  has_many :trips, dependent: :destroy
   has_many :user_trips, :foreign_key => :attendee_id
-  has_many :attended_trips, :through => :user_trips
-  has_many :comments
-  has_many :favorites
-  has_many :favorited_trips, through: :favorites, source: :trip
-  has_many :requests
-  has_many :requested_trips, through: :requests, source: :trip
-  has_many :flags
+  has_many :attended_trips, :through => :user_trips, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_trips, through: :favorites, source: :trip, dependent: :destroy
+  has_many :requests, dependent: :destroy
+  has_many :requested_trips, through: :requests, source: :trip, dependent: :destroy
+  has_many :flags, dependent: :destroy
   has_many :active_relationships, class_name: :Relationship, foreign_key: 'follower_id', dependent: :destroy
 
   validates :first_name, :last_name, presence: true
