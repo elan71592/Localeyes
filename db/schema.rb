@@ -158,6 +158,9 @@ ActiveRecord::Schema.define(version: 20160606184403) do
   create_table "trips", force: :cascade do |t|
     t.string   "name",       null: false
     t.integer  "user_id"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "featured"

@@ -9,6 +9,7 @@
       </div>
     <% end %>
   </div>
+
     <br>
   <% if user_signed_in? %>
     <span class="favorite-form-container left">
@@ -107,16 +108,42 @@
       <% end %>
     </div>
   <% end %>
+<br><br><br>
+   <div class="section center">
+      <% if @trip.creator.available == true %>
+        <i class="material-icons grey-text text-darken-1 icon-margin-left">directions_walk</i><span class="thin"> <%= @trip.creator.formatted_name %> is available for tours</span>
+      <% end %>
+    </div>
+
+    <div class="section center">
+          <div class="col s12 m12 l12">
+            <% if @trip.creator.available == true && @trip.creator != current_user %>
+              <%= button_to "Message To Request A Tour",new_conversation_path, :method => "get", class: "btn-large waves-effect waves-light light-blue darken-2" %>
+            <% end %>
+        </div>
+      </div>
 </div>
 </div>
+
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8Bo_Dd2UfKD6HYbDmGNbCKy-pFivNcmw&libraries=places&callback=initMap"
   async defer></script>
 
 <script>
+  var coordinates = {}
+  $.ajax({
+    url: window.location.href + '/coordinates'
+  }).done( function( response ) {
+    obj = JSON.parse(response);
+    coordinates.lat = obj.lat;
+    coordinates.lng = obj.lng;
+    initMap();
+  });
+
   function initMap() {
     var map = new google.maps.Map(document.getElementById('trip-map'), {
-      center: {lat: 40.712784, lng: -74.005941},
+      center: coordinates,
       zoom: 11,
       scrollwheel: false,
     });

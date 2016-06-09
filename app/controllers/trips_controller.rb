@@ -1,25 +1,28 @@
 class TripsController < ApplicationController
+
   def index
-    @trips = Trip.all
-    @trips_to_display = sort_by_favorites( @trips )
-    @header = "Most Popular Trips"
+    @trips_to_display = Trip.sort_by_favorites
+    @search_results = false
+  end
 
-    if params[ :search ]
-      search_array = params[:search].split(" ")
-      @trips_to_display = find_all_trips( search_array ).flatten
-      @header = "Your Search Results"
-
-      if @trips_to_display.empty?
-        @message = "Sorry, there are no results for that search."
-        @header = "Most Popular Trips"
-        @trips_to_display = sort_by_favorites( @trips )
-      end
+  def search
+    search_array = params[:search].split(" ")
+    city = params[:city]
+    state = params[:state]
+    country = params[:trip][:country]
+    if params[:city] == "" && params[:state] == "" && params[:trip][:country] == ""
+      @trips_to_display = Trip.find_trips_by_names_tags(search_array)
+    else
+      @trips_to_display = Trip.find_all_trips(search_array, city, state, country)
     end
+    if @trips_to_display != []
+      @search_results = true
+    end
+    render :template => 'trips/index'
   end
 
   def new
     @trip = Trip.new
-
     if !user_signed_in?
       redirect_to root_path
     end
@@ -28,6 +31,11 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.creator = current_user
+    if params[ :trip ][ :tags ].include?( ", " )
+      tags = params[ :trip ][ :tags ].split( ", " )
+    else
+      tags = params[ :trip ][ :tags ].split( " " )
+    end
     tags = Tag.split_tags(params[ :trip ][ :tags ])
 
     if @trip.save
@@ -63,7 +71,16 @@ class TripsController < ApplicationController
         redirect_to new_trip_location_path( @trip )
       end
     end
+  end
 
+  def coordinates
+    trip = Trip.find_by( id: params[ :id ] )
+    place = GOOGLE_CLIENT.spots_by_query( "#{trip.city}, #{trip.state}" )
+    @coordinates = [ place.first.lat, place.first.lng ]
+
+    if request.xhr?
+      render partial: 'coordinates', layout: false, locals: { coordinates: @coordinates }
+    end
   end
 
   def destroy
@@ -77,6 +94,6 @@ class TripsController < ApplicationController
 
   private
     def trip_params
-      params.require( :trip ).permit( :name )
+      params.require( :trip ).permit( :name, :city, :state, :country )
     end
 end
