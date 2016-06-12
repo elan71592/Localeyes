@@ -19,7 +19,12 @@ class Trip < ActiveRecord::Base
   end
 
   def self.find_trips_by_location(city, state, country)
-    Trip.where(city: city, state: state, country: country)
+    search = {
+      city: city.downcase,
+      state: state.downcase,
+      country: country.downcase
+    }
+    Trip.where("lower( city ) = :city OR lower( state ) = :state OR lower( country ) = :country", { city: search[:city], state: search[:state], country: search[:country] })
   end
 
   def self.filter_by_names(search_array, city, state, country)
@@ -68,7 +73,7 @@ class Trip < ActiveRecord::Base
 
   def self.find_trips_by_names_tags(search_array)
     all_trips = (self.find_trips_by_tags(search_array) + self.find_trips_by_names(search_array)).flatten.uniq
-    return all_trips
+    all_trips
   end
 
   def creator_comments
