@@ -1,20 +1,12 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by( id: params[ :id ] )
+    redirect_to error_path if @user == nil
+    redirect_to new_user_registration_path if !user_signed_in?
 
-    if @user == nil
-      redirect_to error_path
-    else
-      if !user_signed_in?
-        redirect_to new_user_registration_path
-      end
-
-      @common_trips = @user.common_trips
-      @followers = @user.followers
-      @followed_users = @user.followed
-      @followed_trips = @user.get_followed_trips
-      @dashboard_trips = Trip.shuffle_trips( @common_trips, @followed_trips ).flatten
-    end
+    @followers = @user.followers
+    @followed_users = @user.followed
+    @dashboard_trips = Trip.shuffle_trips( @user.common_trips, @user.get_followed_trips ).flatten
   end
 
   def edit

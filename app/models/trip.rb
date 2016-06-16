@@ -18,6 +18,30 @@ class Trip < ActiveRecord::Base
     Trip.all.sort_by{|trip| trip.favorites.count}.reverse
   end
 
+  def creator_comments
+    self.comments.where(user_id: self.creator.id)
+  end
+
+  def user_comments
+    self.comments - creator_comments
+  end
+
+  def self.shuffle_trips( recommended_trips, followed_trips )
+    if !recommended_trips.empty? && !followed_trips.empty?
+      (recommended_trips + followed_trips).flatten!
+    elsif !recommended_trips.empty?
+      recommended_trips
+    elsif !followed_trips.empty?
+      followed_trips
+    else
+      []
+    end
+  end
+
+  def trip_complete?
+    self.locations.length >= 3
+  end
+
   #Method for filtering search query and calling correct method
 
   def self.filter_and_search(search_array, city, state, country)
@@ -82,32 +106,6 @@ class Trip < ActiveRecord::Base
 
   def self.search_names_and_tags(search_array)
     (self.find_all_trips_by_tags(search_array) + self.find_all_trips_by_names(search_array)).flatten.uniq
-  end
-
-  #Comment methods
-
-  def creator_comments
-    self.comments.where(user_id: self.creator.id)
-  end
-
-  def user_comments
-    self.comments - creator_comments
-  end
-
-  def self.shuffle_trips( recommended_trips, followed_trips )
-    if !recommended_trips.empty? && !followed_trips.empty?
-      recommended_trips.push(followed_trips.flatten!)
-    elsif !recommended_trips.empty?
-      recommended_trips
-    elsif !followed_trips.empty?
-      followed_trips
-    else
-      []
-    end
-  end
-
-  def trip_complete?
-    self.locations.length >= 3
   end
 
 end
