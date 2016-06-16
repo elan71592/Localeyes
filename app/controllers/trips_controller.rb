@@ -6,15 +6,8 @@ class TripsController < ApplicationController
   end
 
   def search
-    search_array = params[:search].split(" ")
-    city = params[:city]
-    state = params[:state]
-    country = params[:trip][:country]
-    @trips_to_display = Trip.filter_and_search(search_array, city, state, country)
-    binding.pry
-    if @trips_to_display != []
-      @search_results = true
-    end
+    @trips_to_display = Trip.filter_and_search(params[:search].split(" "), params[:city], params[:state], params[:trip][:country])
+    @search_results = true if @trips_to_display != []
     render :template => 'trips/index'
   end
 

@@ -43,9 +43,7 @@ class Trip < ActiveRecord::Base
     name_filtered_array = []
     location_array.select do |trip|
       search_array.map do |name|
-        if trip.name.downcase.include?(name.downcase)
-          name_filtered_array << trip
-        end
+          name_filtered_array << trip if trip.name.downcase.include?(name.downcase)
       end
     end
     name_filtered_array
@@ -57,9 +55,7 @@ class Trip < ActiveRecord::Base
     location_array.select do |trip|
       search_array.map do |tag_name|
         trip.tags.each do |tag|
-          if tag.name.downcase == tag_name.downcase
-            tag_filtered_array << trip
-          end
+            tag_filtered_array << trip if tag.name.downcase == tag_name.downcase
         end
       end
     end
