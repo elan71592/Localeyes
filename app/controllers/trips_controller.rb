@@ -10,21 +10,8 @@ class TripsController < ApplicationController
     city = params[:city]
     state = params[:state]
     country = params[:trip][:country]
-
-    if search_array.empty? && ( !city.empty? || !state.empty? || !country.empty? )
-      @trips_to_display = Trip.find_trips_by_location( city, state, country )
-    elsif !search_array.empty? && ( city.empty? && state.empty? && country.empty? )
-      @trips_to_display = Trip.find_trips_by_names_tags( search_array )
-    else
-      @trips_to_display = Trip.find_all_trips( search_array, city, state, country )
-    end
-
-    # if params[:city] == "" && params[:state] == "" && params[:trip][:country] == ""
-    #   @trips_to_display = Trip.find_trips_by_names_tags(search_array)
-    # else
-    #   @trips_to_display = Trip.find_all_trips(search_array, city, state, country)
-    # end
-
+    @trips_to_display = Trip.filter_and_search(search_array, city, state, country)
+    binding.pry
     if @trips_to_display != []
       @search_results = true
     end
