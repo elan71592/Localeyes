@@ -1,13 +1,13 @@
 <%= form_for comment, :html => {class: "comment-submit"} do |f| %>
 
 <% if comment.errors.any? %>
-    <p><%=pluralize(comment.errors.count, "error") %> prevented this item from saving.</p>
-    <ul>
-      <% comment.errors.full_messages.each do |message| %>
-        <li class="error-message"><%= message %></li>
-      <% end %>
+  <p><%=pluralize(comment.errors.count, "error") %> prevented this item from saving.</p>
+  <ul>
+    <% comment.errors.full_messages.each do |message| %>
+      <li class="error-message"><%= message %></li>
+    <% end %>
 <%end%>
-  <label for="body">Write a comment</label>
+<label for="body">Write a comment</label>
   <div class="input-field">
     <%=f.text_field :body, hide_label: true %>
   </div>

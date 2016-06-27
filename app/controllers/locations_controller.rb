@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+
   def index
     @trip = Trip.find_by( id: params[ :trip_id ] )
     @locations = @trip.locations

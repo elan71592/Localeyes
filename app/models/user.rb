@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   has_many :active_relationships, class_name: :Relationship, foreign_key: 'follower_id', dependent: :destroy
 
   validates :first_name, :last_name, presence: true
-
   acts_as_messageable
 
   # Include default devise modules. Others available are:

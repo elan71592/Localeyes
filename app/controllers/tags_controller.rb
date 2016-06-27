@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+
   def index
     @tags = Tag.order( :name )
   end
@@ -7,4 +8,5 @@ class TagsController < ApplicationController
     @tag = Tag.find_by( id: params[ :id ] )
     @trips = @tag.trips
   end
+
 end

@@ -1,7 +1,7 @@
 <span id="favorite_form">
-<% if current_user.favorite?(@trip) %>
-  <%= render partial: 'unfavorite', locals: {trip: @trip} %>
-<% else %>
-  <%= render partial: 'favorite', locals: {trip: @trip} %>
-<% end %>
+  <% if current_user.favorite?(@trip) %>
+    <%= render partial: 'unfavorite', locals: {trip: @trip} %>
+  <% else %>
+    <%= render partial: 'favorite', locals: {trip: @trip} %>
+  <% end %>
 </span>

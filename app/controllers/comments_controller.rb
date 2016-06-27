@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
+
   def new
     @comment = Comment.new
     @trip = Trip.find_by( id: params[ :trip_id ] )
-
     if request.xhr?
       render partial: "new_comment_form", layout: false, locals: { comment: @comment, trip: @trip }
     end
@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new( comment_params )
     @trip = Trip.find_by( id: params[ :comment ][ :trip_id ] )
-
     if @comment.save
       if request.xhr?
         render partial: "new_comment", layout: false, locals: { comment: @comment, trip: @trip }
@@ -26,7 +25,6 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find_by(id: params[:id])
     @trip = @comment.trip
-
     if current_user != @comment.user
       redirect_to root_path
     end
@@ -35,7 +33,6 @@ class CommentsController < ApplicationController
   def update
     @trip = Trip.find_by(id: params[:comment][:trip_id])
     @comment = Comment.find_by(id: params[:id])
-
     if @comment.update(comment_params)
       redirect_to trip_path(@trip)
     else
@@ -47,7 +44,6 @@ class CommentsController < ApplicationController
     @trip = Trip.find_by(id: params[:trip_id])
     @comment = Comment.find_by(id: params[:id])
     @comment.destroy
-
     if request.xhr?
       render partial: "delete_response"
     else

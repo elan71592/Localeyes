@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def show
     @user = User.find_by( id: params[ :id ] )
     redirect_to error_path if @user == nil
@@ -16,7 +17,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by( id: params[ :id ] )
     @user.update_attributes( update_params )
-
     if params[ :user ][ :picture ] != nil
       uploaded_io = params[ :user ][ :picture ]
       file = File.open( Rails.root.join('public', 'uploads', uploaded_io.original_filename ), 'wb' ) do |file|
@@ -28,7 +28,6 @@ class UsersController < ApplicationController
   end
 
   private
-
   def update_params
     params.require(:user).permit( :first_name, :last_name, :location, :email, :available, :bio, :allow_messages)
   end

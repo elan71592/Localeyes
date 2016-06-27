@@ -1,4 +1,5 @@
 class FollowersController < ApplicationController
+
   def create
     Relationship.create( follow_params )
     if request.xhr?

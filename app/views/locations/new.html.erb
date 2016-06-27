@@ -9,14 +9,10 @@
     <a href='/trips/<%=@trip.id%>' class='waves-effect waves-light btn create-trip-button deep-orange'>save your trip</a>
   </div>
 </div>
-
-
   <input id="pac-input" class="controls" type="text"
        placeholder="Enter a location">
-   </div>
-
-   <div id="map"></div>
-
+  </div>
+  <div id="map"></div>
   <div class="finish-trip-message center">
     <% if @locations %>
       <h5>Add at least <span class="location-number"><%= 3 - @locations.length %></span> more location(s) to continue!</h5>
@@ -24,8 +20,6 @@
       <h5>Add at least <span class="location-number">3</span> more location(s) to continue!</h5>
     <% end %>
   </div>
-
-
  <div class="container">
   <div class="row">
     <div class="col s12 m5 l6">
@@ -45,7 +39,6 @@
     </div>
   </div>
 </div>
-
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8Bo_Dd2UfKD6HYbDmGNbCKy-pFivNcmw&libraries=places"
   async defer></script>
 

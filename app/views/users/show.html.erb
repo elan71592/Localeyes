@@ -21,8 +21,6 @@
           <h6>That's you!</h6>
         <% end %>
 
-
-
         <div class="section">
           <% if @user.location != "" %>
             <i class="material-icons grey-text text-darken-1">location_on</i><span class="thin"><%= @user.location %></span>
@@ -100,7 +98,6 @@
     </div>
   </div>
 </div>
-
 
 <% if @user == current_user %>
   <div class="row">

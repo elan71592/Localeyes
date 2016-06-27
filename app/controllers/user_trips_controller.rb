@@ -1,8 +1,8 @@
 class UserTripsController < ApplicationController
+
   def create
     @trip = Trip.find( params[ :user_trip ][ :attended_trip_id ] )
     current_user.attend!( @trip )
-
     if request.xhr?
       render 'trips/_cancel', layout: false, locals: { trip: @trip }
     else

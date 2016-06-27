@@ -1,15 +1,15 @@
 <div class="comment-body">
   <blockquote>
-  <p><%= comment.body %></p>
-  <p>Commenter: <%= link_to comment.user.formatted_name %></p>
-  <% if current_user == comment.user %>
-    <%= link_to "edit comment", edit_comment_path(comment) %>
-    <%= form_for(comment, :html => { :method => :delete}) do |f| %>
-      <%= hidden_field_tag "trip_id", "#{trip.id}"  %>
-      <%= button_tag(class: "delete-button") do %>
-        <i class="tiny material-icons">delete</i>
+    <p><%= comment.body %></p>
+    <p>Commenter: <%= link_to comment.user.formatted_name %></p>
+    <% if current_user == comment.user %>
+      <%= link_to "edit comment", edit_comment_path(comment) %>
+      <%= form_for(comment, :html => { :method => :delete}) do |f| %>
+        <%= hidden_field_tag "trip_id", "#{trip.id}"  %>
+        <%= button_tag(class: "delete-button") do %>
+          <i class="tiny material-icons">delete</i>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
   </blockquote>
 </div>

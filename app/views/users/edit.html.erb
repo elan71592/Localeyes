@@ -3,7 +3,6 @@
   <h1>Edit Your Profile</h1>
   <%= form_for @user do |f| %>
 
-
   <h4><%= f.label :first_name %> </h4>
     <div class="input-field">
       <%= f.text_field :first_name %>
@@ -28,32 +27,28 @@
   <h4><%= f.label :bio %></h4>
     <div class="input-field">
       <%= f.text_field :bio %>
-  </div>
+    </div>
 
-    <h4><%= f.label :upload_profile_picture %></h4>
+  <h4><%= f.label :upload_profile_picture %></h4>
     <div class="input-field">
     <%= f.file_field :picture %>
     </div>
 
-    <div class="section">
-      <br>
+  <div class="section">
+    <br>
     <%= f.check_box :available, id:"available" %>
     <%= f.label "I am available to be a tour guide", for:"available", id:"available" %>
     <br>
-    </div>
+  </div>
 
-        <div class="section">
-      <br>
+  <div class="section">
+    <br>
     <%= f.check_box :allow_messages, id:"allow_messages" %>
     <%= f.label "Allow Users to Message Me", for:"allow_messages", id:"allow_messages" %>
     <br>
-    </div>
+  </div>
 
-
-
-
-
-    <h4><%= f.label :confirm_password %></h4>
+  <h4><%= f.label :confirm_password %></h4>
     <div class="input-field">
       <%= f.password_field :password %>
     </div>
@@ -66,6 +61,4 @@
 
   <%= f.submit "Save", :class => "waves-effect waves-light btn-large deep-orange" %>
 <% end %>
-
-
 </div>
