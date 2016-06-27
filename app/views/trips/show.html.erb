@@ -1,7 +1,6 @@
 <div class="container">
   <h1 class="center"><%= @trip.name %></h1>
     <h6 class="center">Created by: <%= link_to @trip.creator.formatted_name, user_path(@trip.creator) %> (<%= time_ago_in_words(@trip.created_at)%> ago) </h6>
-
     <div class="section center">
     <% @trip.tags.each do |tag| %>
       <div class="chip grey lighten-2 center hoverable">
@@ -9,8 +8,7 @@
       </div>
     <% end %>
   </div>
-
-    <br>
+  <br>
   <% if user_signed_in? %>
     <span class="favorite-form-container left">
       <%= render 'favorite_form' %>
@@ -20,11 +18,7 @@
     </span>
   <% end %>
 </div>
-
-
-  <div id="trip-map"></div>
-
-
+<div id="trip-map"></div>
 <div class="container">
   <div class="row">
     <div class="col s12 m12 l6">
@@ -33,7 +27,6 @@
           <%= render partial: 'location_details', locals: { location: location } %>
       <% end %>
     </div>
-
   <div class="col s12 m12 l6">
     <div class="creator-comments-container">
       <h5>Comments by the Trip Creator:</h5>
@@ -62,7 +55,6 @@
       <% end %>
       <% end %>
     </div>
-
   <% if user_signed_in? && current_user == @trip.creator %>
     <div class="new-comment-creator-button">
       <%= form_for(@comment, url: new_comment_path, method: :get ) do |f| %>
@@ -71,7 +63,6 @@
       <% end %>
     </div>
   <% end %>
-
     <div class="not-creator-comments-container">
       <h5>Comments: </h5>
       <% if @user_comments.length == 0 %>
@@ -99,7 +90,6 @@
       <% end %>
       <% end %>
     </div>
-
   <% if user_signed_in? && current_user != @trip.creator %>
     <div class="new-comment-not-creator-button">
       <%= form_for(@comment, url: new_comment_path, method: :get ) do |f| %>
@@ -114,7 +104,6 @@
         <i class="material-icons grey-text text-darken-1 icon-margin-left">directions_walk</i><span class="thin"> <%= @trip.creator.formatted_name %> is available for tours</span>
       <% end %>
     </div>
-
     <div class="section center">
           <div class="col s12 m12 l12">
             <% if @trip.creator.available == true && @trip.creator != current_user %>
@@ -122,10 +111,8 @@
             <% end %>
         </div>
       </div>
+  </div>
 </div>
-</div>
-
-
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8Bo_Dd2UfKD6HYbDmGNbCKy-pFivNcmw&libraries=places"
   async defer></script>
@@ -186,8 +173,6 @@
   };
 </script>
 </div>
-
-
 
 <% if user_signed_in? %>
   <% if !@trip.creator.user_followed?( current_user ) && @trip.creator != current_user %>

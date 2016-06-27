@@ -5,13 +5,9 @@
       <%= button_to "Compose", new_conversation_path, class: "waves-effect waves-light btn deep-orange", method: "get" %>
     </div>
   </div>
-
   <div class="row">
     <%= render 'mailbox/folders' %>
   </div>
-
-
-
   <div class="row center">
     <div class="col s12">
     <% if conversation.is_trashed?(current_user) %>
@@ -22,22 +18,17 @@
     <% end %>
     </div>
   </div>
-
   <%= render partial: 'messages' %>
-
-
-
   <div class="container">
     <!-- Reply Form -->
     <%= form_for :message, url: reply_conversation_path(conversation) do |f| %>
-        <div class="input-field col s12 m6">
-          <%= f.text_area :body, rows: 4, id: "textarea1", class: "materialize-textarea" %>
-          <label for="textarea1">Reply Message</label>
-        </div>
-
-        <div class="section center">
+      <div class="input-field col s12 m6">
+        <%= f.text_area :body, rows: 4, id: "textarea1", class: "materialize-textarea" %>
+        <label for="textarea1">Reply Message</label>
+      </div>
+      <div class="section center">
         <%= f.submit "Reply", class: "waves-effect waves-light btn deep-orange" %>
-        </div>
+      </div>
     <% end %>
   </div>
-  </div>
+</div>

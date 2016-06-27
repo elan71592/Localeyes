@@ -13,6 +13,8 @@ $accent-text: color("deep-orange", "lighten-1");
 @import "social-share-button";
 
 
+/* GENERAL/LAYOUT STYLING */
+
 html, body {
   height: 100%;
   margin: 0;
@@ -33,6 +35,194 @@ body {
 .Site-content {
   flex: 1 0 auto;
 }
+
+h1 {
+  font-weight: lighter;
+}
+
+h2 {
+  font-weight: lighter;
+}
+
+h3 {
+  font-weight: lighter;
+}
+
+h5 {
+  font-weight: lighter;
+}
+
+h6 {
+  font-weight: lighter;
+}
+
+textarea:focus {
+  border-bottom: 1px solid #0288d1 !important;
+  box-shadow: 0 1px 0 0 #0288d1 !important;
+}
+
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #0288d1 !important;
+}
+
+select {
+  display: unset;
+  visibility: visible;
+  margin-top: 3%;
+}
+
+.navbar-fixed {
+  z-index: 9999;
+}
+
+.collection-item.active {
+  background-color: #0288d1 !important;
+}
+
+.collection-item.active a {
+  color: white !important;
+}
+
+p.small-text {
+  font-size: 1em;
+}
+
+.error-message {
+  color: #b71c1c;
+}
+
+.btn-flat {
+  color: white;
+}
+
+footer {
+/* used to have margin-top: 4% but I need to change it for the home page, not sure if it was really needed */
+  margin-top: 0;
+  font-size: .8em;
+}
+
+/* GENERAL FORM STYLING */
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #03a9f4 ;
+  box-shadow: 0 1px 0 0 #03a9f4 ;
+}
+
+.input-field.reply input[type=text]:focus {
+  border-bottom: 1px solid #03a9f4 ;
+  box-shadow: 0 1px 0 0 #03a9f4 ;
+}
+
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid #03a9f4 ;
+  box-shadow: 0 1px 0 0 #03a9f4 ;
+}
+
+.input-field input[type=email]:focus {
+  border-bottom: 1px solid #03a9f4 ;
+  box-shadow: 0 1px 0 0 #03a9f4 ;
+}
+
+.input-field.new-location input[type=text]:focus {
+  border-bottom: 1px solid #f57c00 ;
+  box-shadow: 0 1px 0 0 #f57c00 ;
+}
+
+.input-field.new-location input[type=text] {
+  border-bottom: 1px solid #e0e0e0 ;
+  box-shadow: 0 1px 0 0 #e0e0e0;
+}
+
+/* LOGIN/SIGN UP STYLING */
+
+#facebook-login {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+/* HOME PAGE STYLING */
+
+.home-buttons {
+ margin-top: 5%;
+}
+
+.or {
+  margin-left: 2%;
+  margin-right: 2%;
+  text-transform: uppercase;
+  font-size: 3vmin;
+}
+
+.logo-image {
+  width: auto;
+  height: 2em;
+}
+
+.nav-wrapper {
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+.parallax-container {
+  height: 100vmin;
+}
+
+.parallax-container-mobile {
+  background: url(parallax-mobile.png);
+  margin: 0 auto;
+  padding-bottom: 5em;
+}
+
+.parallax-card-container {
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+.home-card {
+  width: auto;
+  height: 17em auto;
+  margin-top: 25%;
+}
+
+.home-card-mobile {
+  width: auto;
+  height: 17em auto;
+  margin-top: 10%;
+}
+
+.info-around-parallax {
+  margin-top: -5em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.info-around-parallax p {
+  font-size: 3vmin;
+}
+
+.small-info-around-parallax {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.small-info-around-parallax p {
+  font-size: 3vmin;
+}
+
+.info-text {
+  font-weight: 400;
+}
+
+.blue-accent {
+  color: #0288d1;
+}
+
+.error-logo {
+  width: auto;
+  height: 10em;
+}
+
+/* MAP STYLING */
 
 #map {
   width: 100%;
@@ -86,132 +276,19 @@ body {
   font-weight: 300;
 }
 
+/* TRIP INDEX PAGE STYLING */
+
 #tag-bubbles {
   margin: .7% .5% .7% .5%;
+}
+
+.chip {
+  margin-bottom: 10px;
 }
 
 .chip-container {
   display: inline-block;
   padding: 10px;
-}
-
-.animate-tag {
-  background-color: #ff5722;
-  margin: 25px 10px;
-  width: 70px;
-  color: #fff;
-  font-size: 14px;
-  text-align: center;
-  height: 30px;
-  border-radius: 30px;
-  padding: 5%;
-}
-
-
-.card-action.lowercase a {
-  text-transform: lowercase !important;
-}
-
-.card-action.lowercase {
-  text-transform: lowercase;
-}
-
-h1 {
-  font-weight: lighter;
-}
-
-h2 {
-  font-weight: lighter;
-}
-
-h3 {
-  font-weight: lighter;
-}
-
-h6 {
-  font-weight: lighter;
-}
-
-.delete-button {
-  border: none;
-  background-color: Transparent;
-  outline: none;
-  color: #039be5;
-}
-
-.delete-button:active:focus {
-  border: none !important;
-  background-color: Transparent !important;
-  outline: none !important;
-   box-shadow: none !important;
-}
-
-.delete-button:active {
-  border: none !important;
-  background-color: Transparent !important;
-  outline: none !important;
-   box-shadow: none !important;
-}
-
-
-.d-button {
-  display: inline-block;
-}
-
-.e-link {
-  display: inline-block;
-}
-
-h5 {
-  font-weight: lighter;
-}
-
-textarea:focus {
-  border-bottom: 1px solid #0288d1 !important;
-  box-shadow: 0 1px 0 0 #0288d1 !important;
-}
-
-textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: #0288d1 !important;
-}
-
-.input-field input[type=text]:focus {
-  border-bottom: 1px solid #03a9f4 ;
-  box-shadow: 0 1px 0 0 #03a9f4 ;
-}
-
-.input-field.reply input[type=text]:focus {
-  border-bottom: 1px solid #03a9f4 ;
-  box-shadow: 0 1px 0 0 #03a9f4 ;
-}
-
-
-
-
-.input-field input[type=password]:focus {
-  border-bottom: 1px solid #03a9f4 ;
-  box-shadow: 0 1px 0 0 #03a9f4 ;
-}
-
-.input-field input[type=email]:focus {
-  border-bottom: 1px solid #03a9f4 ;
-  box-shadow: 0 1px 0 0 #03a9f4 ;
-}
-
-.input-field.new-location input[type=text]:focus {
-  border-bottom: 1px solid #f57c00 ;
-  box-shadow: 0 1px 0 0 #f57c00 ;
-}
-
-.input-field.new-location input[type=text] {
-  border-bottom: 1px solid #e0e0e0 ;
-  box-shadow: 0 1px 0 0 #e0e0e0;
-}
-
-select {
-  display: unset;
-  visibility: visible;
-  margin-top: 3%;
 }
 
 .trip-card a {
@@ -250,9 +327,70 @@ input#submit {
   text-transform: uppercase;
 }
 
-.favorite-button {
-  background:none;
-  border:none;
+.search-label {
+  margin-bottom: -1em;
+}
+
+
+/* TRIP SHOW PAGE STYLING */
+
+.delete-button {
+  border: none;
+  background-color: Transparent;
+  outline: none;
+  color: #039be5;
+}
+
+.delete-button:active:focus {
+  border: none !important;
+  background-color: Transparent !important;
+  outline: none !important;
+   box-shadow: none !important;
+}
+
+.delete-button:active {
+  border: none !important;
+  background-color: Transparent !important;
+  outline: none !important;
+   box-shadow: none !important;
+}
+
+.d-button {
+  display: inline-block;
+}
+
+.e-link {
+  display: inline-block;
+}
+
+.card-content .message-body {
+  word-wrap: break-word;
+}
+
+.hidden-comments-message {
+  display: none;
+}
+
+/* TRIP NEW STYLING */
+
+
+a.trip-index-tag {
+  text-transform: lowercase !important;
+  margin-right: 0px !important;
+  color: #424242 !important;
+}
+
+.location-details-website-link:hover {
+  color: #ff8a65;
+  transition: color 0.5s ease;
+}
+
+.card-action.lowercase a {
+  text-transform: lowercase !important;
+}
+
+.card-action.lowercase {
+  text-transform: lowercase;
 }
 
 #delete-post {
@@ -274,19 +412,33 @@ input#submit {
   text-transform: uppercase;
 }
 
-.tiny-font {
-  font-size: .75em;
+/* USER SHOW PAGE STYLING */
+
+.icon-margin-left {
+  margin-left: 20px;
 }
 
-.trip-index-header {
-  padding-top: 3%;
-  clear:both;
+.icon-margin-right {
+  margin-right: 10px;
 }
 
-#new-locations-left-column {
-  margin-left: 15%;
+.profile-stats {
+  font-weight: bold;
+  font-size: 120%;
 }
 
+img.profile-pic {
+    width: 150px;
+    height: auto;
+    border: 3px solid #757575;
+}
+
+.username {
+  font-weight: lighter;
+  font-size: 2em;
+}
+
+/* INBOX PAGE STYLING */
 
 img.inbox-img{
     width: 75px;
@@ -310,32 +462,40 @@ img.inbox-img{
   width: 200px !important;
 }
 
-
-footer {
-/* used to have margin-top: 4% but I need to change it for the home page, not sure if it was really needed */
-  margin-top: 0;
-  font-size: .8em;
+.message-card-inbox a {
+  color: #ff5722 !important;
 }
 
-.home-buttons {
- margin-top: 5%;
+/* TAG INDEX PAGE STYLING */
+
+.animate-tag {
+  background-color: #ff5722;
+  margin: 25px 10px;
+  width: 70px;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  height: 30px;
+  border-radius: 30px;
+  padding: 5%;
 }
 
-.or {
-  margin-left: 2%;
-  margin-right: 2%;
-  text-transform: uppercase;
-  font-size: 3vmin;
-}
-img.profile-pic {
-    width: 150px;
-    height: auto;
-    border: 3px solid #757575;
+.favorite-button {
+  background:none;
+  border:none;
 }
 
-.username {
-  font-weight: lighter;
-  font-size: 2em;
+.tiny-font {
+  font-size: .75em;
+}
+
+.trip-index-header {
+  padding-top: 3%;
+  clear:both;
+}
+
+#new-locations-left-column {
+  margin-left: 15%;
 }
 
 .fb-login {
@@ -353,22 +513,11 @@ img.profile-pic {
   position: fixed;
 }
 
-.profile-stats {
-  font-weight: bold;
-  font-size: 120%;
-}
-
 .thin {
   font-weight: light;
 }
 
-.icon-margin-left {
-  margin-left: 20px;
-}
 
-.icon-margin-right {
-  margin-right: 10px;
-}
 /* Video Background Clases  */
 
 .video-container {
@@ -437,138 +586,4 @@ margin-bottom: 0;
 }
 /* End of Video Background Classes*/
 
-.navbar-fixed {
-  z-index: 9999;
-}
 
-.collection-item.active {
-  background-color: #0288d1 !important;
-}
-
-.collection-item.active a {
-  color: white !important;
-}
-
-.message-card-inbox a {
-  color: #ff5722 !important;
-}
-
-.logo-image {
-  width: auto;
-  height: 2em;
-}
-
-
-.nav-wrapper {
-  margin-left: 3em;
-  margin-right: 3em;
-}
-
-
-.parallax-container {
-  height: 100vmin;
-}
-
-.parallax-container-mobile {
-  background: url(parallax-mobile.png);
-  margin: 0 auto;
-  padding-bottom: 5em;
-}
-
-.parallax-card-container {
-  margin-left: 4em;
-  margin-right: 4em;
-}
-
-.home-card {
-  width: auto;
-  height: 17em auto;
-  margin-top: 25%;
-}
-
-.home-card-mobile {
-  width: auto;
-  height: 17em auto;
-  margin-top: 10%;
-}
-
-.info-around-parallax {
-  margin-top: -5em;
-  padding-top: 2em;
-  padding-bottom: 2em;
-}
-
-.info-around-parallax p {
-  font-size: 3vmin;
-}
-
-.small-info-around-parallax {
-  padding-top: 2em;
-  padding-bottom: 2em;
-}
-
-.small-info-around-parallax p {
-  font-size: 3vmin;
-}
-
-.info-text {
-  font-weight: 400;
-}
-
-.blue-accent {
-  color: #0288d1;
-}
-
-
-.error-logo {
-  width: auto;
-  height: 10em;
-}
-
-#facebook-login {
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
-
-p.small-text {
-  font-size: 1em;
-}
-
-.card-content .message-body {
-  word-wrap: break-word;
-}
-
-.hidden-comments-message {
-  display: none;
-}
-
-.error-message {
-  color: #b71c1c;
-}
-
-a.trip-index-tag {
-  text-transform: lowercase !important;
-  margin-right: 0px !important;
-  color: #424242 !important;
-}
-
-
-.location-details-website-link:hover {
-  color: #ff8a65;
-  transition: color 0.5s ease;
-}
-
-
-
-.chip {
-  margin-bottom: 10px;
-}
-
-
-.search-label {
-  margin-bottom: -1em;
-}
-
-.btn-flat {
-  color: white;
-}

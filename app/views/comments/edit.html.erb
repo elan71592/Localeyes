@@ -3,27 +3,22 @@
   <h1>Edit Your Comment </h1>
 
   <%= form_for @comment do |f| %>
-
-  <% if @comment.errors.any? %>
-      <p><%=pluralize(@comment.errors.count, "error") %> prevented this item from saving.</p>
-      <ul>
-        <% @comment.errors.full_messages.each do |message| %>
-          <li class="error-message"><%= message %></li>
-        <% end %>
-  <%end%>
-
+    <% if @comment.errors.any? %>
+        <p><%=pluralize(@comment.errors.count, "error") %> prevented this item from saving.</p>
+        <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li class="error-message"><%= message %></li>
+          <% end %>
+        </ul>
+    <%end%>
     <div class="input-field">
       <label for="body">Edit your comment</label>
       <%=f.text_field :body, hide_label: true %>
     </div>
-
       <%=f.hidden_field :trip_id, :value => @trip.id %>
       <%=f.hidden_field :user_id, :value => current_user.id %>
       <%=f.submit "Save", class: "waves-effect waves-light btn deep-orange" %>
   <% end %>
-
   <br>
-
   <%= link_to 'back to trip page', trip_path(@trip) %>
-
 </div>
